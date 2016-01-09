@@ -27,4 +27,4 @@ build-project translations ;
 	
 exe test : main.cpp ;
 
-import gettext ;
+install trc : translations//translations ;

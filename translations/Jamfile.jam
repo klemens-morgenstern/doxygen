@@ -10,7 +10,20 @@ import gettext ;
 #
 local lst = [ glob *.po ] ;
 
+local res ;
+
 for local l in $(lst) 
 {
-	gettext.catalog $(l:B) : $(l:B).po ;
+	import regex ;
+	
+	local lb = $(l:B) ;
+	local r = [ regex.match doxy_(.*) : $(lb) ] ; 
+   
+	local tar =  $(r)/LC_MESSAGES/doxy ;
+	gettext.catalog $(tar) : $(lb).po : <location>bin ;
+	
+	res = $(res) $(tar) ;	
 } 
+
+alias translations ; #: $(res) ;
+
