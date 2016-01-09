@@ -1,0 +1,16 @@
+
+project translations ;
+
+import gettext ;
+
+#rule make_mo_target ( name ) 
+#{
+#	return [ gettext.catalog $(name) : $(name).po ] ;
+#}
+#
+local lst = [ glob *.po ] ;
+
+for local l in $(lst) 
+{
+	gettext.catalog $(l:B) : $(l:B).po ;
+} 

@@ -1,0 +1,30 @@
+
+import modules ;
+
+#must be defined in user-config.jam, 
+local boost-inc 	= [ modules.peek user-config : boost-include ] ; #folder where the boost includes are, i.e. boost is a subfolder
+local boost-lib-loc = [ modules.peek user-config : boost-lib-loc ] ; #locatino of the libraries of boost
+local postfix = [ modules.peek user-config : boost-lib-postfix ] ; # the postfix to the libraries, e.g. -mgw-mt-1_60
+
+project mw.test.gen :
+	source-location test_src	
+	: requirements
+	<include>./libs/spirit/include
+	<include>./libs/mw.test.data/include
+	<include>$(boost-inc)
+	<include>./include
+	<toolset>gcc:<cxxflags>-std=gnu++1y
+	<linkflags>-L$(boost-lib-loc)
+	<toolset>gcc:<cxxflags>-ftemplate-depth=256
+	<linkflags>-lboost_program_options$(postfix)
+	<linkflags>-lboost_filesystem$(postfix)
+	<linkflags>-lboost_system$(postfix)
+	<linkflags>-lboost_locale$(postfix)
+	<link>shared
+	;
+	
+build-project translations ;	
+	
+exe test : main.cpp ;
+
+import gettext ;
