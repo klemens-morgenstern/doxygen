@@ -1,0 +1,1903 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);\n"
+"X-Language: ro_RO\n"
+"X-Qt-Contexts: true\n"
+
+#: ../../src/translator_cs.h:1225
+msgctxt "doxy-rtf|trRTFansicp"
+msgid "1252"
+msgstr ""
+
+#: ../../src/translator_cs.h:1232
+msgctxt "doxy-rtf|trRTFCharSet"
+msgid "0"
+msgstr ""
+
+#: ../../src/translator_cs.h:50
+msgctxt "doxy-text|"
+msgid "Related Functions"
+msgstr ""
+
+#: ../../src/translator_cs.h:55
+msgctxt "doxy-text|"
+msgid "These are not member functions"
+msgstr ""
+
+#: ../../src/translator_cs.h:60
+msgctxt "doxy-text|"
+msgid "Detailed Description"
+msgstr ""
+
+#: ../../src/translator_cs.h:65
+msgctxt "doxy-text|"
+msgid "Member Typedef Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:70
+msgctxt "doxy-text|"
+msgid "Member Enumeration Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:75
+msgctxt "doxy-text|"
+msgid "Member Function Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:81
+msgctxt "doxy-text|"
+msgid "Field Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:83
+msgctxt "doxy-text|"
+msgid "Member Data Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:89
+msgctxt "doxy-text|"
+msgid "More..."
+msgstr ""
+
+#: ../../src/translator_cs.h:94
+msgctxt "doxy-text|"
+msgid "List of all members"
+msgstr ""
+
+#: ../../src/translator_cs.h:99
+msgctxt "doxy-text|"
+msgid "Member List"
+msgstr ""
+
+#: ../../src/translator_cs.h:104
+msgctxt "doxy-text|"
+msgid "This is the complete list of members for "
+msgstr ""
+
+#: ../../src/translator_cs.h:109
+msgctxt "doxy-text|"
+msgid ", including all inherited members."
+msgstr ""
+
+#: ../../src/translator_cs.h:117
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Generated automatically by DoxyPress for %1 from the source code."
+msgstr ""
+
+#: ../../src/translator_cs.h:120
+msgctxt "doxy-text|"
+msgid "Generated automatically by DoxyPress from the source code."
+msgstr ""
+
+#: ../../src/translator_cs.h:127
+msgctxt "doxy-text|"
+msgid "enum name"
+msgstr ""
+
+#: ../../src/translator_cs.h:132
+msgctxt "doxy-text|"
+msgid "enum value"
+msgstr ""
+
+#: ../../src/translator_cs.h:137
+msgctxt "doxy-text|"
+msgid "defined in"
+msgstr ""
+
+#: ../../src/translator_cs.h:144 ../../src/translator_cs.h:1317
+#: ../../src/translator_cs.h:1826
+msgctxt "doxy-text|"
+msgid "Modules"
+msgstr ""
+
+#: ../../src/translator_cs.h:149
+msgctxt "doxy-text|"
+msgid "Class Hierarchy"
+msgstr ""
+
+#: ../../src/translator_cs.h:155 ../../src/translator_cs.h:479
+#: ../../src/translator_cs.h:1157
+msgctxt "doxy-text|"
+msgid "Data Structures"
+msgstr ""
+
+#: ../../src/translator_cs.h:157
+msgctxt "doxy-text|"
+msgid "Class List"
+msgstr ""
+
+#: ../../src/translator_cs.h:163
+msgctxt "doxy-text|"
+msgid "File List"
+msgstr ""
+
+#: ../../src/translator_cs.h:169 ../../src/translator_cs.h:992
+#: ../../src/translator_cs.h:1644
+msgctxt "doxy-text|"
+msgid "Data Fields"
+msgstr ""
+
+#: ../../src/translator_cs.h:171
+msgctxt "doxy-text|"
+msgid "Class Members"
+msgstr ""
+
+#: ../../src/translator_cs.h:178 ../../src/translator_cs.h:1386
+msgctxt "doxy-text|"
+msgid "Globals"
+msgstr ""
+
+#: ../../src/translator_cs.h:180
+msgctxt "doxy-text|"
+msgid "File Members"
+msgstr ""
+
+#: ../../src/translator_cs.h:186
+msgctxt "doxy-text|"
+msgid "Related Pages"
+msgstr ""
+
+#: ../../src/translator_cs.h:191
+msgctxt "doxy-text|"
+msgid "Examples"
+msgstr ""
+
+#: ../../src/translator_cs.h:196
+msgctxt "doxy-text|"
+msgid "Search"
+msgstr ""
+
+#: ../../src/translator_cs.h:201
+msgctxt "doxy-text|"
+msgid ""
+"This inheritance list is sorted roughly, but not completely, alphabetically:"
+msgstr ""
+
+#: ../../src/translator_cs.h:208
+msgctxt "doxy-text|"
+msgid "Here is a list of all files with brief descriptions:"
+msgstr ""
+
+#: ../../src/translator_cs.h:211
+msgctxt "doxy-text|"
+msgid "Here is a list of all documented files with brief descriptions:"
+msgstr ""
+
+#: ../../src/translator_cs.h:220
+msgctxt "doxy-text|"
+msgid "Here are the data structures with brief descriptions:"
+msgstr ""
+
+#: ../../src/translator_cs.h:224
+msgctxt "doxy-text|"
+msgid ""
+"Here are the classes, structs, unions and interfaces with brief descriptions:"
+msgstr ""
+
+#: ../../src/translator_cs.h:236
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all struct and union fields with links to the "
+"structures/unions they belong to:"
+msgstr ""
+
+#: ../../src/translator_cs.h:239
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all class members with links to the classes they belong to:"
+msgstr ""
+
+#: ../../src/translator_cs.h:246
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented struct and union fields with links to the "
+"struct/union documentation for each field:"
+msgstr ""
+
+#: ../../src/translator_cs.h:250
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented class members with links to the class "
+"documentation for each member:"
+msgstr ""
+
+#: ../../src/translator_cs.h:265
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all functions, variables, defines, enums, and typedefs "
+"with links to the files they belong to:"
+msgstr ""
+
+#: ../../src/translator_cs.h:269
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented file members with links to the files they "
+"belong to:"
+msgstr ""
+
+#: ../../src/translator_cs.h:276
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all functions, variables, defines, enums, and typedefs "
+"with links to the documentation:"
+msgstr ""
+
+#: ../../src/translator_cs.h:280
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented file members with links to the "
+"documentation:"
+msgstr ""
+
+#: ../../src/translator_cs.h:291
+msgctxt "doxy-text|"
+msgid "Here is a list of all examples:"
+msgstr ""
+
+#: ../../src/translator_cs.h:296
+msgctxt "doxy-text|"
+msgid "Here is a list of all related documentation pages:"
+msgstr ""
+
+#: ../../src/translator_cs.h:301
+msgctxt "doxy-text|"
+msgid "Here is a list of all modules:"
+msgstr ""
+
+#: ../../src/translator_cs.h:308
+msgctxt "doxy-text|"
+msgid "Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:315
+msgctxt "doxy-text|"
+msgid "Module Index"
+msgstr ""
+
+#: ../../src/translator_cs.h:322
+msgctxt "doxy-text|"
+msgid "Hierarchical Index"
+msgstr ""
+
+#: ../../src/translator_cs.h:330
+msgctxt "doxy-text|"
+msgid "Data Structure Index"
+msgstr ""
+
+#: ../../src/translator_cs.h:332
+msgctxt "doxy-text|"
+msgid "Class Index"
+msgstr ""
+
+#: ../../src/translator_cs.h:339
+msgctxt "doxy-text|"
+msgid "File Index"
+msgstr ""
+
+#: ../../src/translator_cs.h:346
+msgctxt "doxy-text|"
+msgid "Module Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:354
+msgctxt "doxy-text|"
+msgid "Data Structure Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:356
+msgctxt "doxy-text|"
+msgid "Class Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:364
+msgctxt "doxy-text|"
+msgid "File Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:371
+msgctxt "doxy-text|"
+msgid "Example Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:378
+msgctxt "doxy-text|"
+msgid "Page Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:383
+msgctxt "doxy-text|"
+msgid "Reference Manual"
+msgstr ""
+
+#: ../../src/translator_cs.h:390
+msgctxt "doxy-text|"
+msgid "Macros"
+msgstr ""
+
+#: ../../src/translator_cs.h:394
+msgctxt "doxy-text|"
+msgid "Public Typedefs"
+msgstr ""
+
+#: ../../src/translator_cs.h:398
+msgctxt "doxy-text|"
+msgid "Protected Typedefs"
+msgstr ""
+
+#: ../../src/translator_cs.h:402
+msgctxt "doxy-text|"
+msgid "Private Typedefs"
+msgstr ""
+
+#: ../../src/translator_cs.h:408
+msgctxt "doxy-text|"
+msgid "Typedefs"
+msgstr ""
+
+#: ../../src/translator_cs.h:415
+msgctxt "doxy-text|"
+msgid "Enums"
+msgstr ""
+
+#: ../../src/translator_cs.h:422
+msgctxt "doxy-text|"
+msgid "Functions"
+msgstr ""
+
+#: ../../src/translator_cs.h:429
+msgctxt "doxy-text|"
+msgid "Variables"
+msgstr ""
+
+#: ../../src/translator_cs.h:436
+msgctxt "doxy-text|"
+msgid "Enum Values"
+msgstr ""
+
+#: ../../src/translator_cs.h:443
+msgctxt "doxy-text|"
+msgid "Macro Definition Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:450
+msgctxt "doxy-text|"
+msgid "Typedef Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:457
+msgctxt "doxy-text|"
+msgid "Enumeration Type Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:464
+msgctxt "doxy-text|"
+msgid "Function Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:471
+msgctxt "doxy-text|"
+msgid "Variable Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:481 ../../src/translator_cs.h:1159
+#: ../../src/translator_cs.h:1249
+msgctxt "doxy-text|"
+msgid "Classes"
+msgstr ""
+
+#: ../../src/translator_cs.h:491
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Generated on %1 &nbsp; by"
+msgstr ""
+
+#: ../../src/translator_cs.h:493
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Generated on %1 for %2 &nbsp; by"
+msgstr ""
+
+#: ../../src/translator_cs.h:499
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Inheritance diagram for %1:"
+msgstr ""
+
+#: ../../src/translator_cs.h:504
+msgctxt "doxy-text|"
+msgid "For internal use only."
+msgstr ""
+
+#: ../../src/translator_cs.h:509
+msgctxt "doxy-text|"
+msgid "Warning"
+msgstr ""
+
+#: ../../src/translator_cs.h:514
+msgctxt "doxy-text|"
+msgid "Version"
+msgstr ""
+
+#: ../../src/translator_cs.h:519
+msgctxt "doxy-text|"
+msgid "Date"
+msgstr ""
+
+#: ../../src/translator_cs.h:524
+msgctxt "doxy-text|"
+msgid "Returns"
+msgstr ""
+
+#: ../../src/translator_cs.h:529
+msgctxt "doxy-text|"
+msgid "See also"
+msgstr ""
+
+#: ../../src/translator_cs.h:534
+msgctxt "doxy-text|"
+msgid "Parameters"
+msgstr ""
+
+#: ../../src/translator_cs.h:539
+msgctxt "doxy-text|"
+msgid "Exceptions"
+msgstr ""
+
+#: ../../src/translator_cs.h:544
+msgctxt "doxy-text|"
+msgid "Generated by"
+msgstr ""
+
+#: ../../src/translator_cs.h:549
+msgctxt "doxy-text|"
+msgid "Namespace List"
+msgstr ""
+
+#: ../../src/translator_cs.h:556
+msgctxt "doxy-text|"
+msgid "Here is a list of all namespaces with brief descriptions:"
+msgstr ""
+
+#: ../../src/translator_cs.h:559
+msgctxt "doxy-text|"
+msgid "Here is a list of all documented namespaces with brief descriptions:"
+msgstr ""
+
+#: ../../src/translator_cs.h:568
+msgctxt "doxy-text|"
+msgid "Friends"
+msgstr ""
+
+#: ../../src/translator_cs.h:575
+msgctxt "doxy-text|"
+msgid "Friends And Related Function Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:585
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Class Template Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:587
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Class Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:593
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Struct Template Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:595
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Struct Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:601 ../../src/translator_cs.h:1738
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Union Template Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:603 ../../src/translator_cs.h:1740
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Union Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:609 ../../src/translator_cs.h:1746
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Interface Template Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:611 ../../src/translator_cs.h:1748
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Interface Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:617 ../../src/translator_cs.h:1754
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Protocol Template Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:619
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Protocol Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:625 ../../src/translator_cs.h:1762
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Category Template Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:627 ../../src/translator_cs.h:1764
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Category Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:633 ../../src/translator_cs.h:1770
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Exception Template Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:635 ../../src/translator_cs.h:1772
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Exception Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:641 ../../src/translator_cs.h:1778
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Template Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:643 ../../src/translator_cs.h:1780
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:653
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 File Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:658
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Namespace Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:662
+msgctxt "doxy-text|"
+msgid "Public Member Functions"
+msgstr ""
+
+#: ../../src/translator_cs.h:666
+msgctxt "doxy-text|"
+msgid "Public Signals"
+msgstr ""
+
+#: ../../src/translator_cs.h:669
+msgctxt "doxy-text|"
+msgid "Protected Signals"
+msgstr ""
+
+#: ../../src/translator_cs.h:672
+msgctxt "doxy-text|"
+msgid "Private Signals"
+msgstr ""
+
+#: ../../src/translator_cs.h:676
+msgctxt "doxy-text|"
+msgid "Static Public Member Functions"
+msgstr ""
+
+#: ../../src/translator_cs.h:679
+msgctxt "doxy-text|"
+msgid "Protected Member Functions"
+msgstr ""
+
+#: ../../src/translator_cs.h:682
+msgctxt "doxy-text|"
+msgid "Public Slots"
+msgstr ""
+
+#: ../../src/translator_cs.h:685
+msgctxt "doxy-text|"
+msgid "Protected Slots"
+msgstr ""
+
+#: ../../src/translator_cs.h:688
+msgctxt "doxy-text|"
+msgid "Static Protected Member Functions"
+msgstr ""
+
+#: ../../src/translator_cs.h:691
+msgctxt "doxy-text|"
+msgid "Private Member Functions"
+msgstr ""
+
+#: ../../src/translator_cs.h:694
+msgctxt "doxy-text|"
+msgid "Private Slots"
+msgstr ""
+
+#: ../../src/translator_cs.h:697
+msgctxt "doxy-text|"
+msgid "Static Private Member Functions"
+msgstr ""
+
+#: ../../src/translator_cs.h:721
+msgctxt "doxy-text|"
+msgid ", and "
+msgstr ""
+
+#: ../../src/translator_cs.h:733
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Inherits %1."
+msgstr ""
+
+#: ../../src/translator_cs.h:740
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Inherited by %1."
+msgstr ""
+
+#: ../../src/translator_cs.h:747
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Reimplemented from %1."
+msgstr ""
+
+#: ../../src/translator_cs.h:754
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Reimplemented in %1."
+msgstr ""
+
+#: ../../src/translator_cs.h:759
+msgctxt "doxy-text|"
+msgid "Namespace Members"
+msgstr ""
+
+#: ../../src/translator_cs.h:765
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all namespace members with links to the namespace "
+"documentation for each member:"
+msgstr ""
+
+#: ../../src/translator_cs.h:768
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented namespace members with links to the "
+"namespaces they belong to:"
+msgstr ""
+
+#: ../../src/translator_cs.h:777
+msgctxt "doxy-text|"
+msgid "Namespace Index"
+msgstr ""
+
+#: ../../src/translator_cs.h:784
+msgctxt "doxy-text|"
+msgid "Namespace Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:791 ../../src/translator_cs.h:1295
+msgctxt "doxy-text|"
+msgid "Namespaces"
+msgstr ""
+
+#: ../../src/translator_cs.h:804
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this class  was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:807
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this class  was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:814
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this struct  was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:817
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this struct  was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:824
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this union  was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:827
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this union  was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:834
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this interface  was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:837
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this interface  was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:844
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this protocol  was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:847
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this protocol  was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:854
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this category  was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:857
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this category  was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:865 ../../src/translator_cs.h:1902
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this exception was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:868 ../../src/translator_cs.h:1905
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this exception was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:876
+msgctxt "doxy-text|"
+msgid "The documentation for this  was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:879
+msgctxt "doxy-text|"
+msgid "The documentation for this  was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:891
+msgctxt "doxy-text|"
+msgid "Return Values"
+msgstr ""
+
+#: ../../src/translator_cs.h:897
+msgctxt "doxy-text|"
+msgid "Main Page"
+msgstr ""
+
+#: ../../src/translator_cs.h:904
+msgctxt "doxy-text|"
+msgid "p,"
+msgstr ""
+
+#: ../../src/translator_cs.h:908
+msgctxt "doxy-text|"
+msgid "Definition at line @0 of file @1."
+msgstr ""
+
+#: ../../src/translator_cs.h:912
+msgctxt "doxy-text|"
+msgid "Definition in file @0."
+msgstr ""
+
+#: ../../src/translator_cs.h:916
+msgctxt "doxy-text|"
+msgid "Deprecated"
+msgstr ""
+
+#: ../../src/translator_cs.h:921
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Collaboration diagram for %1:"
+msgstr ""
+
+#: ../../src/translator_cs.h:926
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Include dependency graph for %1:"
+msgstr ""
+
+#: ../../src/translator_cs.h:931
+msgctxt "doxy-text|"
+msgid "Constructor & Destructor Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:936
+msgctxt "doxy-text|"
+msgid "Go to the source code of this file."
+msgstr ""
+
+#: ../../src/translator_cs.h:941
+msgctxt "doxy-text|"
+msgid "Go to the documentation of this file."
+msgstr ""
+
+#: ../../src/translator_cs.h:946
+msgctxt "doxy-text|"
+msgid "Precondition"
+msgstr ""
+
+#: ../../src/translator_cs.h:951
+msgctxt "doxy-text|"
+msgid "Postcondition"
+msgstr ""
+
+#: ../../src/translator_cs.h:955
+msgctxt "doxy-text|"
+msgid "Invariant"
+msgstr ""
+
+#: ../../src/translator_cs.h:960
+msgctxt "doxy-text|"
+msgid "Initial value:"
+msgstr ""
+
+#: ../../src/translator_cs.h:964
+msgctxt "doxy-text|"
+msgid "code"
+msgstr ""
+
+#: ../../src/translator_cs.h:968
+msgctxt "doxy-text|"
+msgid "Graphical Class Hierarchy"
+msgstr ""
+
+#: ../../src/translator_cs.h:972
+msgctxt "doxy-text|"
+msgid "Go to the graphical class hierarchy"
+msgstr ""
+
+#: ../../src/translator_cs.h:976
+msgctxt "doxy-text|"
+msgid "Go to the textual class hierarchy"
+msgstr ""
+
+#: ../../src/translator_cs.h:980
+msgctxt "doxy-text|"
+msgid "Page Index"
+msgstr ""
+
+#: ../../src/translator_cs.h:984
+msgctxt "doxy-text|"
+msgid "Note"
+msgstr ""
+
+#: ../../src/translator_cs.h:987
+msgctxt "doxy-text|"
+msgid "Public Types"
+msgstr ""
+
+#: ../../src/translator_cs.h:994
+msgctxt "doxy-text|"
+msgid "Public Attributes"
+msgstr ""
+
+#: ../../src/translator_cs.h:999
+msgctxt "doxy-text|"
+msgid "Static Public Attributes"
+msgstr ""
+
+#: ../../src/translator_cs.h:1003
+msgctxt "doxy-text|"
+msgid "Protected Types"
+msgstr ""
+
+#: ../../src/translator_cs.h:1007
+msgctxt "doxy-text|"
+msgid "Protected Attributes"
+msgstr ""
+
+#: ../../src/translator_cs.h:1011
+msgctxt "doxy-text|"
+msgid "Static Protected Attributes"
+msgstr ""
+
+#: ../../src/translator_cs.h:1015
+msgctxt "doxy-text|"
+msgid "Private Types"
+msgstr ""
+
+#: ../../src/translator_cs.h:1019
+msgctxt "doxy-text|"
+msgid "Private Attributes"
+msgstr ""
+
+#: ../../src/translator_cs.h:1023
+msgctxt "doxy-text|"
+msgid "Static Private Attributes"
+msgstr ""
+
+#: ../../src/translator_cs.h:1028
+msgctxt "doxy-text|"
+msgid "Todo"
+msgstr ""
+
+#: ../../src/translator_cs.h:1033
+msgctxt "doxy-text|"
+msgid "Todo List"
+msgstr ""
+
+#: ../../src/translator_cs.h:1037
+msgctxt "doxy-text|"
+msgid "Referenced by"
+msgstr ""
+
+#: ../../src/translator_cs.h:1041
+msgctxt "doxy-text|"
+msgid "Remarks"
+msgstr ""
+
+#: ../../src/translator_cs.h:1045
+msgctxt "doxy-text|"
+msgid "Attention"
+msgstr ""
+
+#: ../../src/translator_cs.h:1049
+msgctxt "doxy-text|"
+msgid "This graph shows which files directly or indirectly include this file"
+msgstr ""
+
+#: ../../src/translator_cs.h:1054
+msgctxt "doxy-text|"
+msgid "Since"
+msgstr ""
+
+#: ../../src/translator_cs.h:1059
+msgctxt "doxy-text|"
+msgid "Graph Legend"
+msgstr ""
+
+#: ../../src/translator_cs.h:1067
+#, qt-format
+msgctxt "doxy-text|"
+msgid ""
+"This page explains how to interpret the graphs which are generated by "
+"DoxyPress.\n"
+"\n"
+"Consider the following example:\n"
+"\\code\n"
+"/*! Invisible class because of truncation */\n"
+"class Invisible { };\n"
+"\n"
+"/*! Truncated class, inheritance relation is hidden */\n"
+"class Truncated : public Invisible { };\n"
+"\n"
+"/* Class not documented with DoxyPress comments */\n"
+"class Undocumented { };\n"
+"\n"
+"/*! Class that is inherited using public inheritance */\n"
+"class PublicBase : public Truncated { };\n"
+"\n"
+"/*! A template class */\n"
+"template<class T> class Templ { };\n"
+"\n"
+"/*! Class that is inherited using protected inheritance */\n"
+"class ProtectedBase { };\n"
+"\n"
+"/*! Class that is inherited using private inheritance */\n"
+"class PrivateBase { };\n"
+"\n"
+"/*! Class that is used by the Inherited class */\n"
+"class Used { };\n"
+"\n"
+"/*! Super class that inherits a number of other classes */\n"
+"class Inherited : public PublicBase,\n"
+"                  protected ProtectedBase,\n"
+"                  private PrivateBase,\n"
+"                  public Undocumented,\n"
+"                  public Templ<int>\n"
+"{\n"
+"  private:\n"
+"    Used *m_usedClass;\n"
+"};\n"
+"\\endcode\n"
+"This will result in the following graph:\n"
+"\n"
+"<center><img alt=\"\" src=\"graph_legend.%1\"></center>\n"
+"\n"
+"The boxes in the above graph have the following meaning:\n"
+"\n"
+"<ul>\n"
+"<li>%A filled gray box represents the struct or class for which the graph is "
+"generated.</li>\n"
+"<li>%A box with a black border denotes a documented struct or class.</li>\n"
+"<li>%A box with a grey border denotes an undocumented struct or class.</li>\n"
+"<li>%A box with a red border denotes a documented struct or class for which "
+"not all inheritance/containment relations are shown. %A graph is truncated "
+"if it does not fit within the specified boundaries.</li>\n"
+"</ul>\n"
+"\n"
+"The arrows have the following meaning:\n"
+"\n"
+"<ul>\n"
+"<li>%A dark blue arrow is used to visualize a public inheritance relation "
+"between two classes.</li>\n"
+"<li>%A dark green arrow is used for protected inheritance.</li>\n"
+"<li>%A dark red arrow is used for private inheritance.</li>\n"
+"<li>%A purple dashed arrow is used if a class is contained or used by "
+"another class. The arrow is labeled with the variable(s) through which the "
+"pointed class or struct is accessible.</li>\n"
+"<li>%A yellow dashed arrow denotes a relation between a template instance "
+"and the template class it was instantiated from. The arrow is labeled with "
+"the template parameters of the instance.</li>\n"
+"</ul>\n"
+msgstr ""
+
+#: ../../src/translator_cs.h:1131
+msgctxt "doxy-text|"
+msgid "legend"
+msgstr ""
+
+#: ../../src/translator_cs.h:1136
+msgctxt "doxy-text|"
+msgid "Test"
+msgstr ""
+
+#: ../../src/translator_cs.h:1141
+msgctxt "doxy-text|"
+msgid "Test List"
+msgstr ""
+
+#: ../../src/translator_cs.h:1146
+msgctxt "doxy-text|"
+msgid "Properties"
+msgstr ""
+
+#: ../../src/translator_cs.h:1151
+msgctxt "doxy-text|"
+msgid "Property Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:1165
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Package %1"
+msgstr ""
+
+#: ../../src/translator_cs.h:1170
+msgctxt "doxy-text|"
+msgid "Package List"
+msgstr ""
+
+#: ../../src/translator_cs.h:1175
+msgctxt "doxy-text|"
+msgid "Here are the packages with brief descriptions (if available):"
+msgstr ""
+
+#: ../../src/translator_cs.h:1181
+msgctxt "doxy-text|"
+msgid "Packages"
+msgstr ""
+
+#: ../../src/translator_cs.h:1186
+msgctxt "doxy-text|"
+msgid "Value:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1191
+msgctxt "doxy-text|"
+msgid "Bug"
+msgstr ""
+
+#: ../../src/translator_cs.h:1196
+msgctxt "doxy-text|"
+msgid "Bug List"
+msgstr ""
+
+#: ../../src/translator_cs.h:1237
+msgctxt "doxy-text|"
+msgid "Index"
+msgstr ""
+
+#: ../../src/translator_cs.h:1247
+msgctxt "doxy-text|"
+msgid "Class"
+msgstr ""
+
+#: ../../src/translator_cs.h:1255
+msgctxt "doxy-text|"
+msgid "class"
+msgstr ""
+
+#: ../../src/translator_cs.h:1257
+msgctxt "doxy-text|"
+msgid "classes"
+msgstr ""
+
+#: ../../src/translator_cs.h:1270
+msgctxt "doxy-text|"
+msgid "File"
+msgstr ""
+
+#: ../../src/translator_cs.h:1272
+msgctxt "doxy-text|"
+msgid "Files"
+msgstr ""
+
+#: ../../src/translator_cs.h:1278
+msgctxt "doxy-text|"
+msgid "file"
+msgstr ""
+
+#: ../../src/translator_cs.h:1280
+msgctxt "doxy-text|"
+msgid "files"
+msgstr ""
+
+#: ../../src/translator_cs.h:1293
+msgctxt "doxy-text|"
+msgid "Namespace"
+msgstr ""
+
+#: ../../src/translator_cs.h:1301
+msgctxt "doxy-text|"
+msgid "namespace"
+msgstr ""
+
+#: ../../src/translator_cs.h:1303
+msgctxt "doxy-text|"
+msgid "namespaces"
+msgstr ""
+
+#: ../../src/translator_cs.h:1315 ../../src/translator_cs.h:1824
+msgctxt "doxy-text|"
+msgid "Module"
+msgstr ""
+
+#: ../../src/translator_cs.h:1323 ../../src/translator_cs.h:1832
+msgctxt "doxy-text|"
+msgid "module"
+msgstr ""
+
+#: ../../src/translator_cs.h:1325 ../../src/translator_cs.h:1834
+msgctxt "doxy-text|"
+msgid "modules"
+msgstr ""
+
+#: ../../src/translator_cs.h:1337
+msgctxt "doxy-text|"
+msgid "Page"
+msgstr ""
+
+#: ../../src/translator_cs.h:1339
+msgctxt "doxy-text|"
+msgid "Pages"
+msgstr ""
+
+#: ../../src/translator_cs.h:1345
+msgctxt "doxy-text|"
+msgid "page"
+msgstr ""
+
+#: ../../src/translator_cs.h:1347
+msgctxt "doxy-text|"
+msgid "pages"
+msgstr ""
+
+#: ../../src/translator_cs.h:1361
+msgctxt "doxy-text|"
+msgid "Member"
+msgstr ""
+
+#: ../../src/translator_cs.h:1363
+msgctxt "doxy-text|"
+msgid "Members"
+msgstr ""
+
+#: ../../src/translator_cs.h:1369
+msgctxt "doxy-text|"
+msgid "member"
+msgstr ""
+
+#: ../../src/translator_cs.h:1371
+msgctxt "doxy-text|"
+msgid "members"
+msgstr ""
+
+#: ../../src/translator_cs.h:1384
+msgctxt "doxy-text|"
+msgid "Global"
+msgstr ""
+
+#: ../../src/translator_cs.h:1392
+msgctxt "doxy-text|"
+msgid "global"
+msgstr ""
+
+#: ../../src/translator_cs.h:1394
+msgctxt "doxy-text|"
+msgid "globals"
+msgstr ""
+
+#: ../../src/translator_cs.h:1405
+msgctxt "doxy-text|"
+msgid "Author"
+msgstr ""
+
+#: ../../src/translator_cs.h:1407 ../../src/translator_cs.h:1415
+msgctxt "doxy-text|"
+msgid "Authors"
+msgstr ""
+
+#: ../../src/translator_cs.h:1413
+msgctxt "doxy-text|"
+msgid "author"
+msgstr ""
+
+#: ../../src/translator_cs.h:1423
+msgctxt "doxy-text|"
+msgid "References"
+msgstr ""
+
+#: ../../src/translator_cs.h:1430
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Implements %1."
+msgstr ""
+
+#: ../../src/translator_cs.h:1437
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Implemented %1."
+msgstr ""
+
+#: ../../src/translator_cs.h:1445
+msgctxt "doxy-text|"
+msgid "Table of Contents"
+msgstr ""
+
+#: ../../src/translator_cs.h:1452
+msgctxt "doxy-text|"
+msgid "Deprecated List"
+msgstr ""
+
+#: ../../src/translator_cs.h:1459
+msgctxt "doxy-text|"
+msgid "Events"
+msgstr ""
+
+#: ../../src/translator_cs.h:1464
+msgctxt "doxy-text|"
+msgid "Event Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:1470
+msgctxt "doxy-text|"
+msgid "Package Types"
+msgstr ""
+
+#: ../../src/translator_cs.h:1477
+msgctxt "doxy-text|"
+msgid "Package Functions"
+msgstr ""
+
+#: ../../src/translator_cs.h:1484
+msgctxt "doxy-text|"
+msgid "Static Package Functions"
+msgstr ""
+
+#: ../../src/translator_cs.h:1491
+msgctxt "doxy-text|"
+msgid "Package Attributes"
+msgstr ""
+
+#: ../../src/translator_cs.h:1498
+msgctxt "doxy-text|"
+msgid "Static Package Attributes"
+msgstr ""
+
+#: ../../src/translator_cs.h:1505
+msgctxt "doxy-text|"
+msgid "All"
+msgstr ""
+
+#: ../../src/translator_cs.h:1510
+msgctxt "doxy-text|"
+msgid "Here is the call graph for this function:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1517
+msgctxt "doxy-text|"
+msgid "Search Results"
+msgstr ""
+
+#: ../../src/translator_cs.h:1530
+msgctxt "doxy-text|"
+msgid "Sorry, no documents matching your query."
+msgstr ""
+
+#: ../../src/translator_cs.h:1533
+msgctxt "doxy-text|"
+msgid "Found <b>1</b> document matching your query."
+msgstr ""
+
+#: ../../src/translator_cs.h:1536
+msgctxt "doxy-text|"
+msgid ""
+"Found <b>$num</b> documents matching your query. Showing best matches first."
+msgstr ""
+
+#: ../../src/translator_cs.h:1544
+msgctxt "doxy-text|"
+msgid "Matches:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1550
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Source File"
+msgstr ""
+
+#: ../../src/translator_cs.h:1557
+msgctxt "doxy-text|"
+msgid "Directory Hierarchy"
+msgstr ""
+
+#: ../../src/translator_cs.h:1564
+msgctxt "doxy-text|"
+msgid "Directory Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:1571 ../../src/translator_cs.h:1598
+msgctxt "doxy-text|"
+msgid "Directories"
+msgstr ""
+
+#: ../../src/translator_cs.h:1578
+msgctxt "doxy-text|"
+msgid ""
+"This directory hierarchy is sorted roughly, but not completely, "
+"alphabetically:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1586
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Directory Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:1596
+msgctxt "doxy-text|"
+msgid "Directory"
+msgstr ""
+
+#: ../../src/translator_cs.h:1604
+msgctxt "doxy-text|"
+msgid "directory"
+msgstr ""
+
+#: ../../src/translator_cs.h:1606
+msgctxt "doxy-text|"
+msgid "directories"
+msgstr ""
+
+#: ../../src/translator_cs.h:1615
+msgctxt "doxy-text|"
+msgid ""
+"This is an overloaded member function, provided for convenience. It differs "
+"from the above function only in what argument(s) it accepts."
+msgstr ""
+
+#: ../../src/translator_cs.h:1622
+msgctxt "doxy-text|"
+msgid "Here is the caller graph for this function:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1629
+msgctxt "doxy-text|"
+msgid "Enumerator Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:1634
+msgctxt "doxy-text|"
+msgid "Member Function/Subroutine Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:1639
+msgctxt "doxy-text|"
+msgid "Data Types List"
+msgstr ""
+
+#: ../../src/translator_cs.h:1649
+msgctxt "doxy-text|"
+msgid "Here are the data types with brief descriptions:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1657
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all data types members with links to the data types they "
+"belong to:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1660
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented data types members with links to the data "
+"structure documentation for each member:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1670
+msgctxt "doxy-text|"
+msgid "Data Type Index"
+msgstr ""
+
+#: ../../src/translator_cs.h:1677
+msgctxt "doxy-text|"
+msgid "Data Type Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:1684
+msgctxt "doxy-text|"
+msgid "Functions/Subroutines"
+msgstr ""
+
+#: ../../src/translator_cs.h:1691
+msgctxt "doxy-text|"
+msgid "Function/Subroutine Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:1698
+msgctxt "doxy-text|"
+msgid "Data Types"
+msgstr ""
+
+#: ../../src/translator_cs.h:1703
+msgctxt "doxy-text|"
+msgid "Modules List"
+msgstr ""
+
+#: ../../src/translator_cs.h:1709
+msgctxt "doxy-text|"
+msgid "Here is a list of all modules with brief descriptions:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1711
+msgctxt "doxy-text|"
+msgid "Here is a list of all documented modules with brief descriptions:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1722
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Module Template Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:1724 ../../src/translator_cs.h:1789
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Module Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:1730
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Type Template Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:1732
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Type Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:1756
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1  Protocol Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:1794
+msgctxt "doxy-text|"
+msgid "Module Members"
+msgstr ""
+
+#: ../../src/translator_cs.h:1800
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all module members with links to the module documentation "
+"for each member:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1803
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented module members with links to the modules "
+"they belong to:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1812
+msgctxt "doxy-text|"
+msgid "Modules Index"
+msgstr ""
+
+#: ../../src/translator_cs.h:1848
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this module was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1851
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this module was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1857
+msgctxt "doxy-text|"
+msgid "The documentation for this type was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1860
+msgctxt "doxy-text|"
+msgid "The documentation for this type was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1866
+msgctxt "doxy-text|"
+msgid "The documentation for this union was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1869
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this union was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1875
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this interface was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1878
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this interface was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1884
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this protocol was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1887
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this protocol was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1893
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this category was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1896
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this category was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1911
+msgctxt "doxy-text|"
+msgid "The documentation for this was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1914
+msgctxt "doxy-text|"
+msgid "The documentation for this was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:1930
+msgctxt "doxy-text|"
+msgid "Type"
+msgstr ""
+
+#: ../../src/translator_cs.h:1932
+msgctxt "doxy-text|"
+msgid "Types"
+msgstr ""
+
+#: ../../src/translator_cs.h:1938
+msgctxt "doxy-text|"
+msgid "type"
+msgstr ""
+
+#: ../../src/translator_cs.h:1940
+msgctxt "doxy-text|"
+msgid "types"
+msgstr ""
+
+#: ../../src/translator_cs.h:1953
+msgctxt "doxy-text|"
+msgid "Subprogram"
+msgstr ""
+
+#: ../../src/translator_cs.h:1955
+msgctxt "doxy-text|"
+msgid "Subprograms"
+msgstr ""
+
+#: ../../src/translator_cs.h:1961
+msgctxt "doxy-text|"
+msgid "subprogram"
+msgstr ""
+
+#: ../../src/translator_cs.h:1963
+msgctxt "doxy-text|"
+msgid "subprograms"
+msgstr ""
+
+#: ../../src/translator_cs.h:1970
+msgctxt "doxy-text|"
+msgid "Type Constraints"
+msgstr ""
+
+#: ../../src/translator_cs.h:1975
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Relation"
+msgstr ""
+
+#: ../../src/translator_cs.h:1980
+msgctxt "doxy-text|"
+msgid "Loading..."
+msgstr ""
+
+#: ../../src/translator_cs.h:1985
+msgctxt "doxy-text|"
+msgid "Global Namespace"
+msgstr ""
+
+#: ../../src/translator_cs.h:1990
+msgctxt "doxy-text|"
+msgid "Searching..."
+msgstr ""
+
+#: ../../src/translator_cs.h:1995
+msgctxt "doxy-text|"
+msgid "No Matches"
+msgstr ""
+
+#: ../../src/translator_cs.h:2003
+#, qt-format
+msgctxt "doxy-text|"
+msgid "File in %1"
+msgstr ""
+
+#: ../../src/translator_cs.h:2011
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Includes file in %1"
+msgstr ""
+
+#: ../../src/translator_cs.h:2016
+msgctxt "doxy-text|"
+msgid "Bibliography"
+msgstr ""
+
+#: ../../src/translator_cs.h:2021
+msgctxt "doxy-text|"
+msgid "Copyright"
+msgstr ""
+
+#: ../../src/translator_cs.h:2026
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Directory dependency graph for %1:"
+msgstr ""
+
+#: ../../src/translator_cs.h:2031
+msgctxt "doxy-text|"
+msgid "detail level"
+msgstr ""
+
+#: ../../src/translator_cs.h:2036
+msgctxt "doxy-text|"
+msgid "Template Parameters"
+msgstr ""
+
+#: ../../src/translator_cs.h:2041
+#, qt-format
+msgctxt "doxy-text|"
+msgid "and %1 more..."
+msgstr ""
+
+#: ../../src/translator_cs.h:2047
+msgctxt "doxy-text|"
+msgid "The documentation for this enum was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:2050
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this enum was generated  from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:2057
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Enum Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:2062
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 inherited from %2"
+msgstr ""
+
+#: ../../src/translator_cs.h:2069
+msgctxt "doxy-text|"
+msgid "Additional Inherited Members"
+msgstr ""
+
+#: ../../src/translator_cs.h:2078
+msgctxt "doxy-text|"
+msgid "click to enable panel synchronization"
+msgstr ""
+
+#: ../../src/translator_cs.h:2080
+msgctxt "doxy-text|"
+msgid "click to disable panel synchronization"
+msgstr ""
+
+#: ../../src/translator_cs.h:2089
+msgctxt "doxy-text|"
+msgid "Provided by category @1."
+msgstr ""
+
+#: ../../src/translator_cs.h:2097
+msgctxt "doxy-text|"
+msgid "Extends class @1"
+msgstr ""
+
+#: ../../src/translator_cs.h:2104
+msgctxt "doxy-text|"
+msgid "Class Methods"
+msgstr ""
+
+#: ../../src/translator_cs.h:2111
+msgctxt "doxy-text|"
+msgid "Instance Methods"
+msgstr ""
+
+#: ../../src/translator_cs.h:2117
+msgctxt "doxy-text|"
+msgid "Method Documentation"
+msgstr ""
+
+#: ../../src/translator_cs.h:2124
+msgctxt "doxy-text|"
+msgid "Design Overview"
+msgstr ""
+
+#: ../../src/translator_cs.h:2129
+msgctxt "doxy-text|"
+msgid "Exported Interfaces"
+msgstr ""
+
+#: ../../src/translator_cs.h:2134
+msgctxt "doxy-text|"
+msgid "Included Services"
+msgstr ""
+
+#: ../../src/translator_cs.h:2139
+msgctxt "doxy-text|"
+msgid "Constant Groups"
+msgstr ""
+
+#: ../../src/translator_cs.h:2144
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Constant Group Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:2149
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Service Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:2154
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Singleton Reference"
+msgstr ""
+
+#: ../../src/translator_cs.h:2160
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this service was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:2164
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this service was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:2172
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this singleton was generated from the following file:"
+msgstr ""
+
+#: ../../src/translator_cs.h:2176
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this singleton was generated from the following files:"
+msgstr ""
+
+#: ../../src/translator_cs.h:45
+msgctxt "latexSupport|"
+msgid "remove-value"
+msgstr ""

@@ -1,0 +1,1716 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: de_DE\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "doxy-rtf|"
+msgid "0"
+msgstr "0"
+
+msgctxt "doxy-text|"
+msgid "p,"
+msgstr "S."
+
+msgctxt "doxy-text|"
+msgid "All"
+msgstr "Alle"
+
+msgctxt "doxy-text|"
+msgid "Bug"
+msgstr "Fehler"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this singleton was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Singleton wurde aus den folgenden Dateien "
+"generiert:"
+
+msgctxt "doxy-rtf|"
+msgid "1252"
+msgstr "1252"
+
+msgctxt "doxy-text|"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "doxy-text|"
+msgid "File"
+msgstr "Datei"
+
+msgctxt "doxy-text|"
+msgid "Main Page"
+msgstr "Hauptseite"
+
+msgctxt "doxy-text|"
+msgid "Note"
+msgstr "Zu beachten"
+
+msgctxt "doxy-text|"
+msgid "Page"
+msgstr "Seite"
+
+msgctxt "doxy-text|"
+msgid "Test"
+msgstr "Test"
+
+msgctxt "doxy-text|"
+msgid "Todo"
+msgstr "Noch zu erledigen"
+
+msgctxt "doxy-text|"
+msgid "Type"
+msgstr "Art"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Service Reference"
+msgstr "%1 Service Reference"
+
+msgctxt "doxy-text|"
+msgid "code"
+msgstr "code"
+
+msgctxt "doxy-text|"
+msgid "file"
+msgstr "dateien"
+
+msgctxt "doxy-text|"
+msgid "page"
+msgstr "seite"
+
+msgctxt "doxy-text|"
+msgid "type"
+msgstr "Art"
+
+msgctxt "doxy-text|"
+msgid "Definition in file @0."
+msgstr "Definition in der Datei @0."
+
+msgctxt "doxy-text|"
+msgid "Public Types"
+msgstr "Öffentliche Typen"
+
+msgctxt "doxy-text|"
+msgid "Public Slots"
+msgstr "Geschützte Slots"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this interface  was generated from the following file:"
+msgstr ""
+"Die Dokumentation für diese Schnittstelle wurde aus der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid "Class"
+msgstr "Klassen"
+
+msgctxt "doxy-text|"
+msgid "Enums"
+msgstr "Aufzählungen"
+
+msgctxt "doxy-text|"
+msgid "Files"
+msgstr "Dateien"
+
+msgctxt "doxy-text|"
+msgid "defined in"
+msgstr "Definiert in"
+
+msgctxt "doxy-text|"
+msgid "Index"
+msgstr "Index"
+
+msgctxt "doxy-text|"
+msgid "Pages"
+msgstr "Seiten"
+
+msgctxt "doxy-text|"
+msgid "Since"
+msgstr "Seit"
+
+msgctxt "doxy-text|"
+msgid "Types"
+msgstr "Typen"
+
+msgctxt "doxy-text|"
+msgid "class"
+msgstr "klasse"
+
+msgctxt "doxy-text|"
+msgid "Typedefs"
+msgstr "Typdefinitionen"
+
+msgctxt "doxy-text|"
+msgid "files"
+msgstr "dateien"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented namespace members with links to the "
+"namespaces they belong to:"
+msgstr ""
+"Hier ist eine Liste aller dokumentierten Namespace Mitglieder mit Links zu "
+"den Namespaces sie gehören:"
+
+msgctxt "doxy-text|"
+msgid "pages"
+msgstr "seiten"
+
+msgctxt "doxy-text|"
+msgid "types"
+msgstr "Typen"
+
+msgctxt "doxy-text|"
+msgid "Member Typedef Documentation"
+msgstr "Dokumentation der benutzerdefinierten Datentypen"
+
+msgctxt "doxy-text|"
+msgid "This graph shows which files directly or indirectly include this file"
+msgstr ""
+"Dieser Graph zeigt, welche Datei direkt oder indirekt diese Datei enthält:"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this interface was generated from the following file:"
+msgstr ""
+"Die Dokumentation für diese Schnittstelle wurde aus der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this protocol  was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Protokoll wurde von den folgenden Dateien "
+"generiert:"
+
+msgctxt "doxy-text|"
+msgid "Private Slots"
+msgstr "Private Slots"
+
+msgctxt "doxy-text|"
+msgid "Private Types"
+msgstr "Private Typen"
+
+msgctxt "doxy-text|"
+msgid "Package Attributes"
+msgstr "Paketattribute"
+
+msgctxt "doxy-text|"
+msgid "Protected Types"
+msgstr "Geschützte Typen"
+
+msgctxt "doxy-text|"
+msgid "Protected Slots"
+msgstr "Geschützte Slots"
+
+msgctxt "doxy-text|"
+msgid ""
+"This is an overloaded member function, provided for convenience. It differs "
+"from the above function only in what argument(s) it accepts."
+msgstr ""
+"Dies ist eine überladene Member-Funktion, für die Bequemlichkeit zur "
+"Verfügung gestellt. Es unterscheidet sich von der obigen Funktion nur in "
+"welchem ​​Argument(e) sie akzeptiert."
+
+msgctxt "doxy-text|"
+msgid "Data Structure Documentation"
+msgstr "Datenstruktur-Dokumentation"
+
+msgctxt "doxy-text|"
+msgid "Modules Index"
+msgstr "Modul-Verzeichnis"
+
+msgctxt "doxy-text|"
+msgid "Directory Hierarchy"
+msgstr "Verzeichnishierarchie"
+
+msgctxt "doxy-text|"
+msgid "Package Types"
+msgstr "Pakettypen"
+
+msgctxt "doxy-text|"
+msgid "Found <b>1</b> document matching your query."
+msgstr "Gefunden <b>1</b> Dokument für Ihre Abfrage."
+
+msgctxt "doxy-text|"
+msgid "Constant Groups"
+msgstr "Constant Groups"
+
+msgctxt "doxy-text|"
+msgid "Namespace List"
+msgstr "Liste aller Namensbereiche"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Directory Reference"
+msgstr "%1 Verzeichnis Reference"
+
+msgctxt "doxy-text|"
+msgid "Bibliography"
+msgstr "Literaturverzeichnis"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Package %1"
+msgstr "Paket %1"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this union  was generated from the following file:"
+msgstr "Die Dokumentation für diese Vereinigung wurde aus der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid "Data Structures"
+msgstr "Datenstrukturen"
+
+msgctxt "doxy-text|"
+msgid "Here is a list of all examples:"
+msgstr "Hier folgt eine Liste mit allen Beispielen:"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this exception was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Ausnahme wurde aus den folgenden Dateien "
+"generiert:"
+
+msgctxt "latexSupport|"
+msgid "remove-value"
+msgstr "remove-Wert"
+
+msgctxt "doxy-text|"
+msgid "Graph Legend"
+msgstr "Erklärung des Graphen"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Template Reference"
+msgstr "%1 Template Reference"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Implements %1."
+msgstr "Implementiert %1."
+
+msgctxt "doxy-text|"
+msgid "Precondition"
+msgstr "Vorbedingung"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1  Protocol Reference"
+msgstr "%1 Protocol Reference"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Protocol Reference"
+msgstr "%1 Protocol Reference"
+
+msgctxt "doxy-text|"
+msgid "Protected Signals"
+msgstr "Geschützte Signale"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this class  was generated from the following files:"
+msgstr "Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Dateien:"
+
+msgctxt "doxy-text|"
+msgid "Module Index"
+msgstr "Modul-Verzeichnis"
+
+msgctxt "doxy-text|"
+msgid "Field Documentation"
+msgstr "Dokumentation der Datenelemente"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 inherited from %2"
+msgstr "%1 von geerbt %2"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this module was generated from the following files:"
+msgstr ""
+"Die Dokumentation für dieses Modul wurde aus den folgenden Dateien generiert:"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Union Reference"
+msgstr "%1 Union Reference"
+
+msgctxt "doxy-text|"
+msgid "Event Documentation"
+msgstr "Ereignisdokumentation"
+
+msgctxt "doxy-text|"
+msgid "Hierarchical Index"
+msgstr "Hierarchie-Verzeichnis"
+
+msgctxt "doxy-text|"
+msgid "The documentation for this union was generated from the following file:"
+msgstr "Die Dokumentation für diese Vereinigung wurde aus der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid "Definition at line @0 of file @1."
+msgstr "Definiert in Zeile @0 von Datei @1."
+
+msgctxt "doxy-text|"
+msgid "Static Protected Attributes"
+msgstr "Statische öffentliche Attribute"
+
+msgctxt "doxy-text|"
+msgid "Function/Subroutine Documentation"
+msgstr "Funktionen/Unterroutinen-Dokumentation"
+
+msgctxt "doxy-text|"
+msgid "Method Documentation"
+msgstr "Methodendokumentation"
+
+msgctxt "doxy-text|"
+msgid "Here are the data structures with brief descriptions:"
+msgstr ""
+"Hier folgt die Aufzählung aller Datenstrukturen mit einer Kurzbeschreibung:"
+
+msgctxt "doxy-text|"
+msgid "Public Signals"
+msgstr "Öffentliche Signale"
+
+msgctxt "doxy-text|"
+msgid "File List"
+msgstr "Auflistung der Dateien"
+
+msgctxt "doxy-text|"
+msgid ""
+"This directory hierarchy is sorted roughly, but not completely, "
+"alphabetically:"
+msgstr ""
+"Diese Verzeichnishierarchie ist grob sortiert, aber nicht vollständig, "
+"alphabetischer Reihenfolge:"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Type Template Reference"
+msgstr "%1 Typ Template Reference"
+
+msgctxt "doxy-text|"
+msgid "Enumerator Documentation"
+msgstr "Enumerator Documentation"
+
+msgctxt "doxy-text|"
+msgid "Initial value:"
+msgstr "Initialisierung:"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Inheritance diagram for %1:"
+msgstr "Klassendiagramm für %1:"
+
+msgctxt "doxy-text|"
+msgid ", and "
+msgstr "Und "
+
+msgctxt "doxy-text|"
+msgid "Go to the graphical class hierarchy"
+msgstr "gehe zur grafischen Darstellung der Klassenhierarchie"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented data types members with links to the data "
+"structure documentation for each member:"
+msgstr ""
+"Hier ist eine Liste aller dokumentierten Datentypen Elemente mit Verweisen "
+"auf die Datenstruktur der Dokumentation für jedes Mitglied:"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this singleton was generated from the following file:"
+msgstr "Die Dokumentation für diese Singleton wurde aus der folgenden Datei:"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Collaboration diagram for %1:"
+msgstr "Kollaborationsdiagramm für% 1:"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented struct and union fields with links to the "
+"struct/union documentation for each field:"
+msgstr ""
+"Hier ist eine Liste aller dokumentierten struct und union Felder mit "
+"Verbindungen zum struct / union Dokumentation für jedes Feld:"
+
+msgctxt "doxy-text|"
+msgid "Table of Contents"
+msgstr "Inhaltsverzeichnis"
+
+msgctxt "doxy-text|"
+msgid "Package Functions"
+msgstr "Paketfunktionen"
+
+msgctxt "doxy-text|"
+msgid "Sorry, no documents matching your query."
+msgstr "Leider sind noch keine Dokumente gefunden, die Ihren Suchbegriffen."
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this category was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Klasse wurde aus den folgenden Dateien generiert:"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this category was generated from the following file:"
+msgstr ""
+"Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei "
+"generiert:"
+
+msgctxt "doxy-text|"
+msgid "Search Results"
+msgstr "Suchergebnisse"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this interface  was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Schnittstelle wurde aus den folgenden Dateien "
+"generiert:"
+
+msgctxt "doxy-text|"
+msgid "Private Member Functions"
+msgstr "Private Methoden"
+
+msgctxt "doxy-text|"
+msgid "Data Types"
+msgstr "Datentypen"
+
+msgctxt "doxy-text|"
+msgid "Public Member Functions"
+msgstr "Öffentliche Methoden"
+
+msgctxt "doxy-text|"
+msgid "Static Package Functions"
+msgstr "Statische Paketfunktionen"
+
+msgctxt "doxy-text|"
+msgid "Variable Documentation"
+msgstr "Variablen-Dokumentation"
+
+msgctxt "doxy-text|"
+msgid "No Matches"
+msgstr "Keine Treffer"
+
+msgctxt "doxy-text|"
+msgid "Members"
+msgstr "Elemente"
+
+msgctxt "doxy-text|"
+msgid "members"
+msgstr "elemente"
+
+msgctxt "doxy-text|"
+msgid "Static Public Member Functions"
+msgstr "Öffentliche, statische Methoden"
+
+msgctxt "doxy-text|"
+msgid "The documentation for this  was generated from the following file:"
+msgstr "Die Dokumentation für diese wurde aus der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid "namespace"
+msgstr "namensbereich"
+
+msgctxt "doxy-text|"
+msgid "Namespace"
+msgstr "Namensbereich"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this protocol was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Protokoll wurde von den folgenden Dateien "
+"generiert:"
+
+msgctxt "doxy-text|"
+msgid "Postcondition"
+msgstr "Nachbedingung"
+
+msgctxt "doxy-text|"
+msgid "Graphical Class Hierarchy"
+msgstr "Grafische Darstellung der Klassenhierarchie"
+
+msgctxt "doxy-text|"
+msgid "Detailed Description"
+msgstr "Ausführliche Beschreibung"
+
+msgctxt "doxy-text|"
+msgid "Here is a list of all files with brief descriptions:"
+msgstr "Hier folgt die Aufzählung aller Dateien mit einer Kurzbeschreibung:"
+
+msgctxt "doxy-text|"
+msgid "Directory Documentation"
+msgstr "Verzeichnisdokumentation"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Union Template Reference"
+msgstr "%1 Union Template Reference"
+
+msgctxt "doxy-text|"
+msgid "Functions/Subroutines"
+msgstr "Functions/Subroutines"
+
+msgctxt "doxy-text|"
+msgid "For internal use only."
+msgstr "Nur für den internen Gebrauch."
+
+msgctxt "doxy-text|"
+msgid "Class Hierarchy"
+msgstr "Klassenhierarchie"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Generated on %1 for %2 &nbsp; by"
+msgstr "Erzeugt am %1 für %2 &nbsp; von"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this union was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Vereinigung wurde aus den folgenden Dateien "
+"generiert:"
+
+msgctxt "doxy-text|"
+msgid "Modules"
+msgstr "Module"
+
+msgctxt "doxy-text|"
+msgid "modules"
+msgstr "gruppe"
+
+msgctxt "doxy-text|"
+msgid "Function Documentation"
+msgstr "Dokumentation der Funktionen"
+
+msgctxt "doxy-text|"
+msgid "More..."
+msgstr "Mehr ..."
+
+msgctxt "doxy-text|"
+msgid "Additional Inherited Members"
+msgstr "Weitere Geerbte Elemente"
+
+msgctxt "doxy-text|"
+msgid "Data Fields"
+msgstr "Datenstruktur-Elemente"
+
+msgctxt "doxy-text|"
+msgid "Namespace Index"
+msgstr "Verzeichnis der Namensbereiche"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here are the classes, structs, unions and interfaces with brief descriptions:"
+msgstr ""
+"Hier folgt die Aufzählung aller Klassen, Strukturen, \n"
+"                Varianten und Schnittstellen mit einer Kurzbeschreibung:"
+
+msgctxt "doxy-text|"
+msgid "Author"
+msgstr "Autor"
+
+msgctxt "doxy-text|"
+msgid "Functions"
+msgstr "Funktionen"
+
+msgctxt "doxy-text|"
+msgid "Namespace Documentation"
+msgstr "Dokumentation der Namensbereiche"
+
+msgctxt "doxy-text|"
+msgid "Events"
+msgstr "Ereignisse"
+
+msgctxt "doxy-text|"
+msgid "Here is a list of all modules with brief descriptions:"
+msgstr "Hier ist eine Liste aller Module mit einer kurzen Beschreibung:"
+
+msgctxt "doxy-text|"
+msgid "Class Documentation"
+msgstr "Klassen-Dokumentation"
+
+msgctxt "doxy-text|"
+msgid "Global"
+msgstr "Global"
+
+msgctxt "doxy-text|"
+msgid "Enumeration Type Documentation"
+msgstr "Dokumentation der Aufzählungstypen"
+
+msgctxt "doxy-text|"
+msgid "Class Index"
+msgstr "Klassen-Verzeichnis"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all functions, variables, defines, enums, and typedefs "
+"with links to the files they belong to:"
+msgstr ""
+"Hier folgt die Aufzählung aller Funktionen, Variablen, Makros, Aufzählungen "
+"und Typdefinitionen  mit Verweisen \n"
+"               auf die Dokumentation zu jedem Element:"
+
+msgctxt "doxy-text|"
+msgid "Design Overview"
+msgstr "Übersicht"
+
+msgctxt "doxy-text|"
+msgid "Macros"
+msgstr "Makrodefinitionen"
+
+msgctxt "doxy-text|"
+msgid "Member"
+msgstr "Element"
+
+msgctxt "doxy-text|"
+msgid "Module"
+msgstr "Gruppe"
+
+msgctxt "doxy-text|"
+msgid "Module Documentation"
+msgstr "Modul-Dokumentation"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Class Template Reference"
+msgstr "%1 Klasse Template Reference"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Interface Template Reference"
+msgstr "%1 Schnittstelle Template Reference"
+
+msgctxt "doxy-text|"
+msgid "The documentation for this enum was generated from the following file:"
+msgstr "Die Dokumentation für diese Enumeration wurde aus der folgenden Datei:"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Exception Template Reference"
+msgstr "%1 Exception Template Reference"
+
+msgctxt "doxy-text|"
+msgid "Enum Values"
+msgstr "Aufzählungswerte"
+
+msgctxt "doxy-text|"
+msgid "Page Documentation"
+msgstr "Zusätzliche Informationen"
+
+msgctxt "doxy-text|"
+msgid "Search"
+msgstr "Suchen"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Module Template Reference"
+msgstr "%1 Modul Template Reference"
+
+msgctxt "doxy-text|"
+msgid "Generated automatically by DoxyPress from the source code."
+msgstr "Automatisch erzeugt von DoxyPress aus dem Quellcode."
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Inherits %1."
+msgstr "Erbt %1."
+
+msgctxt "doxy-text|"
+msgid "Value:"
+msgstr "Wert:"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented file members with links to the files they "
+"belong to:"
+msgstr ""
+"Hier folgt die Aufzählung aller dokumentierten Dateielemente  mit Verweisen "
+"auf die Dokumentation zu\n"
+"               jedem Element:"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Protocol Template Reference"
+msgstr "%1 Protocol Template Reference"
+
+msgctxt "doxy-text|"
+msgid "The documentation for this type was generated from the following file:"
+msgstr "Die Dokumentation für diese Art wurde aus der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid "Go to the documentation of this file."
+msgstr "gehe zur Dokumentation dieser Datei"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this exception was generated from the following file:"
+msgstr "Die Dokumentation für diese Ausnahme wurde aus der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid "Module Members"
+msgstr "Module Members"
+
+msgctxt "doxy-text|"
+msgid "Here is a list of all documented modules with brief descriptions:"
+msgstr ""
+"Hier ist eine Liste aller dokumentierten Module mit Kurzbeschreibungen:"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Directory dependency graph for %1:"
+msgstr "Verzeichnis Abhängigkeitsdiagramm für %1:"
+
+msgctxt "doxy-text|"
+msgid "Data Structure Index"
+msgstr "Datenstruktur-Verzeichnis"
+
+msgctxt "doxy-text|"
+msgid "Data Types List"
+msgstr "Datentyp-Liste"
+
+msgctxt "doxy-text|"
+msgid "Here is a list of all documented files with brief descriptions:"
+msgstr ""
+"Hier folgt die Aufzählung aller dokumentierten Dateien mit einer "
+"Kurzbeschreibung:"
+
+msgctxt "doxy-text|"
+msgid "author"
+msgstr "autor"
+
+msgctxt "doxy-text|"
+msgid "The documentation for this was generated from the following files:"
+msgstr "Die Dokumentation für diese wurde aus den folgenden Dateien generiert:"
+
+msgctxt "doxy-text|"
+msgid "Example Documentation"
+msgstr "Dokumentation der Beispiele"
+
+msgctxt "doxy-text|"
+msgid "Static Protected Member Functions"
+msgstr "Geschützte, statische Methoden"
+
+msgctxt "doxy-text|"
+msgid "Properties"
+msgstr "Propertys"
+
+msgctxt "doxy-text|"
+msgid "global"
+msgstr "global"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Class Reference"
+msgstr "%1 Klassenreferenz"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this protocol  was generated from the following file:"
+msgstr "Die Dokumentation für diese Protokoll wurde von der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid "legend"
+msgstr "Legende"
+
+msgctxt "doxy-text|"
+msgid "Friends And Related Function Documentation"
+msgstr "Freundbeziehungen und Funktionsdokumentation"
+
+msgctxt "doxy-text|"
+msgid "member"
+msgstr "element"
+
+msgctxt "doxy-text|"
+msgid "module"
+msgstr "gruppe"
+
+msgctxt "doxy-text|"
+msgid "Page Index"
+msgstr "Seitenindex"
+
+msgctxt "doxy-text|"
+msgid "File Index"
+msgstr "Datei-Verzeichnis"
+
+msgctxt "doxy-text|"
+msgid "Static Public Attributes"
+msgstr "Statische öffentliche Attribute"
+
+msgctxt "doxy-text|"
+msgid "Included Services"
+msgstr "Inkludierte Leistungen"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "File in %1"
+msgstr "Datei in %1"
+
+msgctxt "doxy-text|"
+msgid "File Members"
+msgstr "Datei-Elemente"
+
+msgctxt "doxy-text|"
+msgid "Subprogram"
+msgstr "Unterprogramm"
+
+msgctxt "doxy-text|"
+msgid "subprogram"
+msgstr "Unterprogramm"
+
+msgctxt "doxy-text|"
+msgid "Packages"
+msgstr "Pakete"
+
+msgctxt "doxy-text|"
+msgid "Here is a list of all modules:"
+msgstr "Hier folgt die Aufzählung aller Module:"
+
+msgctxt "doxy-text|"
+msgid "Private Attributes"
+msgstr "Private Attribute"
+
+msgctxt "doxy-text|"
+msgid "Public Attributes"
+msgstr "Öffentliche Attribute"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Exception Reference"
+msgstr "%1 Exception Reference"
+
+msgctxt "doxy-text|"
+msgid "Copyright"
+msgstr "Copyright"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "and %1 more..."
+msgstr "und %1 mehr ..."
+
+msgctxt "doxy-text|"
+msgid "Package List"
+msgstr "Paketliste"
+
+msgctxt "doxy-text|"
+msgid "Parameters"
+msgstr "Parameter"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this protocol was generated from the following file:"
+msgstr "Die Dokumentation für diese Protokoll wurde von der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid "Property Documentation"
+msgstr "Dokumentation der Propertys"
+
+msgctxt "doxy-text|"
+msgid "Typedef Documentation"
+msgstr "Dokumentation der benutzerdefinierten Typen"
+
+msgctxt "doxy-text|"
+msgid "Member Function Documentation"
+msgstr "Dokumentation der Elementfunktionen"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this union  was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Vereinigung wurde aus den folgenden Dateien "
+"generiert:"
+
+msgctxt "doxy-text|"
+msgid "Template Parameters"
+msgstr "Template-Parameter"
+
+msgctxt "doxy-text|"
+msgid "Matches:"
+msgstr "Treffer:"
+
+msgctxt "doxy-text|"
+msgid ""
+"This inheritance list is sorted roughly, but not completely, alphabetically:"
+msgstr ""
+"Die Liste der Ableitungen ist -mit Einschränkungen- \"\n"
+"             \"alphabetisch sortiert:"
+
+msgctxt "doxy-text|"
+msgid "directory"
+msgstr "verzeichnis"
+
+msgctxt "doxy-text|"
+msgid "Directory"
+msgstr "Verzeichnis"
+
+msgctxt "doxy-text|"
+msgid "Deprecated"
+msgstr "Veraltet"
+
+msgctxt "doxy-text|"
+msgid "Remarks"
+msgstr "Bemerkungen"
+
+msgctxt "doxy-text|"
+msgid "Authors"
+msgstr "Autoren"
+
+msgctxt "doxy-text|"
+msgid "Returns"
+msgstr "Rückgabe"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Module Reference"
+msgstr "%1 Modul-Referenz"
+
+msgctxt "doxy-text|"
+msgid "detail level"
+msgstr "Detailebene"
+
+msgctxt "doxy-text|"
+msgid "List of all members"
+msgstr "Aufstellung aller Elemente"
+
+msgctxt "doxy-text|"
+msgid "Variables"
+msgstr "Variablen"
+
+msgctxt "doxy-text|"
+msgid "Data Type Documentation"
+msgstr "Datentyp-Dokumentation"
+
+msgctxt "doxy-text|"
+msgid "Here is a list of all documented namespaces with brief descriptions:"
+msgstr "Liste aller dokumentierten Namensbereiche mit Kurzbeschreibung:"
+
+msgctxt "doxy-text|"
+msgid "Subprograms"
+msgstr "Unterprogramme"
+
+msgctxt "doxy-text|"
+msgid "Modules List"
+msgstr "Modulliste"
+
+msgctxt "doxy-text|"
+msgid "subprograms"
+msgstr "Unterprogramme"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this interface was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Schnittstelle wurde aus den folgenden Dateien "
+"generiert:"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all struct and union fields with links to the "
+"structures/unions they belong to:"
+msgstr ""
+"Hier ist eine Liste aller struct und union Felder mit Links zu den "
+"Strukturen / Vereinigungen, denen sie angehören:"
+
+msgctxt "doxy-text|"
+msgid "These are not member functions"
+msgstr "Es handelt sich hierbei nicht um Elementfunktionen."
+
+msgctxt "doxy-text|"
+msgid "Private Signals"
+msgstr "Private Signale"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Reimplemented in %1."
+msgstr "In %1 neu implementiert."
+
+msgctxt "doxy-text|"
+msgid "Public Typedefs"
+msgstr "Öffentliche Typedefs"
+
+msgctxt "doxy-text|"
+msgid "Here is a list of all namespaces with brief descriptions:"
+msgstr "Liste aller Namensbereiche mit Kurzbeschreibung:"
+
+msgctxt "doxy-text|"
+msgid "Instance Methods"
+msgstr "Instanzmethoden"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Enum Reference"
+msgstr "%1 Enum Reference"
+
+msgctxt "doxy-text|"
+msgid "The documentation for this was generated from the following file:"
+msgstr "Die Dokumentation für diese wurde aus der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid "Here are the packages with brief descriptions (if available):"
+msgstr "Hier folgen die Pakete mit einer Kurzbeschreibung (wenn verfügbar):"
+
+msgctxt "doxy-text|"
+msgid "Namespace Members"
+msgstr "Elemente eines Namensbereiches"
+
+msgctxt "doxy-text|"
+msgid "Class Members"
+msgstr "Klassen-Elemente"
+
+msgctxt "doxy-text|"
+msgid "Reference Manual"
+msgstr "Nachschlagewerk"
+
+msgctxt "doxy-text|"
+msgid "Macro Definition Documentation"
+msgstr "Makro-Dokumentation"
+
+msgctxt "doxy-text|"
+msgid "Static Private Member Functions"
+msgstr "Private, statische Methoden"
+
+msgctxt "doxy-text|"
+msgid "Class Methods"
+msgstr "Klassenmethoden"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented class members with links to the class "
+"documentation for each member:"
+msgstr ""
+"Hier ist eine Liste aller dokumentierten die Schüler mit Links zu den "
+"Klassendokumentation für jedes Mitglied:"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Category Template Reference"
+msgstr "%1 Kategorie Template Reference"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Inherited by %1."
+msgstr "Von %1 geerbt."
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all class members with links to the classes they belong to:"
+msgstr ""
+"Hier ist eine Liste aller Teilnehmer, mit Links zu den zugehörigen Klassen:"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this module was generated from the following file:"
+msgstr "Die Dokumentation für dieses Modul wurde aus der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid "File Documentation"
+msgstr "Datei-Dokumentation"
+
+msgctxt "doxy-text|"
+msgid "Classes"
+msgstr "Klassen"
+
+msgctxt "doxy-text|"
+msgid "classes"
+msgstr "klassen"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Source File"
+msgstr "%1 Source File"
+
+msgctxt "doxy-text|"
+msgid "Static Package Attributes"
+msgstr "Statische Paketattribute"
+
+msgctxt "doxy-text|"
+msgid "Class List"
+msgstr "Auflistung der Klassen"
+
+msgctxt "doxy-text|"
+msgid "Test List"
+msgstr "Test-Liste"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Reimplemented from %1."
+msgstr "Von %1 neu implementiert."
+
+msgctxt "doxy-text|"
+msgid "Member Function/Subroutine Documentation"
+msgstr "Elementfunktionen/Unterroutinen-Dokumentation"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Generated automatically by DoxyPress for %1 from the source code."
+msgstr "Automatisch erzeugt von DoxyPress für %1 aus dem Quellcode."
+
+msgctxt "doxy-text|"
+msgid "Here is the caller graph for this function:"
+msgstr "Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:"
+
+msgctxt "doxy-text|"
+msgid "Attention"
+msgstr "Achtung"
+
+msgctxt "doxy-text|"
+msgid "directories"
+msgstr "verzeichnisse"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this category  was generated from the following file:"
+msgstr ""
+"Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei "
+"generiert:"
+
+msgctxt "doxy-text|"
+msgid "Protected Attributes"
+msgstr "Geschützte Attribute"
+
+msgctxt "doxy-text|"
+msgid "Directories"
+msgstr "Verzeichnisse"
+
+msgctxt "doxy-text|"
+msgid "Loading..."
+msgstr "Lade ..."
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Interface Reference"
+msgstr "%1 Interface Reference"
+
+msgctxt "doxy-text|"
+msgid "Todo List"
+msgstr "Ausstehende Aufgaben"
+
+msgctxt "doxy-text|"
+msgid "Exported Interfaces"
+msgstr "Exportierten Interfaces"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this class  was generated from the following file:"
+msgstr "Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Include dependency graph for %1:"
+msgstr "Include-Abhängigkeitsdiagramm für% 1:"
+
+msgctxt "doxy-text|"
+msgid "click to enable panel synchronization"
+msgstr "klicken Sie auf das Panel-Synchronisation aktivieren"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Includes file in %1"
+msgstr "Inklusive Datei in %1"
+
+msgctxt "doxy-text|"
+msgid "See also"
+msgstr "Siehe auch"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Struct Template Reference"
+msgstr "%1 Struct Template Reference"
+
+msgctxt "doxy-text|"
+msgid "Searching..."
+msgstr "Suche ..."
+
+msgctxt "doxy-text|"
+msgid "Bug List"
+msgstr "Liste der bekannten Fehler"
+
+msgctxt "doxy-text|"
+msgid "Member Data Documentation"
+msgstr "Dokumentation der Datenelemente"
+
+msgctxt "doxy-text|"
+msgid "Global Namespace"
+msgstr "Globaler Namensbereich"
+
+msgctxt "doxy-text|"
+msgid "Here is the call graph for this function:"
+msgstr "Hier ist ein Graph, der zeigt, was diese Funktion aufruft:"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this service was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Dienstleistung wurde aus den folgenden Dateien "
+"generiert:"
+
+msgctxt "doxy-text|"
+msgid "enum name"
+msgstr "enum-Bezeichner"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Relation"
+msgstr "%1 Verhältnis"
+
+msgctxt "doxy-text|"
+msgid "Member List"
+msgstr "Elementverzeichnis"
+
+msgctxt "doxy-text|"
+msgid "Referenced by"
+msgstr "Wird benutzt von"
+
+msgctxt "doxy-text|"
+msgid "This is the complete list of members for "
+msgstr "Vollständige Aufstellung aller Elemente für "
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Generated on %1 &nbsp; by"
+msgstr "Erzeugt am %1 &nbsp; von"
+
+msgctxt "doxy-text|"
+msgid "Generated by"
+msgstr "Erzeugt von"
+
+msgctxt "doxy-text|"
+msgid "The documentation for this  was generated from the following files:"
+msgstr "Die Dokumentation für diese wurde aus den folgenden Dateien generiert:"
+
+msgctxt "doxy-text|"
+msgid "Exceptions"
+msgstr "Ausnahmebehandlung"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Type Reference"
+msgstr "%1 Type Reference"
+
+msgctxt "doxy-text|"
+msgid "Invariant"
+msgstr "Invariante"
+
+msgctxt "doxy-text|"
+msgid "References"
+msgstr "Benutzt"
+
+msgctxt "doxy-text|"
+msgid "namespaces"
+msgstr "namensbereichn"
+
+msgctxt "doxy-text|"
+msgid "Namespaces"
+msgstr "Namensbereiche"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 File Reference"
+msgstr "%1-Dateireferenz"
+
+msgctxt "doxy-text|"
+msgid "Version"
+msgstr "Version"
+
+msgctxt "doxy-text|"
+msgid "Type Constraints"
+msgstr "Type Constraints"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this struct  was generated from the following file:"
+msgstr "Die Dokumentation für diese Struktur wurde erzeugt aufgrund der Datei:"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented file members with links to the "
+"documentation:"
+msgstr ""
+"Hier folgt die Aufzählung aller dokumentierten Dateielemente  mit Verweisen "
+"auf die zugehörigen Dateien:"
+
+msgctxt "doxy-text|"
+msgid "Private Typedefs"
+msgstr "Private Typedefs"
+
+msgctxt "doxy-text|"
+msgid "Deprecated List"
+msgstr "Veraltete Elemente"
+
+msgctxt "doxy-text|"
+msgid "Constructor & Destructor Documentation"
+msgstr "Constructor & Destructor Documentation"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all namespace members with links to the namespace "
+"documentation for each member:"
+msgstr ""
+"Hier ist eine Liste aller Namespace Mitglieder mit Links zu den "
+"Namespace-Dokumentation für jedes Mitglied:"
+
+msgctxt "doxy-text|"
+msgid "Return Values"
+msgstr "Rückgabewerte"
+
+msgctxt "doxy-text|"
+msgid "Static Private Attributes"
+msgstr "Statische, private Attribute"
+
+msgctxt "doxy-text|"
+msgid "Data Type Index"
+msgstr "Datentyp-Index"
+
+msgctxt "doxy-text|"
+msgid "Warning"
+msgstr "Warnung"
+
+msgctxt "doxy-text|"
+msgid "Friends"
+msgstr "Freundbeziehungen"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "Implemented %1."
+msgstr "Implementiert %1."
+
+msgctxt "doxy-text|"
+msgid "click to disable panel synchronization"
+msgstr "klicken Sie auf das Panel-Synchronisation zu deaktivieren"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Singleton Reference"
+msgstr "%1 Singleton Reference"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this service was generated from the following file:"
+msgstr ""
+"Die Dokumentation für diese Dienstleistung wurde aus der folgenden Datei:"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this struct  was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Struktur wurde erzeugt aufgrund der Dateien:"
+
+msgctxt "doxy-text|"
+msgid ""
+"Found <b>$num</b> documents matching your query. Showing best matches first."
+msgstr ""
+"Gefunden <b>$num</b> Dokumente, die Ihrer Suchanfrage. Es werden zunächst "
+"die besten Übereinstimmungen."
+
+msgctxt "doxy-text|"
+msgid "globals"
+msgstr "global"
+
+msgctxt "doxy-text|"
+msgid "Globals"
+msgstr "Datei-Elemente"
+
+msgctxt "doxy-text|"
+msgid "Member Enumeration Documentation"
+msgstr "Dokumentation der Aufzählungstypen"
+
+msgctxt "doxy-text|"
+msgid ", including all inherited members."
+msgstr " einschließlich aller geerbten Elemente."
+
+msgctxt "doxy-text|"
+msgid "Related Functions"
+msgstr "Verwandte Funktionen"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Reference"
+msgstr "%1 Bezugs"
+
+msgctxt "doxy-text|"
+msgid "Protected Member Functions"
+msgstr "Geschützte Methoden"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all documented module members with links to the modules "
+"they belong to:"
+msgstr ""
+"Hier ist eine Liste aller dokumentierten Modulelemente mit Links zu den sie "
+"gehören Module:"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid ""
+"This page explains how to interpret the graphs which are generated by "
+"DoxyPress.\n"
+"\n"
+"Consider the following example:\n"
+"\\code\n"
+"/*! Invisible class because of truncation */\n"
+"class Invisible { };\n"
+"\n"
+"/*! Truncated class, inheritance relation is hidden */\n"
+"class Truncated : public Invisible { };\n"
+"\n"
+"/* Class not documented with DoxyPress comments */\n"
+"class Undocumented { };\n"
+"\n"
+"/*! Class that is inherited using public inheritance */\n"
+"class PublicBase : public Truncated { };\n"
+"\n"
+"/*! A template class */\n"
+"template<class T> class Templ { };\n"
+"\n"
+"/*! Class that is inherited using protected inheritance */\n"
+"class ProtectedBase { };\n"
+"\n"
+"/*! Class that is inherited using private inheritance */\n"
+"class PrivateBase { };\n"
+"\n"
+"/*! Class that is used by the Inherited class */\n"
+"class Used { };\n"
+"\n"
+"/*! Super class that inherits a number of other classes */\n"
+"class Inherited : public PublicBase,\n"
+"                  protected ProtectedBase,\n"
+"                  private PrivateBase,\n"
+"                  public Undocumented,\n"
+"                  public Templ<int>\n"
+"{\n"
+"  private:\n"
+"    Used *m_usedClass;\n"
+"};\n"
+"\\endcode\n"
+"This will result in the following graph:\n"
+"\n"
+"<center><img alt=\"\" src=\"graph_legend.%1\"></center>\n"
+"\n"
+"The boxes in the above graph have the following meaning:\n"
+"\n"
+"<ul>\n"
+"<li>%A filled gray box represents the struct or class for which the graph is "
+"generated.</li>\n"
+"<li>%A box with a black border denotes a documented struct or class.</li>\n"
+"<li>%A box with a grey border denotes an undocumented struct or class.</li>\n"
+"<li>%A box with a red border denotes a documented struct or class for which "
+"not all inheritance/containment relations are shown. %A graph is truncated "
+"if it does not fit within the specified boundaries.</li>\n"
+"</ul>\n"
+"\n"
+"The arrows have the following meaning:\n"
+"\n"
+"<ul>\n"
+"<li>%A dark blue arrow is used to visualize a public inheritance relation "
+"between two classes.</li>\n"
+"<li>%A dark green arrow is used for protected inheritance.</li>\n"
+"<li>%A dark red arrow is used for private inheritance.</li>\n"
+"<li>%A purple dashed arrow is used if a class is contained or used by "
+"another class. The arrow is labeled with the variable(s) through which the "
+"pointed class or struct is accessible.</li>\n"
+"<li>%A yellow dashed arrow denotes a relation between a template instance "
+"and the template class it was instantiated from. The arrow is labeled with "
+"the template parameters of the instance.</li>\n"
+"</ul>\n"
+msgstr ""
+"Diese Seite erklärt, wie die Diagramme, die durch DoxyPress erzeugt werden "
+"interpretieren.\n"
+"\n"
+"Betrachten Sie das folgende Beispiel:\n"
+"\\code\n"
+"/*! Invisible Klasse wegen der Verkürzung */\n"
+"class Invisible {};\n"
+"\n"
+"/*! Abgeschnittene Klasse wird Vererbungsbeziehung versteckt */\n"
+"class  abgeschnitten: public Invisible {};\n"
+"\n"
+"/* Klasse nicht mit DoxyPress dokumentiert, kommentiert */\n"
+"class  Undocumented {};\n"
+"\n"
+"/*! Klasse, die mit den öffentlichen Vererbung vererbt wird */\n"
+"class  PublicBase: public Truncated {};\n"
+"\n"
+"/*! Eine Template-Klasse */\n"
+"template<class T> class Templ {};\n"
+"\n"
+"/*! Klasse, die unter Verwendung von geschützten Erbe vererbt wird */\n"
+"class  ProtectedBase {};\n"
+"\n"
+"/*! Klasse, die mit dem privaten Erbe vererbt wird */\n"
+"class  PrivateBase {};\n"
+"\n"
+"/*! Klasse, die von der vererbten Klasse verwendet wird */\n"
+"class  Used {};\n"
+"\n"
+"/*! Super-Klasse, die eine Reihe von anderen Klassen erbt */\n"
+"class  Geerbte: public PublicBase,\n"
+"                protected ProtectedBase,\n"
+"                private PrivateBase,\n"
+"                public Undocumented,\n"
+"                public Templ <int>\n"
+"{\n"
+"   private:\n"
+"      Used * m_usedClass;\n"
+"};\n"
+"\\endcode\n"
+"Dies wird in der folgenden Grafik führen:\n"
+"\n"
+"<center><img alt=\"\" src=\"graph_legend.%1\"></center>\n"
+"\n"
+"Die Boxen in der obigen Grafik haben folgende Bedeutung:\n"
+"\n"
+"<ul>\n"
+"<li>%A gefüllt grauen Kasten stellt die Struktur oder Klasse, für die das "
+"Diagramm erzeugt wird. </li>\n"
+"<li>%Ein Feld mit einem schwarzen Rand bezeichnet eine dokumentierte "
+"Struktur oder Klasse. </li>\n"
+"<li>%A-Box mit einem grauen Rand bezeichnet eine nicht dokumentierte "
+"Struktur oder Klasse. </li>\n"
+"<li>%A-Box mit einem roten Rand bezeichnet eine dokumentierte Struktur oder "
+"Klasse, für die nicht alle Vererbung / Contain Beziehungen gezeigt. %Ein "
+"Graph wird abgeschnitten, wenn sie nicht innerhalb der festgelegten Grenzen "
+"zu passen. </li>\n"
+"</ul>\n"
+"\n"
+"Die Pfeile haben folgende Bedeutung:\n"
+"\n"
+"<ul>\n"
+"<li>%Ein dunkelblauer Pfeil wird verwendet, um eine öffentliche "
+"Vererbungsbeziehung zwischen zwei Klassen zu visualisieren. </li>\n"
+"<li>%Ein dunkelgrüner Pfeil für geschützte Vererbung verwendet.  </li>\n"
+"<li>%Eine dunkle rote Pfeil ist für private Vererbung verwendet. </li>\n"
+"<li>%Ein lila gestrichelten Pfeil wird verwendet, wenn eine Klasse enthalten "
+"sind oder von einer anderen Klasse verwendet. Der Pfeil mit der Variablen "
+"(n), durch die das spitze Klasse oder Struktur zugänglich markiert. </li>\n"
+"<li>%A gelb gestrichelten Pfeil zeigt eine Beziehung zwischen einer "
+"Vorlageninstanz und die Template-Klasse wurde von instanziiert. Der Pfeil "
+"mit der Template-Parameter der Instanz bezeichnet. </li>\n"
+"</ul>\n"
+
+msgctxt "doxy-text|"
+msgid "Examples"
+msgstr "Beispiele"
+
+msgctxt "doxy-text|"
+msgid "Related Pages"
+msgstr "Zusätzliche Informationen"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this enum was generated  from the following files:"
+msgstr ""
+"Die Dokumentation für diese Enumeration wurde aus den folgenden Dateien "
+"generiert:"
+
+msgctxt "doxy-text|"
+msgid "Extends class @1"
+msgstr "Erstreckt Klasse @1"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Category Reference"
+msgstr "%1 Kategorie Reference"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all functions, variables, defines, enums, and typedefs "
+"with links to the documentation:"
+msgstr ""
+"Hier folgt die Aufzählung aller Funktionen, Variablen, Makros, Aufzählungen "
+"und Typdefinitionen  mit Verweisen\n"
+"               auf die zugehörigen Dateien:"
+
+msgctxt "doxy-text|"
+msgid "Here is a list of all related documentation pages:"
+msgstr "Hier folgt eine Liste mit zusammengehörigen Themengebieten:"
+
+msgctxt "doxy-text|"
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Constant Group Reference"
+msgstr "%1 Constant Gruppe Referenz"
+
+msgctxt "doxy-text|"
+msgid ""
+"The documentation for this category  was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Klasse wurde aus den folgenden Dateien generiert:"
+
+msgctxt "doxy-text|"
+msgid "Go to the source code of this file."
+msgstr "gehe zum Quellcode dieser Datei"
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Struct Reference"
+msgstr "%1 Strukturreferenz"
+
+msgctxt "doxy-text|"
+msgid "enum value"
+msgstr "enum-Wert"
+
+msgctxt "doxy-text|"
+msgid "The documentation for this type was generated from the following files:"
+msgstr ""
+"Die Dokumentation für diese Art wurde aus den folgenden Dateien generiert:"
+
+msgctxt "doxy-text|"
+msgid "Go to the textual class hierarchy"
+msgstr "gehe zur textbasierten Darstellung der Klassenhierarchie"
+
+msgctxt "doxy-text|"
+msgid "Protected Typedefs"
+msgstr "Geschützte Typedefs"
+
+msgctxt "doxy-text|"
+msgid "Here are the data types with brief descriptions:"
+msgstr "Datentyp-Index"
+
+msgctxt "doxy-text|"
+msgid "Provided by category @1."
+msgstr "Nach Kategorie @1 zur Verfügung gestellt."
+
+#, qt-format
+msgctxt "doxy-text|"
+msgid "%1 Namespace Reference"
+msgstr "%1-Namensbereichsreferenz"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all module members with links to the module documentation "
+"for each member:"
+msgstr ""
+"Hier ist eine Liste aller Modulelemente mit Verweisen auf das "
+"Modul-Dokumentation für jedes Mitglied:"
+
+msgctxt "doxy-text|"
+msgid ""
+"Here is a list of all data types members with links to the data types they "
+"belong to:"
+msgstr ""
+"Hier ist eine Liste aller Datentypen Mitglieder mit Links zu den Datentypen, "
+"denen sie angehören:"
+
+msgctxt "doxy-rtf|trRTFansicp"
+msgid "1252"
+msgstr "1252"
+
+msgctxt "doxy-rtf|trRTFCharSet"
+msgid "0"
+msgstr "0"
