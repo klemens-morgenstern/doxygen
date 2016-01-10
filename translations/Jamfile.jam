@@ -3,11 +3,6 @@ project translations ;
 
 import gettext ;
 
-#rule make_mo_target ( name ) 
-#{
-#	return [ gettext.catalog $(name) : $(name).po ] ;
-#}
-#
 local lst = [ glob *.po ] ;
 
 local res ;

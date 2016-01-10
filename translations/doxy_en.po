@@ -79,7 +79,7 @@ msgstr ""
 #: ../../src/translator_cs.h:2149
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Service Reference"
+msgid "%1% Service Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:964
@@ -287,7 +287,7 @@ msgstr ""
 #: ../../src/translator_cs.h:1586
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Directory Reference"
+msgid "%1% Directory Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:2016
@@ -298,7 +298,7 @@ msgstr ""
 #: ../../src/translator_cs.h:1165
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Package %1"
+msgid "Package %1%"
 msgstr ""
 
 #: ../../src/translator_cs.h:824
@@ -337,13 +337,13 @@ msgstr ""
 #: ../../src/translator_cs.h:641 ../../src/translator_cs.h:1778
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Template Reference"
+msgid "%1% Template Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:1430
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Implements %1."
+msgid "Implements %1%."
 msgstr ""
 
 #: ../../src/translator_cs.h:946
@@ -354,13 +354,13 @@ msgstr ""
 #: ../../src/translator_cs.h:1756
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1  Protocol Reference"
+msgid "%1%  Protocol Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:619
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Protocol Reference"
+msgid "%1% Protocol Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:669
@@ -387,7 +387,7 @@ msgstr ""
 #: ../../src/translator_cs.h:2062
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 inherited from %2"
+msgid "%1% inherited from %2%"
 msgstr ""
 
 #: ../../src/translator_cs.h:1851
@@ -399,7 +399,7 @@ msgstr ""
 #: ../../src/translator_cs.h:603 ../../src/translator_cs.h:1740
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Union Reference"
+msgid "%1% Union Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:1464
@@ -462,7 +462,7 @@ msgstr ""
 #: ../../src/translator_cs.h:1730
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Type Template Reference"
+msgid "%1% Type Template Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:1629
@@ -478,7 +478,7 @@ msgstr ""
 #: ../../src/translator_cs.h:499
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Inheritance diagram for %1:"
+msgid "Inheritance diagram for %1%:"
 msgstr ""
 
 #: ../../src/translator_cs.h:972
@@ -502,7 +502,7 @@ msgstr ""
 #: ../../src/translator_cs.h:921
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Collaboration diagram for %1:"
+msgid "Collaboration diagram for %1%:"
 msgstr ""
 
 #: ../../src/translator_cs.h:246
@@ -644,7 +644,7 @@ msgstr ""
 #: ../../src/translator_cs.h:601 ../../src/translator_cs.h:1738
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Union Template Reference"
+msgid "%1% Union Template Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:1684
@@ -665,7 +665,7 @@ msgstr ""
 #: ../../src/translator_cs.h:493
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Generated on %1 for %2 &nbsp; by"
+msgid "Generated on %1% for %2% &nbsp; by"
 msgstr ""
 
 #: ../../src/translator_cs.h:1869
@@ -797,13 +797,13 @@ msgstr ""
 #: ../../src/translator_cs.h:585
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Class Template Reference"
+msgid "%1% Class Template Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:609 ../../src/translator_cs.h:1746
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Interface Template Reference"
+msgid "%1% Interface Template Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:2047
@@ -814,7 +814,7 @@ msgstr ""
 #: ../../src/translator_cs.h:633 ../../src/translator_cs.h:1770
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Exception Template Reference"
+msgid "%1% Exception Template Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:436
@@ -835,7 +835,7 @@ msgstr ""
 #: ../../src/translator_cs.h:1722
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Module Template Reference"
+msgid "%1% Module Template Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:120
@@ -846,7 +846,7 @@ msgstr ""
 #: ../../src/translator_cs.h:733
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Inherits %1."
+msgid "Inherits %1%."
 msgstr ""
 
 #: ../../src/translator_cs.h:1186
@@ -864,7 +864,7 @@ msgstr ""
 #: ../../src/translator_cs.h:617 ../../src/translator_cs.h:1754
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Protocol Template Reference"
+msgid "%1% Protocol Template Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:1857
@@ -896,7 +896,7 @@ msgstr ""
 #: ../../src/translator_cs.h:2026
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Directory dependency graph for %1:"
+msgid "Directory dependency graph for %1%:"
 msgstr ""
 
 #: ../../src/translator_cs.h:330
@@ -947,7 +947,7 @@ msgstr ""
 #: ../../src/translator_cs.h:587
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Class Reference"
+msgid "%1% Class Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:844
@@ -999,7 +999,7 @@ msgstr ""
 #: ../../src/translator_cs.h:2003
 #, qt-format
 msgctxt "doxy-text|"
-msgid "File in %1"
+msgid "File in %1%"
 msgstr ""
 
 #: ../../src/translator_cs.h:180
@@ -1040,7 +1040,7 @@ msgstr ""
 #: ../../src/translator_cs.h:635 ../../src/translator_cs.h:1772
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Exception Reference"
+msgid "%1% Exception Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:2021
@@ -1051,7 +1051,7 @@ msgstr ""
 #: ../../src/translator_cs.h:2041
 #, qt-format
 msgctxt "doxy-text|"
-msgid "and %1 more..."
+msgid "and %1% more..."
 msgstr ""
 
 #: ../../src/translator_cs.h:1170
@@ -1140,7 +1140,7 @@ msgstr ""
 #: ../../src/translator_cs.h:1724 ../../src/translator_cs.h:1789
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Module Reference"
+msgid "%1% Module Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:2031
@@ -1209,7 +1209,7 @@ msgstr ""
 #: ../../src/translator_cs.h:754
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Reimplemented in %1."
+msgid "Reimplemented in %1%."
 msgstr ""
 
 #: ../../src/translator_cs.h:556
@@ -1225,7 +1225,7 @@ msgstr ""
 #: ../../src/translator_cs.h:2057
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Enum Reference"
+msgid "%1% Enum Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:1911
@@ -1278,13 +1278,13 @@ msgstr ""
 #: ../../src/translator_cs.h:625 ../../src/translator_cs.h:1762
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Category Template Reference"
+msgid "%1% Category Template Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:740
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Inherited by %1."
+msgid "Inherited by %1%."
 msgstr ""
 
 #: ../../src/translator_cs.h:239
@@ -1318,7 +1318,7 @@ msgstr ""
 #: ../../src/translator_cs.h:1550
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Source File"
+msgid "%1% Source File"
 msgstr ""
 
 #: ../../src/translator_cs.h:1498
@@ -1339,7 +1339,7 @@ msgstr ""
 #: ../../src/translator_cs.h:747
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Reimplemented from %1."
+msgid "Reimplemented from %1%."
 msgstr ""
 
 #: ../../src/translator_cs.h:1634
@@ -1350,7 +1350,7 @@ msgstr ""
 #: ../../src/translator_cs.h:117
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Generated automatically by DoxyPress for %1 from the source code."
+msgid "Generated automatically by DoxyPress for %1% from the source code."
 msgstr ""
 
 #: ../../src/translator_cs.h:1622
@@ -1392,7 +1392,7 @@ msgstr ""
 #: ../../src/translator_cs.h:611 ../../src/translator_cs.h:1748
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Interface Reference"
+msgid "%1% Interface Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:1033
@@ -1414,7 +1414,7 @@ msgstr ""
 #: ../../src/translator_cs.h:926
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Include dependency graph for %1:"
+msgid "Include dependency graph for %1%:"
 msgstr ""
 
 #: ../../src/translator_cs.h:2078
@@ -1425,7 +1425,7 @@ msgstr ""
 #: ../../src/translator_cs.h:2011
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Includes file in %1"
+msgid "Includes file in %1%"
 msgstr ""
 
 #: ../../src/translator_cs.h:529
@@ -1436,7 +1436,7 @@ msgstr ""
 #: ../../src/translator_cs.h:593
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Struct Template Reference"
+msgid "%1% Struct Template Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:1990
@@ -1478,7 +1478,7 @@ msgstr ""
 #: ../../src/translator_cs.h:1975
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Relation"
+msgid "%1% Relation"
 msgstr ""
 
 #: ../../src/translator_cs.h:99
@@ -1499,7 +1499,7 @@ msgstr ""
 #: ../../src/translator_cs.h:491
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Generated on %1 &nbsp; by"
+msgid "Generated on %1% &nbsp; by"
 msgstr ""
 
 #: ../../src/translator_cs.h:544
@@ -1520,7 +1520,7 @@ msgstr ""
 #: ../../src/translator_cs.h:1732
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Type Reference"
+msgid "%1% Type Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:955
@@ -1546,7 +1546,7 @@ msgstr ""
 #: ../../src/translator_cs.h:653
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 File Reference"
+msgid "%1% File Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:514
@@ -1617,7 +1617,7 @@ msgstr ""
 #: ../../src/translator_cs.h:1437
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Implemented %1."
+msgid "Implemented %1%."
 msgstr ""
 
 #: ../../src/translator_cs.h:2080
@@ -1628,7 +1628,7 @@ msgstr ""
 #: ../../src/translator_cs.h:2154
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Singleton Reference"
+msgid "%1% Singleton Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:2160
@@ -1677,7 +1677,7 @@ msgstr ""
 #: ../../src/translator_cs.h:643 ../../src/translator_cs.h:1780
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Reference"
+msgid "%1% Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:679
@@ -1716,7 +1716,7 @@ msgstr ""
 #: ../../src/translator_cs.h:627 ../../src/translator_cs.h:1764
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Category Reference"
+msgid "%1% Category Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:276
@@ -1802,7 +1802,7 @@ msgid ""
 "\\endcode\n"
 "This will result in the following graph:\n"
 "\n"
-"<center><img alt=\"\" src=\"graph_legend.%1\"></center>\n"
+"<center><img alt=\"\" src=\"graph_legend.%1%\"></center>\n"
 "\n"
 "The boxes in the above graph have the following meaning:\n"
 "\n"
@@ -1835,7 +1835,7 @@ msgstr ""
 #: ../../src/translator_cs.h:2144
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Constant Group Reference"
+msgid "%1% Constant Group Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:857
@@ -1852,7 +1852,7 @@ msgstr ""
 #: ../../src/translator_cs.h:595
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Struct Reference"
+msgid "%1% Struct Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:132
@@ -1883,7 +1883,7 @@ msgstr ""
 #: ../../src/translator_cs.h:658
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Namespace Reference"
+msgid "%1% Namespace Reference"
 msgstr ""
 
 #: ../../src/translator_cs.h:1800

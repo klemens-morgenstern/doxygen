@@ -19,11 +19,11 @@ msgctxt "doxy-text|"
 msgid "All"
 msgstr "Alle"
 
-#msgctxt "doxy-text|"
+msgctxt "doxy-text|"
 msgid "Bug"
 msgstr "Fehler"
 
-#msgctxt "doxy-text|"
+msgctxt "doxy-text|"
 msgid ""
 "The documentation for this singleton was generated from the following files:"
 msgstr "Die Dokumentation für diese Singleton wurde aus den folgenden Dateien generiert:"
@@ -66,8 +66,8 @@ msgstr "Art"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Service Reference"
-msgstr "%1 Service Reference"
+msgid "%1% Service Reference"
+msgstr "%1% Service Reference"
 
 msgctxt "doxy-text|"
 msgid "code"
@@ -244,8 +244,8 @@ msgstr "Liste aller Namensbereiche"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Directory Reference"
-msgstr "%1 Verzeichnis Reference"
+msgid "%1% Directory Reference"
+msgstr "%1% Verzeichnis Reference"
 
 msgctxt "doxy-text|"
 msgid "Bibliography"
@@ -253,8 +253,8 @@ msgstr "Literaturverzeichnis"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Package %1"
-msgstr "Paket %1"
+msgid "Package %1%"
+msgstr "Paket %1%"
 
 msgctxt "doxy-text|"
 msgid ""
@@ -286,13 +286,13 @@ msgstr "Erklärung des Graphen"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Template Reference"
-msgstr "%1 Template Reference"
+msgid "%1% Template Reference"
+msgstr "%1% Template Reference"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Implements %1."
-msgstr "Implementiert %1."
+msgid "Implements %1%."
+msgstr "Implementiert %1%."
 
 msgctxt "doxy-text|"
 msgid "Precondition"
@@ -300,13 +300,13 @@ msgstr "Vorbedingung"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1  Protocol Reference"
-msgstr "%1 Protocol Reference"
+msgid "%1%  Protocol Reference"
+msgstr "%1% Protocol Reference"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Protocol Reference"
-msgstr "%1 Protocol Reference"
+msgid "%1% Protocol Reference"
+msgstr "%1% Protocol Reference"
 
 msgctxt "doxy-text|"
 msgid "Protected Signals"
@@ -327,8 +327,8 @@ msgstr "Dokumentation der Datenelemente"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 inherited from %2"
-msgstr "%1 von geerbt %2"
+msgid "%1% inherited from %2%"
+msgstr "%1% von geerbt %2%"
 
 msgctxt "doxy-text|"
 msgid ""
@@ -338,8 +338,8 @@ msgstr ""
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Union Reference"
-msgstr "%1 Union Reference"
+msgid "%1% Union Reference"
+msgstr "%1% Union Reference"
 
 msgctxt "doxy-text|"
 msgid "Event Documentation"
@@ -392,8 +392,8 @@ msgstr ""
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Type Template Reference"
-msgstr "%1 Typ Template Reference"
+msgid "%1% Type Template Reference"
+msgstr "%1% Typ Template Reference"
 
 msgctxt "doxy-text|"
 msgid "Enumerator Documentation"
@@ -405,8 +405,8 @@ msgstr "Initialisierung:"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Inheritance diagram for %1:"
-msgstr "Klassendiagramm für %1:"
+msgid "Inheritance diagram for %1%:"
+msgstr "Klassendiagramm für %1%:"
 
 msgctxt "doxy-text|"
 msgid ", and "
@@ -431,7 +431,7 @@ msgstr "Die Dokumentation für diese Singleton wurde aus der folgenden Datei:"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Collaboration diagram for %1:"
+msgid "Collaboration diagram for %1%:"
 msgstr "Kollaborationsdiagramm für% 1:"
 
 msgctxt "doxy-text|"
@@ -555,8 +555,8 @@ msgstr "Verzeichnisdokumentation"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Union Template Reference"
-msgstr "%1 Union Template Reference"
+msgid "%1% Union Template Reference"
+msgstr "%1% Union Template Reference"
 
 msgctxt "doxy-text|"
 msgid "Functions/Subroutines"
@@ -572,8 +572,8 @@ msgstr "Klassenhierarchie"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Generated on %1 for %2 &nbsp; by"
-msgstr "Erzeugt am %1 für %2 &nbsp; von"
+msgid "Generated on %1% for %2% &nbsp; by"
+msgstr "Erzeugt am %1% für %2% &nbsp; von"
 
 msgctxt "doxy-text|"
 msgid ""
@@ -684,13 +684,13 @@ msgstr "Modul-Dokumentation"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Class Template Reference"
-msgstr "%1 Klasse Template Reference"
+msgid "%1% Class Template Reference"
+msgstr "%1% Klasse Template Reference"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Interface Template Reference"
-msgstr "%1 Schnittstelle Template Reference"
+msgid "%1% Interface Template Reference"
+msgstr "%1% Schnittstelle Template Reference"
 
 msgctxt "doxy-text|"
 msgid "The documentation for this enum was generated from the following file:"
@@ -698,8 +698,8 @@ msgstr "Die Dokumentation für diese Enumeration wurde aus der folgenden Datei:"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Exception Template Reference"
-msgstr "%1 Exception Template Reference"
+msgid "%1% Exception Template Reference"
+msgstr "%1% Exception Template Reference"
 
 msgctxt "doxy-text|"
 msgid "Enum Values"
@@ -715,8 +715,8 @@ msgstr "Suchen"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Module Template Reference"
-msgstr "%1 Modul Template Reference"
+msgid "%1% Module Template Reference"
+msgstr "%1% Modul Template Reference"
 
 msgctxt "doxy-text|"
 msgid "Generated automatically by DoxyPress from the source code."
@@ -724,8 +724,8 @@ msgstr "Automatisch erzeugt von DoxyPress aus dem Quellcode."
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Inherits %1."
-msgstr "Erbt %1."
+msgid "Inherits %1%."
+msgstr "Erbt %1%."
 
 msgctxt "doxy-text|"
 msgid "Value:"
@@ -742,8 +742,8 @@ msgstr ""
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Protocol Template Reference"
-msgstr "%1 Protocol Template Reference"
+msgid "%1% Protocol Template Reference"
+msgstr "%1% Protocol Template Reference"
 
 msgctxt "doxy-text|"
 msgid "The documentation for this type was generated from the following file:"
@@ -769,8 +769,8 @@ msgstr ""
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Directory dependency graph for %1:"
-msgstr "Verzeichnis Abhängigkeitsdiagramm für %1:"
+msgid "Directory dependency graph for %1%:"
+msgstr "Verzeichnis Abhängigkeitsdiagramm für %1%:"
 
 msgctxt "doxy-text|"
 msgid "Data Structure Index"
@@ -812,8 +812,8 @@ msgstr "global"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Class Reference"
-msgstr "%1 Klassenreferenz"
+msgid "%1% Class Reference"
+msgstr "%1% Klassenreferenz"
 
 msgctxt "doxy-text|"
 msgid ""
@@ -854,8 +854,8 @@ msgstr "Inkludierte Leistungen"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "File in %1"
-msgstr "Datei in %1"
+msgid "File in %1%"
+msgstr "Datei in %1%"
 
 msgctxt "doxy-text|"
 msgid "File Members"
@@ -887,8 +887,8 @@ msgstr "Öffentliche Attribute"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Exception Reference"
-msgstr "%1 Exception Reference"
+msgid "%1% Exception Reference"
+msgstr "%1% Exception Reference"
 
 msgctxt "doxy-text|"
 msgid "Copyright"
@@ -896,8 +896,8 @@ msgstr "Copyright"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "and %1 more..."
-msgstr "und %1 mehr ..."
+msgid "and %1% more..."
+msgstr "und %1% mehr ..."
 
 msgctxt "doxy-text|"
 msgid "Package List"
@@ -972,8 +972,8 @@ msgstr "Rückgabe"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Module Reference"
-msgstr "%1 Modul-Referenz"
+msgid "%1% Module Reference"
+msgstr "%1% Modul-Referenz"
 
 msgctxt "doxy-text|"
 msgid "detail level"
@@ -1032,8 +1032,8 @@ msgstr "Private Signale"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Reimplemented in %1."
-msgstr "In %1 neu implementiert."
+msgid "Reimplemented in %1%."
+msgstr "In %1% neu implementiert."
 
 msgctxt "doxy-text|"
 msgid "Public Typedefs"
@@ -1049,8 +1049,8 @@ msgstr "Instanzmethoden"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Enum Reference"
-msgstr "%1 Enum Reference"
+msgid "%1% Enum Reference"
+msgstr "%1% Enum Reference"
 
 msgctxt "doxy-text|"
 msgid "The documentation for this was generated from the following file:"
@@ -1094,13 +1094,13 @@ msgstr ""
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Category Template Reference"
-msgstr "%1 Kategorie Template Reference"
+msgid "%1% Category Template Reference"
+msgstr "%1% Kategorie Template Reference"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Inherited by %1."
-msgstr "Von %1 geerbt."
+msgid "Inherited by %1%."
+msgstr "Von %1% geerbt."
 
 msgctxt "doxy-text|"
 msgid ""
@@ -1127,8 +1127,8 @@ msgstr "klassen"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Source File"
-msgstr "%1 Source File"
+msgid "%1% Source File"
+msgstr "%1% Source File"
 
 msgctxt "doxy-text|"
 msgid "Static Package Attributes"
@@ -1144,8 +1144,8 @@ msgstr "Test-Liste"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Reimplemented from %1."
-msgstr "Von %1 neu implementiert."
+msgid "Reimplemented from %1%."
+msgstr "Von %1% neu implementiert."
 
 msgctxt "doxy-text|"
 msgid "Member Function/Subroutine Documentation"
@@ -1153,8 +1153,8 @@ msgstr "Elementfunktionen/Unterroutinen-Dokumentation"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Generated automatically by DoxyPress for %1 from the source code."
-msgstr "Automatisch erzeugt von DoxyPress für %1 aus dem Quellcode."
+msgid "Generated automatically by DoxyPress for %1% from the source code."
+msgstr "Automatisch erzeugt von DoxyPress für %1% aus dem Quellcode."
 
 msgctxt "doxy-text|"
 msgid "Here is the caller graph for this function:"
@@ -1189,8 +1189,8 @@ msgstr "Lade ..."
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Interface Reference"
-msgstr "%1 Interface Reference"
+msgid "%1% Interface Reference"
+msgstr "%1% Interface Reference"
 
 msgctxt "doxy-text|"
 msgid "Todo List"
@@ -1207,7 +1207,7 @@ msgstr "Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Include dependency graph for %1:"
+msgid "Include dependency graph for %1%:"
 msgstr "Include-Abhängigkeitsdiagramm für% 1:"
 
 msgctxt "doxy-text|"
@@ -1216,8 +1216,8 @@ msgstr "klicken Sie auf das Panel-Synchronisation aktivieren"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Includes file in %1"
-msgstr "Inklusive Datei in %1"
+msgid "Includes file in %1%"
+msgstr "Inklusive Datei in %1%"
 
 msgctxt "doxy-text|"
 msgid "See also"
@@ -1225,8 +1225,8 @@ msgstr "Siehe auch"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Struct Template Reference"
-msgstr "%1 Struct Template Reference"
+msgid "%1% Struct Template Reference"
+msgstr "%1% Struct Template Reference"
 
 msgctxt "doxy-text|"
 msgid "Searching..."
@@ -1261,8 +1261,8 @@ msgstr "enum-Bezeichner"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Relation"
-msgstr "%1 Verhältnis"
+msgid "%1% Relation"
+msgstr "%1% Verhältnis"
 
 msgctxt "doxy-text|"
 msgid "Member List"
@@ -1278,8 +1278,8 @@ msgstr "Vollständige Aufstellung aller Elemente für "
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Generated on %1 &nbsp; by"
-msgstr "Erzeugt am %1 &nbsp; von"
+msgid "Generated on %1% &nbsp; by"
+msgstr "Erzeugt am %1% &nbsp; von"
 
 msgctxt "doxy-text|"
 msgid "Generated by"
@@ -1295,8 +1295,8 @@ msgstr "Ausnahmebehandlung"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Type Reference"
-msgstr "%1 Type Reference"
+msgid "%1% Type Reference"
+msgstr "%1% Type Reference"
 
 msgctxt "doxy-text|"
 msgid "Invariant"
@@ -1316,8 +1316,8 @@ msgstr "Namensbereiche"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 File Reference"
-msgstr "%1-Dateireferenz"
+msgid "%1% File Reference"
+msgstr "%1%-Dateireferenz"
 
 msgctxt "doxy-text|"
 msgid "Version"
@@ -1382,8 +1382,8 @@ msgstr "Freundbeziehungen"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "Implemented %1."
-msgstr "Implementiert %1."
+msgid "Implemented %1%."
+msgstr "Implementiert %1%."
 
 msgctxt "doxy-text|"
 msgid "click to disable panel synchronization"
@@ -1391,8 +1391,8 @@ msgstr "klicken Sie auf das Panel-Synchronisation zu deaktivieren"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Singleton Reference"
-msgstr "%1 Singleton Reference"
+msgid "%1% Singleton Reference"
+msgstr "%1% Singleton Reference"
 
 msgctxt "doxy-text|"
 msgid ""
@@ -1435,8 +1435,8 @@ msgstr "Verwandte Funktionen"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Reference"
-msgstr "%1 Bezugs"
+msgid "%1% Reference"
+msgstr "%1% Bezugs"
 
 msgctxt "doxy-text|"
 msgid "Protected Member Functions"
@@ -1495,7 +1495,7 @@ msgid ""
 "\\endcode\n"
 "This will result in the following graph:\n"
 "\n"
-"<center><img alt=\"\" src=\"graph_legend.%1\"></center>\n"
+"<center><img alt=\"\" src=\"graph_legend.%1%\"></center>\n"
 "\n"
 "The boxes in the above graph have the following meaning:\n"
 "\n"
@@ -1566,7 +1566,7 @@ msgstr ""
 "\\endcode\n"
 "Dies wird in der folgenden Grafik führen:\n"
 "\n"
-"<center><img alt=\"\" src=\"graph_legend.%1\"></center>\n"
+"<center><img alt=\"\" src=\"graph_legend.%1%\"></center>\n"
 "\n"
 "Die Boxen in der obigen Grafik haben folgende Bedeutung:\n"
 "\n"
@@ -1619,8 +1619,8 @@ msgstr "Erstreckt Klasse @1"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Category Reference"
-msgstr "%1 Kategorie Reference"
+msgid "%1% Category Reference"
+msgstr "%1% Kategorie Reference"
 
 msgctxt "doxy-text|"
 msgid ""
@@ -1641,8 +1641,8 @@ msgstr "Dokumentation"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Constant Group Reference"
-msgstr "%1 Constant Gruppe Referenz"
+msgid "%1% Constant Group Reference"
+msgstr "%1% Constant Gruppe Referenz"
 
 msgctxt "doxy-text|"
 msgid ""
@@ -1656,8 +1656,8 @@ msgstr "gehe zum Quellcode dieser Datei"
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Struct Reference"
-msgstr "%1 Strukturreferenz"
+msgid "%1% Struct Reference"
+msgstr "%1% Strukturreferenz"
 
 msgctxt "doxy-text|"
 msgid "enum value"
@@ -1686,8 +1686,8 @@ msgstr "Nach Kategorie @1 zur Verfügung gestellt."
 
 #, qt-format
 msgctxt "doxy-text|"
-msgid "%1 Namespace Reference"
-msgstr "%1-Namensbereichsreferenz"
+msgid "%1% Namespace Reference"
+msgstr "%1%-Namensbereichsreferenz"
 
 msgctxt "doxy-text|"
 msgid ""
