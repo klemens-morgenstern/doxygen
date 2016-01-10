@@ -22,15 +22,6 @@
 #include <boost/locale.hpp>
 #include <boost/format.hpp>
 
-inline std::string generateMarker(int id)
-{
-  const int maxMarkerStrLen = 20;
-  char result[maxMarkerStrLen];
-  qsnprintf(result,maxMarkerStrLen,"@%d",id);
-  return result;
-}
-
-
 class Translator
 {
  public:
