@@ -27,7 +27,6 @@
 #include "defargs.h"
 #include "outputgen.h"
 #include "dot.h"
-#include "arguments.h"
 #include "memberlist.h"
 #include "namespacedef.h"
 #include "filedef.h"
@@ -36,6 +35,7 @@
 #include <qdir.h>
 #include <qfile.h>
 #include <qtextstream.h>
+#include "arguments.hpp"
 
 #define DEF_DB(x)
 

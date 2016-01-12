@@ -14,36 +14,31 @@
  *
  */
 
-#include "cite.h"
-#include "portable.h"
-#include "config.h"
-#include "message.h"
-#include "util.h"
-#include "language.h"
-#include "ftextstream.h"
-#include "resourcemgr.h"
+#include <cite.hpp>
+#include <portable.hpp>
+#include <config.hpp>
+#include <message.hpp>
+#include <util.hpp>
+#include <language.hpp>
+#include <resourcemgr.hpp>
 #include <qdir.h>
 
-//--------------------------------------------------------------------------
+using namespace std;
 
-const QCString CiteConsts::fileName("citelist");
-const QCString CiteConsts::anchorPrefix("CITEREF_");
-const QCString bibTmpFile("bibTmpFile_");
-const QCString bibTmpDir("bibTmpDir/");
-
-//--------------------------------------------------------------------------
-
-CiteDict::CiteDict(int size) : m_entries(size, FALSE)
-{ 
-  m_entries.setAutoDelete(TRUE);
-}
-
-void CiteDict::writeLatexBibliography(FTextStream &t)
+namespace DoxyFrame
 {
-  if (m_entries.isEmpty())
+
+const std::string CiteConsts::fileName("citelist");
+const std::string CiteConsts::anchorPrefix("CITEREF_");
+const std::string bibTmpFile("bibTmpFile_");
+const std::string bibTmpDir("bibTmpDir/");
+
+void CiteDict::writeLatexBibliography(std::ostream &t)
+{
+  if (m_entries.empty())
     return;
 
-  QCString style = Config_getString("LATEX_BIB_STYLE");
+  std::string style = Config_getString("LATEX_BIB_STYLE");
   if (style.isEmpty())
     style="plain";
   QCString unit;
@@ -89,34 +84,12 @@ void CiteDict::writeLatexBibliography(FTextStream &t)
   }
   t << "\n";
 }
-
-void CiteDict::insert(const char *label)
-{
-  m_entries.insert(label,new CiteInfo(label));
-}
-
-CiteInfo *CiteDict::find(const char *label) const
-{
-  return label ? m_entries.find(label) : 0;
-}
-
-void CiteDict::clear()
-{
-  m_entries.clear();
-}
-
-bool CiteDict::isEmpty() const
-{
-  QStrList &citeBibFiles = Config_getList("CITE_BIB_FILES");
-  return (citeBibFiles.count()==0 || m_entries.isEmpty());
-}
-
 void CiteDict::generatePage() const
 {
   //printf("** CiteDict::generatePage() count=%d\n",m_ordering.count());
 
   // do not generate an empty citations page
-  if (isEmpty()) return; // nothing to cite
+  if (empty()) return; // nothing to cite
 
   // 1. generate file with markers and citations to OUTPUT_DIRECTORY
   QFile f;
@@ -296,3 +269,4 @@ void CiteDict::generatePage() const
   thisDir.rmdir(bibOutputDir);
 }
 
+}

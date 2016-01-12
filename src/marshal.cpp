@@ -3,13 +3,14 @@
 
 #include "sortdict.h"
 #include "marshal.h"
+
+#include "arguments.hpp"
 #include "entry.h"
 #include "section.h"
 #include "memberlist.h"
 #include "definition.h"
 #include "groupdef.h"
 #include "example.h"
-#include "arguments.h"
 
 #define HEADER ('D'<<24)+('O'<<16)+('X'<<8)+'!'
 

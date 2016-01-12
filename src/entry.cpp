@@ -18,12 +18,13 @@
 #include <stdlib.h>
 #include <qfile.h>
 #include "entry.h"
+
+#include "arguments.hpp"
 #include "marshal.h"
 #include "util.h"
 #include "section.h"
 #include "doxygen.h"
 #include "filestorage.h"
-#include "arguments.h"
 #include "config.h"
 //------------------------------------------------------------------
 

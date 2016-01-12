@@ -32,6 +32,9 @@
 #include "util.h"
 #include "pagedef.h"
 #include "docparser.h"
+
+#include "arguments.hpp"
+#include "cite.hpp"
 #include "doctokenizer.h"
 #include "cmdmapper.h"
 #include "printdocvisitor.h"
@@ -40,8 +43,6 @@
 #include "searchindex.h"
 #include "language.h"
 #include "portable.h"
-#include "cite.h"
-#include "arguments.h"
 #include "vhdldocgen.h"
 #include "groupdef.h"
 #include "classlist.h"
@@ -7231,17 +7232,17 @@ DocRoot *validatingParseDoc(const char *fileName,int startLine,
     }
   }
 #if 0
-  if (indexWords && md && Doxygen::searchIndex)
+  if (indexWords && md && DoxyFrame::searchIndex)
   {
     g_searchUrl=md->getOutputFileBase();
-    Doxygen::searchIndex->setCurrentDoc(
+    DoxyFrame::searchIndex->setCurrentDoc(
         (md->getLanguage()==SrcLangExt_Fortran ? 
          theTranslator->trSubprogram(TRUE,TRUE):
          theTranslator->trMember(TRUE,TRUE))+" "+md->qualifiedName(),
         g_searchUrl,
         md->anchor());
   }
-  else if (indexWords && ctx && Doxygen::searchIndex)
+  else if (indexWords && ctx && DoxyFrame::searchIndex)
   {
     g_searchUrl=ctx->getOutputFileBase();
     QCString name = ctx->qualifiedName();
@@ -7306,7 +7307,7 @@ DocRoot *validatingParseDoc(const char *fileName,int startLine,
       default:
         break;
     }
-    Doxygen::searchIndex->setCurrentDoc(name,g_searchUrl);
+    DoxyFrame::searchIndex->setCurrentDoc(name,g_searchUrl);
   }
 #endif
   else

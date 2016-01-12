@@ -29,6 +29,8 @@
 #include <qcache.h>
 
 #include "util.h"
+
+#include "arguments.hpp"
 #include "message.h"
 #include "classdef.h"
 #include "filedef.h"
@@ -53,7 +55,6 @@
 #include "image.h"
 #include "growbuf.h"
 #include "entry.h"
-#include "arguments.h"
 #include "memberlist.h"
 #include "classlist.h"
 #include "namespacedef.h"

@@ -31,6 +31,8 @@
 
 #include "version.h"
 #include "doxygen.h"
+
+#include "arguments.hpp"
 #include "scanner.h"
 #include "entry.h"
 #include "index.h"
@@ -64,6 +66,7 @@
 #include "reflist.h"
 #include "pagedef.h"
 #include "bufstr.h"
+#include "cite.hpp"
 #include "commentcnv.h"
 #include "cmdmapper.h"
 #include "searchindex.h"
@@ -81,10 +84,8 @@
 #include "vhdljjparser.h"
 #include "vhdldocgen.h"
 #include "eclipsehelp.h"
-#include "cite.h"
 #include "filestorage.h"
 #include "markdown.h"
-#include "arguments.h"
 #include "memberlist.h"
 #include "layout.h"
 #include "groupdef.h"

@@ -16,6 +16,8 @@
  */
 
 #include "classlist.h"
+
+#include "arguments.hpp"
 #include "config.h"
 #include "util.h"
 #include "outputlist.h"
@@ -23,7 +25,6 @@
 #include "doxygen.h"
 #include "vhdldocgen.h"
 #include "defargs.h"
-#include "arguments.h"
 #include "groupdef.h"
 
 ClassList::ClassList() : QList<ClassDef>()

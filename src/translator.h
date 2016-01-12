@@ -22,6 +22,9 @@
 #include <boost/locale.hpp>
 #include <boost/format.hpp>
 
+namespace DoxyFrame
+{
+
 class Translator
 {
 	std::locale _loc = std::locale();
@@ -2186,4 +2189,5 @@ class Translator
    }
 };
 
+}
 #endif

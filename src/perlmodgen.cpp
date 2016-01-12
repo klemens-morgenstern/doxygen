@@ -25,13 +25,14 @@
 #include <qfile.h>
 
 #include "perlmodgen.h"
+
+#include "arguments.hpp"
 #include "docparser.h"
 #include "message.h"
 #include "doxygen.h"
 #include "pagedef.h"
 #include "memberlist.h"
 #include "ftextstream.h"
-#include "arguments.h"
 #include "config.h"
 #include "groupdef.h"
 #include "classdef.h"

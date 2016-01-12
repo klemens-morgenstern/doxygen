@@ -19,6 +19,8 @@
 #include <qfile.h>
 #include <qregexp.h>
 #include "classdef.h"
+
+#include "arguments.hpp"
 #include "classlist.h"
 #include "entry.h"
 #include "doxygen.h"
@@ -38,7 +40,6 @@
 #include "searchindex.h"
 #include "vhdldocgen.h"
 #include "layout.h"
-#include "arguments.h"
 #include "memberlist.h"
 #include "groupdef.h"
 #include "filedef.h"

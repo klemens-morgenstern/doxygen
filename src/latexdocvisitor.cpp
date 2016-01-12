@@ -18,6 +18,8 @@
 #include "htmlattrib.h"
 #include <qfileinfo.h> 
 #include "latexdocvisitor.h"
+
+#include "cite.hpp"
 #include "docparser.h"
 #include "language.h"
 #include "doxygen.h"
@@ -28,7 +30,6 @@
 #include "parserintf.h"
 #include "msc.h"
 #include "dia.h"
-#include "cite.h"
 #include "filedef.h"
 #include "config.h"
 #include "htmlentity.h"

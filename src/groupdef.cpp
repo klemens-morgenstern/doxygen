@@ -18,6 +18,8 @@
 #include <ctype.h>
 #include <qregexp.h>
 #include "groupdef.h"
+
+#include "arguments.hpp"
 #include "classdef.h"
 #include "filedef.h"
 #include "classlist.h"
@@ -35,7 +37,6 @@
 #include "dot.h"
 #include "vhdldocgen.h"
 #include "layout.h"
-#include "arguments.h"
 #include "entry.h"
 #include "membername.h"
 #include "dirdef.h"

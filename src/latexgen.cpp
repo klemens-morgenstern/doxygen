@@ -19,6 +19,8 @@
 
 #include <qdir.h>
 #include "latexgen.h"
+
+#include "cite.hpp"
 #include "config.h"
 #include "message.h"
 #include "doxygen.h"
@@ -31,7 +33,6 @@
 #include "docparser.h"
 #include "latexdocvisitor.h"
 #include "dirdef.h"
-#include "cite.h"
 #include "groupdef.h"
 #include "classlist.h"
 #include "namespacedef.h"

@@ -22,6 +22,8 @@
 #include <qtextstream.h>
 #include <qintdict.h>
 #include "docbookgen.h"
+
+#include "arguments.hpp"
 #include "doxygen.h"
 #include "message.h"
 #include "config.h"
@@ -37,7 +39,6 @@
 #include "docparser.h"
 #include "language.h"
 #include "parserintf.h"
-#include "arguments.h"
 #include "memberlist.h"
 #include "groupdef.h"
 #include "memberdef.h"

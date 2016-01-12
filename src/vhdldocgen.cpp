@@ -33,6 +33,8 @@
 
 // local includes
 #include "vhdldocgen.h"
+
+#include "arguments.hpp"
 #include "message.h"
 #include "config.h"
 #include "doxygen.h"
@@ -45,7 +47,6 @@
 #include "outputlist.h"
 #include "parserintf.h"
 #include "layout.h"
-#include "arguments.h"
 #include "portable.h"
 #include "memberlist.h"
 #include "memberdef.h"

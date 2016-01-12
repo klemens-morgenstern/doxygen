@@ -23,8 +23,8 @@
 
 #include <qdict.h>
 #include <qcstring.h>
+#include "arguments.hpp"
 #include "layout.h"
-#include "arguments.h"
 #include "entry.h"
 
 class Entry;

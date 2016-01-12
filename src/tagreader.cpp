@@ -28,6 +28,7 @@
 #include <qlist.h>
 #include <qstring.h>
 #include <qstringlist.h>
+#include "arguments.hpp"
 
 #include "entry.h"
 #include "classdef.h"
@@ -35,7 +36,6 @@
 #include "util.h"
 #include "message.h"
 #include "defargs.h"
-#include "arguments.h"
 #include "filedef.h"
 #include "filename.h"
 #include "section.h"

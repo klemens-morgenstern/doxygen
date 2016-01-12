@@ -7,10 +7,11 @@ local boost-lib-loc = [ modules.peek user-config : boost-lib-loc ] ; #locatino o
 local postfix = [ modules.peek user-config : boost-lib-postfix ] ; # the postfix to the libraries, e.g. -mgw-mt-1_60
 
 project mw.test.gen :
-	source-location test_src	
+	source-location src	
 	: requirements
 	<include>./libs/spirit/include
 	<include>./libs/mw.test.data/include
+	<include>./libs/cereal/include
 	<include>$(boost-inc)
 	<include>./include
 	<toolset>gcc:<cxxflags>-std=gnu++1y
@@ -25,6 +26,11 @@ project mw.test.gen :
 	
 build-project translations ;	
 	
-exe test : main.cpp ;
+#exe test : main.cpp ;
+
+import lex ;
+
+
+lib test : lang/code.ll : <include>./qtools <include>./src ;
 
 install trc : translations//translations ;

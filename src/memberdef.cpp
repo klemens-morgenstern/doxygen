@@ -19,6 +19,8 @@
 #include <assert.h>
 #include "md5.h"
 #include "memberdef.h"
+
+#include "arguments.hpp"
 #include "membername.h"
 #include "doxygen.h"
 #include "util.h"
@@ -39,7 +41,6 @@
 #include "objcache.h"
 
 #include "vhdldocgen.h"
-#include "arguments.h"
 #include "memberlist.h"
 #include "namespacedef.h"
 #include "filedef.h"

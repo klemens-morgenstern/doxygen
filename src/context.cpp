@@ -17,6 +17,8 @@
 #include <qdir.h>
 
 #include "context.h"
+
+#include "arguments.hpp"
 #include "config.h"
 #include "index.h"
 #include "classlist.h"
@@ -43,7 +45,6 @@
 #include "membername.h"
 #include "parserintf.h"
 #include "portable.h"
-#include "arguments.h"
 #include "groupdef.h"
 #include "searchindex.h"
 

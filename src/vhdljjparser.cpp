@@ -14,6 +14,8 @@
 #include <qfileinfo.h>
 #include <qstringlist.h>
 #include "vhdljjparser.h"
+
+#include "arguments.hpp"
 #include "vhdlcode.h"
 #include "vhdldocgen.h"
 #include "message.h"
@@ -26,7 +28,6 @@
 #include "definition.h"
 #include "searchindex.h"
 #include "outputlist.h"
-#include "arguments.h"
 #include "types.h"
 #include "VhdlParserIF.h"
 
