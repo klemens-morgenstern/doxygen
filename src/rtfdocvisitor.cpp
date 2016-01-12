@@ -19,6 +19,8 @@
 #include <qfileinfo.h>
 
 #include "rtfdocvisitor.h"
+
+#include "config.hpp"
 #include "docparser.h"
 #include "language.h"
 #include "doxygen.h"
@@ -32,7 +34,6 @@
 #include "msc.h"
 #include "dia.h"
 #include "filedef.h"
-#include "config.h"
 #include "htmlentity.h"
 #include "plantuml.h"
 

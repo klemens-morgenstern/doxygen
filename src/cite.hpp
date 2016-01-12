@@ -3,6 +3,7 @@
  * 
  *
  * Copyright (C) 2011 by Dimitri van Heesch
+ * Copyright (C) 2016 by Klemens D. Morgenstern
  * Based on a patch by David Munger
  *
  * Permission to use, copy, modify, and distribute this software and its

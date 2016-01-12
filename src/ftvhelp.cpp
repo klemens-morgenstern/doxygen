@@ -25,7 +25,8 @@
 #include <qfileinfo.h>
 
 #include "ftvhelp.h"
-#include "config.h"
+
+#include "config.hpp"
 #include "message.h"
 #include "doxygen.h"
 #include "language.h"

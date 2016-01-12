@@ -17,7 +17,6 @@
 #include "qhp.h"
 #include "qhpxmlwriter.h"
 #include "message.h"
-#include "config.h"
 #include "memberdef.h"
 #include "groupdef.h"
 #include "doxygen.h"
@@ -26,6 +25,7 @@
 #include <qstringlist.h>
 #include <string.h>
 #include <qfile.h>
+#include "config.hpp"
 
 static QCString makeFileName(const char * withoutExtension)
 {

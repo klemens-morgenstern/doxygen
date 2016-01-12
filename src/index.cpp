@@ -29,7 +29,6 @@
 #include "message.h"
 #include "index.h"
 #include "doxygen.h"
-#include "config.h"
 #include "filedef.h"
 #include "outputlist.h"
 #include "util.h"
@@ -45,6 +44,7 @@
 #include "layout.h"
 #include "memberlist.h"
 #include "classlist.h"
+#include "config.hpp"
 #include "namespacedef.h"
 #include "filename.h"
 

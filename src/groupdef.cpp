@@ -23,6 +23,7 @@
 #include "classdef.h"
 #include "filedef.h"
 #include "classlist.h"
+#include "config.hpp"
 #include "outputlist.h"
 #include "namespacedef.h"
 #include "language.h"
@@ -40,7 +41,6 @@
 #include "entry.h"
 #include "membername.h"
 #include "dirdef.h"
-#include "config.h"
 
 //---------------------------------------------------------------------------
 

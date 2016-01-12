@@ -21,13 +21,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#include "config.h"
 #include "definition.h"
 #include "doxygen.h"
 #include "language.h"
 #include "message.h"
 #include "outputlist.h"
 #include "code.h"
+#include "config.hpp"
 #include "util.h"
 #include "groupdef.h"
 #include "pagedef.h"

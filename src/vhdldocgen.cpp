@@ -36,7 +36,6 @@
 
 #include "arguments.hpp"
 #include "message.h"
-#include "config.h"
 #include "doxygen.h"
 #include "util.h"
 #include "language.h"
@@ -52,6 +51,7 @@
 #include "memberdef.h"
 #include "groupdef.h"
 #include "classlist.h"
+#include "config.hpp"
 #include "namespacedef.h"
 #include "filename.h"
 #include "membergroup.h"

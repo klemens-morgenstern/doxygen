@@ -16,12 +16,13 @@
 #include <qdict.h>
 
 #include "tooltip.h"
+
+#include "config.hpp"
 #include "definition.h"
 #include "outputgen.h"
 #include "util.h"
 #include "filedef.h"
 #include "doxygen.h"
-#include "config.h"
 
 class TooltipManager::Private
 {

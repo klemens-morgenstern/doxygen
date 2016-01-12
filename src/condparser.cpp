@@ -20,7 +20,8 @@
  */
 
 #include "condparser.h"
-#include "config.h"
+
+#include "config.hpp"
 #include "message.h"
 
 // declarations

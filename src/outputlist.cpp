@@ -23,8 +23,9 @@
  */
 
 #include "outputlist.h"
+
+#include "config.hpp"
 #include "outputgen.h"
-#include "config.h"
 #include "message.h"
 #include "definition.h"
 #include "docparser.h"

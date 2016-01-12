@@ -22,11 +22,11 @@
 
 #include "arguments.hpp"
 #include "classlist.h"
+#include "config.hpp"
 #include "entry.h"
 #include "doxygen.h"
 #include "membername.h"
 #include "message.h"
-#include "config.h"
 #include "util.h"
 #include "diagram.h"
 #include "language.h"

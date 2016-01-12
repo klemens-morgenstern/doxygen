@@ -40,8 +40,8 @@
 #include "filename.h"
 #include "membergroup.h"
 #include "dirdef.h"
-#include "config.h"
 #include "clangparser.h"
+#include "config.hpp"
 #include "settings.h"
 
 //---------------------------------------------------------------------------

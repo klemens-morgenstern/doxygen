@@ -18,7 +18,7 @@
 #include "classlist.h"
 
 #include "arguments.hpp"
-#include "config.h"
+#include "config.hpp"
 #include "util.h"
 #include "outputlist.h"
 #include "language.h"

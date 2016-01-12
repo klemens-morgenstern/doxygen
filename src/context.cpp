@@ -19,9 +19,9 @@
 #include "context.h"
 
 #include "arguments.hpp"
-#include "config.h"
 #include "index.h"
 #include "classlist.h"
+#include "config.hpp"
 #include "doxygen.h"
 #include "namespacedef.h"
 #include "filedef.h"

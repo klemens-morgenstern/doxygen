@@ -26,13 +26,13 @@
 #include "diagram.h"
 #include "image.h"
 #include "classdef.h"
-#include "config.h"
 #include "message.h"
 #include "util.h"
 #include "doxygen.h"
 #include "portable.h"
 #include "index.h"
 #include "classlist.h"
+#include "config.hpp"
 
 //-----------------------------------------------------------------------------
 

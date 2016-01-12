@@ -25,6 +25,7 @@
 #include "doxygen.h"
 #include "util.h"
 #include "code.h"
+#include "config.hpp"
 #include "message.h"
 #include "htmlhelp.h"
 #include "language.h"
@@ -44,7 +45,6 @@
 #include "memberlist.h"
 #include "namespacedef.h"
 #include "filedef.h"
-#include "config.h"
 
 //-----------------------------------------------------------------------------
 

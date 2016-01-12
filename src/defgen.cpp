@@ -21,7 +21,6 @@
 #include "defgen.h"
 #include "doxygen.h"
 #include "message.h"
-#include "config.h"
 #include "classlist.h"
 #include "util.h"
 #include "defargs.h"
@@ -36,6 +35,7 @@
 #include <qfile.h>
 #include <qtextstream.h>
 #include "arguments.hpp"
+#include "config.hpp"
 
 #define DEF_DB(x)
 

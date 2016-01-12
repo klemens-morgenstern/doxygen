@@ -19,6 +19,7 @@
 
 #include "memberlist.h"
 #include "classdef.h"
+#include "config.hpp"
 #include "message.h"
 #include "util.h"
 #include "language.h"
@@ -30,7 +31,6 @@
 #include "namespacedef.h"
 #include "filedef.h"
 #include "membergroup.h"
-#include "config.h"
 #include "docparser.h"
 
 MemberList::MemberList() : m_listType(MemberListType_pubMethods)

@@ -14,10 +14,10 @@
  */
 #include "eclipsehelp.h"
 #include "util.h"
-#include "config.h"
 #include "message.h"
 #include "doxygen.h"
 #include <qfile.h>
+#include "config.hpp"
 
 EclipseHelp::EclipseHelp() : m_depth(0), m_endtag(FALSE), m_openTags(0), m_tocfile(0) 
 {

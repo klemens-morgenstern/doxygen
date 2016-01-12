@@ -27,7 +27,8 @@
 #include "qtextcodec.h"
 #include "sortdict.h"
 #include "htmlhelp.h"
-#include "config.h"
+
+#include "config.hpp"
 #include "message.h"
 #include "doxygen.h"
 #include "language.h"

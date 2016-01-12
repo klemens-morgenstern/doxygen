@@ -16,9 +16,10 @@
  */
 
 #include "message.h"
-#include "config.h"
 #include "util.h"
 #include "language.h"
+
+#include "config.hpp"
 #include "lang_cfg.h"
 #include "translator.h"
 #include "translator_en.h"

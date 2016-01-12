@@ -19,8 +19,9 @@
 #include "image.h"
 #include <qfile.h>
 #include <math.h>
+
+#include "config.hpp"
 #include "lodepng.h"
-#include "config.h"
 
 typedef unsigned char  Byte;
 

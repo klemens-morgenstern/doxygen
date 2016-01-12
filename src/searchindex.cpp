@@ -22,7 +22,6 @@
 #include <qregexp.h>
 
 #include "searchindex.h"
-#include "config.h"
 #include "util.h"
 #include "doxygen.h"
 #include "language.h"
@@ -32,6 +31,7 @@
 #include "version.h"
 #include "groupdef.h"
 #include "classlist.h"
+#include "config.hpp"
 #include "filedef.h"
 #include "memberdef.h"
 #include "filename.h"

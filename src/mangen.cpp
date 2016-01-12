@@ -23,10 +23,11 @@
 #include <qdir.h>
 #include "message.h"
 #include "mangen.h"
-#include "config.h"
 #include "util.h"
 #include "doxygen.h"
 #include <string.h>
+
+#include "config.hpp"
 #include "docparser.h"
 #include "mandocvisitor.h"
 #include "language.h"

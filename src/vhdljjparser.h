@@ -11,13 +11,14 @@
 #include <qfile.h>
 #include <qdict.h>
 #include <string>
+
+#include "config.hpp"
 #include "types.h"
 #include "entry.h"
 #include "vhdldocgen.h"
 #include "qstringlist.h"
 #include "vhdlcode.h"
 #include "memberlist.h"
-#include "config.h"
 
 
 

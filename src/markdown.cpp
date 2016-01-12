@@ -46,7 +46,7 @@
 #include "entry.h"
 #include "bufstr.h"
 #include "commentcnv.h"
-#include "config.h"
+#include "config.hpp"
 #include "section.h"
 #include "message.h"
 

@@ -23,14 +23,13 @@
 #include "util.h"
 #include "doxygen.h"
 #include "version.h"
-#include "config.h"
-
 #include <assert.h>
 #include <qxml.h>
 #include <qfile.h>
 #include <qstring.h>
 #include <qfileinfo.h>
 #include <qtextstream.h>
+#include "config.hpp"
 
 static const char layout_default[] =
 #include "layout_default.xml.h"

@@ -15,13 +15,13 @@
 
 #include <stdio.h>
 #include <qdatetime.h>
-#include "config.h"
 #include "util.h"
 #include "debug.h"
 #include "doxygen.h"
 #include "portable.h"
 #include "filedef.h"
 #include "message.h"
+#include "config.hpp"
 
 static QCString outputFormat;
 static const char *warning_str = "warning: ";

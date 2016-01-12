@@ -17,11 +17,11 @@
 
 #include "dia.h"
 #include "portable.h"
-#include "config.h"
 #include "message.h"
 #include "util.h"
 
 #include <qdir.h>
+#include "config.hpp"
 
 static const int maxCmdLine = 40960;
 

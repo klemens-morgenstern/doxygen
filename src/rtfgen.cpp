@@ -24,7 +24,6 @@
 #include <qtextstream.h>
 
 #include "rtfgen.h"
-#include "config.h"
 #include "message.h"
 #include "doxygen.h"
 #include "util.h"
@@ -41,6 +40,7 @@
 #include "portable.h"
 #include "groupdef.h"
 #include "classlist.h"
+#include "config.hpp"
 #include "filename.h"
 #include "namespacedef.h"
 

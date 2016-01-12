@@ -16,8 +16,9 @@
  */
 
 #include "filename.h"
+
+#include "config.hpp"
 #include "util.h"
-#include "config.h"
 
 FileName::FileName(const char *fn,const char *n) : FileList()
 {

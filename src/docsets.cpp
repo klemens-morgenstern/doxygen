@@ -15,11 +15,11 @@
 
 #include <qfile.h>
 #include "docsets.h"
-#include "config.h"
 #include "message.h"
 #include "doxygen.h"
 #include "groupdef.h"
 #include "classdef.h"
+#include "config.hpp"
 #include "filedef.h"
 #include "memberdef.h"
 #include "namespacedef.h"

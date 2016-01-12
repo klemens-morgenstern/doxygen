@@ -16,9 +16,10 @@
 #include <qregexp.h>
 
 #include "pagedef.h"
+
+#include "config.hpp"
 #include "groupdef.h"
 #include "docparser.h"
-#include "config.h"
 #include "util.h"
 #include "outputlist.h"
 #include "doxygen.h"

@@ -1,6 +1,8 @@
 #include "md5.h"
 
 #include "dirdef.h"
+
+#include "config.hpp"
 #include "filename.h"
 #include "doxygen.h"
 #include "util.h"
@@ -10,7 +12,6 @@
 #include "dot.h"
 #include "layout.h"
 #include "ftextstream.h"
-#include "config.h"
 #include "docparser.h"
 
 //----------------------------------------------------------------------

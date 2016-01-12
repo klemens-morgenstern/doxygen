@@ -19,11 +19,12 @@
 #include <string.h>
 
 #include "resourcemgr.h"
+
+#include "config.hpp"
 #include "util.h"
 #include "version.h"
 #include "ftextstream.h"
 #include "message.h"
-#include "config.h"
 
 class ResourceMgr::Private
 {

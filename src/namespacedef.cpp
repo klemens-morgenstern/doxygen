@@ -21,6 +21,7 @@
 #include "language.h"
 #include "classdef.h"
 #include "classlist.h"
+#include "config.hpp"
 #include "memberlist.h"
 #include "doxygen.h"
 #include "message.h"
@@ -29,7 +30,6 @@
 #include "vhdldocgen.h"
 #include "layout.h"
 #include "membergroup.h"
-#include "config.h"
 
 //------------------------------------------------------------------
 

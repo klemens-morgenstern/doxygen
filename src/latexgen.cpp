@@ -21,7 +21,6 @@
 #include "latexgen.h"
 
 #include "cite.hpp"
-#include "config.h"
 #include "message.h"
 #include "doxygen.h"
 #include "util.h"
@@ -35,6 +34,7 @@
 #include "dirdef.h"
 #include "groupdef.h"
 #include "classlist.h"
+#include "config.hpp"
 #include "namespacedef.h"
 #include "filename.h"
 #include "resourcemgr.h"

@@ -21,7 +21,6 @@
 #include <qregexp.h>
 #include "message.h"
 #include "htmlgen.h"
-#include "config.h"
 #include "util.h"
 #include "doxygen.h"
 #include "logos.h"
@@ -41,6 +40,7 @@
 #include "image.h"
 #include "ftvhelp.h"
 #include "bufstr.h"
+#include "config.hpp"
 #include "resourcemgr.h"
 
 

@@ -19,9 +19,10 @@
 #include <qdict.h>
 
 #include "htags.h"
+
+#include "config.hpp"
 #include "util.h"
 #include "message.h"
-#include "config.h"
 #include "portable.h"
 
 

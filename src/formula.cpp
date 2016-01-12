@@ -21,10 +21,11 @@
 #include <qdir.h>
 
 #include "formula.h"
+
+#include "config.hpp"
 #include "image.h"
 #include "util.h"
 #include "message.h"
-#include "config.h"
 #include "portable.h"
 #include "index.h"
 #include "doxygen.h"

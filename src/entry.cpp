@@ -20,12 +20,12 @@
 #include "entry.h"
 
 #include "arguments.hpp"
+#include "config.hpp"
 #include "marshal.h"
 #include "util.h"
 #include "section.h"
 #include "doxygen.h"
 #include "filestorage.h"
-#include "config.h"
 //------------------------------------------------------------------
 
 #define HEADER ('D'<<24)+('O'<<16)+('X'<<8)+'!'
