@@ -491,7 +491,7 @@ static QCString convertFileId2Var(const QCString &fileId)
 static bool generateJSTree(NavIndexEntryList &navIndex,FTextStream &t, 
                            const QList<FTVNode> &nl,int level,bool &first)
 {
-  static QCString htmlOutput = Config_getString("HTML_OUTPUT");
+  static QCString htmlOutput = DOXY_CONFIG_GET_STRING("HTML_OUTPUT");
   QCString indentStr;
   indentStr.fill(' ',level*2);
   bool found=FALSE;
@@ -580,7 +580,7 @@ static bool generateJSTree(NavIndexEntryList &navIndex,FTextStream &t,
 
 static void generateJSNavTree(const QList<FTVNode> &nodeList)
 {
-  QCString htmlOutput = Config_getString("HTML_OUTPUT");
+  QCString htmlOutput = DOXY_CONFIG_GET_STRING("HTML_OUTPUT");
   QFile f(htmlOutput+"/navtreedata.js");
   NavIndexEntryList navIndex;
   if (f.open(IO_WriteOnly) /*&& fidx.open(IO_WriteOnly)*/)
@@ -592,7 +592,7 @@ static void generateJSNavTree(const QList<FTVNode> &nodeList)
     t << "var NAVTREE =" << endl;
     t << "[" << endl;
     t << "  [ ";
-    QCString &projName = Config_getString("PROJECT_NAME");
+    QCString &projName = DOXY_CONFIG_GET_STRING("PROJECT_NAME");
     if (projName.isEmpty())
     {
       if (Doxygen::mainPage && !Doxygen::mainPage->title().isEmpty()) // Use title of main page as root
@@ -690,7 +690,7 @@ static void generateJSNavTree(const QList<FTVNode> &nodeList)
 // new style images
 void FTVHelp::generateTreeViewImages()
 {
-  QCString dname=Config_getString("HTML_OUTPUT");
+  QCString dname=DOXY_CONFIG_GET_STRING("HTML_OUTPUT");
   const ResourceMgr &rm = ResourceMgr::instance();
   rm.copyResource("doc.luma",dname);
   rm.copyResource("folderopen.luma",dname);
@@ -703,7 +703,7 @@ void FTVHelp::generateTreeViewImages()
 // new style scripts
 void FTVHelp::generateTreeViewScripts()
 {
-  QCString htmlOutput = Config_getString("HTML_OUTPUT");
+  QCString htmlOutput = DOXY_CONFIG_GET_STRING("HTML_OUTPUT");
 
   // generate navtree.js & navtreeindex.js
   generateJSNavTree(m_indentNodes[0]);
@@ -716,7 +716,7 @@ void FTVHelp::generateTreeViewScripts()
 // write tree inside page
 void FTVHelp::generateTreeViewInline(FTextStream &t)
 {
-  int preferredNumEntries = Config_getInt("HTML_INDEX_NUM_ENTRIES");
+  int preferredNumEntries = DOXY_CONFIG_GET_INT("HTML_INDEX_NUM_ENTRIES");
   t << "<div class=\"directory\">\n";
   QListIterator<FTVNode> li(m_indentNodes[0]);
   FTVNode *n;

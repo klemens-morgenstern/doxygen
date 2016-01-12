@@ -557,7 +557,7 @@ void generateDEFForFile(FileDef *fd,FTextStream &t)
 
 void generateDEF()
 {
-  QCString outputDirectory = Config_getString("OUTPUT_DIRECTORY");
+  QCString outputDirectory = DOXY_CONFIG_GET_STRING("OUTPUT_DIRECTORY");
   if (outputDirectory.isEmpty())
   {
     outputDirectory=QDir::currentDirPath().utf8();

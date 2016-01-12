@@ -410,7 +410,7 @@ void HtmlDocVisitor::visit(DocVerbatim *s)
 
         forceEndParagraph(s);
         fileName.sprintf("%s%d%s", 
-            (Config_getString("HTML_OUTPUT")+"/inline_dotgraph_").data(), 
+            (DOXY_CONFIG_GET_STRING("HTML_OUTPUT")+"/inline_dotgraph_").data(), 
             dotindex++,
             ".dot"
            );
@@ -431,7 +431,7 @@ void HtmlDocVisitor::visit(DocVerbatim *s)
           visitPostCaption(m_t, s);
           m_t << "</div>" << endl;
 
-          if (Config_getBool("DOT_CLEANUP")) file.remove();
+          if (DOXY_CONFIG_GET_BOOL("DOT_CLEANUP")) file.remove();
         }
         forceStartParagraph(s);
       }
@@ -444,7 +444,7 @@ void HtmlDocVisitor::visit(DocVerbatim *s)
         QCString baseName(4096);
 
         baseName.sprintf("%s%d", 
-            (Config_getString("HTML_OUTPUT")+"/inline_mscgraph_").data(), 
+            (DOXY_CONFIG_GET_STRING("HTML_OUTPUT")+"/inline_mscgraph_").data(), 
             mscindex++
             );
         QFile file(baseName+".msc");
@@ -468,7 +468,7 @@ void HtmlDocVisitor::visit(DocVerbatim *s)
           visitPostCaption(m_t, s);
           m_t << "</div>" << endl;
 
-          if (Config_getBool("DOT_CLEANUP")) file.remove();
+          if (DOXY_CONFIG_GET_BOOL("DOT_CLEANUP")) file.remove();
         }
         forceStartParagraph(s);
       }
@@ -477,7 +477,7 @@ void HtmlDocVisitor::visit(DocVerbatim *s)
       {
         forceEndParagraph(s);
 
-        static QCString htmlOutput = Config_getString("HTML_OUTPUT");
+        static QCString htmlOutput = DOXY_CONFIG_GET_STRING("HTML_OUTPUT");
         QCString baseName = writePlantUMLSource(htmlOutput,s->exampleFile(),s->text());
         m_t << "<div align=\"center\">" << endl;
         writePlantUMLFile(baseName,s->relPath(),s->context());
@@ -646,7 +646,7 @@ void HtmlDocVisitor::visit(DocFormula *f)
     m_t << "<p class=\"formulaDsp\">" << endl;
   }
 
-  if (Config_getBool("USE_MATHJAX"))
+  if (DOXY_CONFIG_GET_BOOL("USE_MATHJAX"))
   {
     QCString text = f->text();
     bool closeInline = FALSE;
@@ -1963,7 +1963,7 @@ void HtmlDocVisitor::writeDotFile(const QCString &fn,const QCString &relPath,
     baseName=baseName.left(i);
   }
   baseName.prepend("dot_");
-  QCString outDir = Config_getString("HTML_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("HTML_OUTPUT");
   writeDotGraphFromFile(fn,outDir,baseName,GOF_BITMAP);
   writeDotImageMapFromFile(m_t,fn,outDir,relPath,baseName,context);
 }
@@ -1983,7 +1983,7 @@ void HtmlDocVisitor::writeMscFile(const QCString &fileName,
     baseName=baseName.left(i);
   }
   baseName.prepend("msc_");
-  QCString outDir = Config_getString("HTML_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("HTML_OUTPUT");
   QCString imgExt = getDotImageExtension();
   MscOutputFormat mscFormat = MSC_BITMAP;
   if ("svg" == imgExt)
@@ -2007,7 +2007,7 @@ void HtmlDocVisitor::writeDiaFile(const QCString &fileName,
     baseName=baseName.left(i);
   }
   baseName.prepend("dia_");
-  QCString outDir = Config_getString("HTML_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("HTML_OUTPUT");
   writeDiaGraphFromFile(fileName,outDir,baseName,DIA_BITMAP);
 
   m_t << "<img src=\"" << relPath << baseName << ".png" << "\" />" << endl;
@@ -2027,7 +2027,7 @@ void HtmlDocVisitor::writePlantUMLFile(const QCString &fileName,
   {
     baseName=baseName.left(i);
   }
-  static QCString outDir = Config_getString("HTML_OUTPUT");
+  static QCString outDir = DOXY_CONFIG_GET_STRING("HTML_OUTPUT");
   QCString imgExt = getDotImageExtension();
   if (imgExt=="svg")
   {

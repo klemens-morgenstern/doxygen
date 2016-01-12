@@ -243,7 +243,7 @@ void DocbookDocVisitor::visit(DocVerbatim *s)
         m_t << "<para>" << endl;
         name.sprintf("%s%d", "dot_inline_dotgraph_", dotindex);
         baseName.sprintf("%s%d",
-            (Config_getString("DOCBOOK_OUTPUT")+"/inline_dotgraph_").data(),
+            (DOXY_CONFIG_GET_STRING("DOCBOOK_OUTPUT")+"/inline_dotgraph_").data(),
             dotindex++
             );
         QFile file(baseName+".dot");
@@ -266,7 +266,7 @@ void DocbookDocVisitor::visit(DocVerbatim *s)
         m_t << "<para>" << endl;
         name.sprintf("%s%d", "msc_inline_mscgraph_", mscindex);
         baseName.sprintf("%s%d",
-            (Config_getString("DOCBOOK_OUTPUT")+"/inline_mscgraph_").data(),
+            (DOXY_CONFIG_GET_STRING("DOCBOOK_OUTPUT")+"/inline_mscgraph_").data(),
             mscindex++
             );
         QFile file(baseName+".msc");
@@ -285,7 +285,7 @@ void DocbookDocVisitor::visit(DocVerbatim *s)
       break;
     case DocVerbatim::PlantUML:
       {
-        static QCString docbookOutput = Config_getString("DOCBOOK_OUTPUT");
+        static QCString docbookOutput = DOXY_CONFIG_GET_STRING("DOCBOOK_OUTPUT");
         QCString baseName = writePlantUMLSource(docbookOutput,s->exampleFile(),s->text());
         QCString shortName = baseName;
         int i;
@@ -914,7 +914,7 @@ void DocbookDocVisitor::visitPost(DocImage *img)
       m_file=fd->absFilePath();
     }
     QFile inImage(m_file);
-    QFile outImage(Config_getString("DOCBOOK_OUTPUT")+"/"+baseName.data());
+    QFile outImage(DOXY_CONFIG_GET_STRING("DOCBOOK_OUTPUT")+"/"+baseName.data());
     if (inImage.open(IO_ReadOnly))
     {
       if (outImage.open(IO_WriteOnly))
@@ -1221,7 +1221,7 @@ void DocbookDocVisitor::writeMscFile(const QCString &baseName, DocVerbatim *s)
   {
     shortName=shortName.right(shortName.length()-i-1);
   }
-  QCString outDir = Config_getString("DOCBOOK_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("DOCBOOK_OUTPUT");
   writeMscGraphFromFile(baseName+".msc",outDir,shortName,MSC_BITMAP);
   visitPreStart(m_t, s->hasCaption(), shortName, s->width(),s->height());
   visitCaption(this, s->children());
@@ -1236,7 +1236,7 @@ void DocbookDocVisitor::writePlantUMLFile(const QCString &baseName, DocVerbatim 
   {
     shortName=shortName.right(shortName.length()-i-1);
   }
-  QCString outDir = Config_getString("DOCBOOK_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("DOCBOOK_OUTPUT");
   generatePlantUMLOutput(baseName,outDir,PUML_BITMAP);
   visitPreStart(m_t, s->hasCaption(), shortName, s->width(),s->height());
   visitCaption(this, s->children());
@@ -1260,7 +1260,7 @@ void DocbookDocVisitor::startMscFile(const QCString &fileName,
     baseName=baseName.left(i);
   }
   baseName.prepend("msc_");
-  QCString outDir = Config_getString("DOCBOOK_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("DOCBOOK_OUTPUT");
   writeMscGraphFromFile(fileName,outDir,baseName,MSC_BITMAP);
   m_t << "<para>" << endl;
   visitPreStart(m_t, hasCaption, baseName + ".png",  width,  height);
@@ -1281,7 +1281,7 @@ void DocbookDocVisitor::writeDiaFile(const QCString &baseName, DocVerbatim *s)
   {
     shortName=shortName.right(shortName.length()-i-1);
   }
-  QCString outDir = Config_getString("DOCBOOK_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("DOCBOOK_OUTPUT");
   writeDiaGraphFromFile(baseName+".dia",outDir,shortName,DIA_BITMAP);
   visitPreStart(m_t, s->hasCaption(), shortName, s->width(),s->height());
   visitCaption(this, s->children());
@@ -1305,7 +1305,7 @@ void DocbookDocVisitor::startDiaFile(const QCString &fileName,
     baseName=baseName.left(i);
   }
   baseName.prepend("dia_");
-  QCString outDir = Config_getString("DOCBOOK_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("DOCBOOK_OUTPUT");
   writeDiaGraphFromFile(fileName,outDir,baseName,DIA_BITMAP);
   m_t << "<para>" << endl;
   visitPreStart(m_t, hasCaption, baseName + ".png",  width,  height);
@@ -1326,7 +1326,7 @@ void DocbookDocVisitor::writeDotFile(const QCString &baseName, DocVerbatim *s)
   {
     shortName=shortName.right(shortName.length()-i-1);
   }
-  QCString outDir = Config_getString("DOCBOOK_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("DOCBOOK_OUTPUT");
   writeDotGraphFromFile(baseName+".dot",outDir,shortName,GOF_BITMAP);
   visitPreStart(m_t, s->hasCaption(), baseName + ".dot", s->width(),s->height());
   visitCaption(this, s->children());
@@ -1350,7 +1350,7 @@ void DocbookDocVisitor::startDotFile(const QCString &fileName,
     baseName=baseName.left(i);
   }
   baseName.prepend("dot_");
-  QCString outDir = Config_getString("DOCBOOK_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("DOCBOOK_OUTPUT");
   QCString imgExt = getDotImageExtension();
   writeDotGraphFromFile(fileName,outDir,baseName,GOF_BITMAP);
   m_t << "<para>" << endl;

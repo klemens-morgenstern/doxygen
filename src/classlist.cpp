@@ -37,7 +37,7 @@ ClassList::~ClassList()
 
 static int compItems(const ClassDef *c1,const ClassDef *c2)
 {
-  static bool b = Config_getBool("SORT_BY_SCOPE_NAME");
+  static bool b = DOXY_CONFIG_GET_BOOL("SORT_BY_SCOPE_NAME");
   if (b)
   {
      return qstricmp(c1->name(), c2->name());
@@ -65,8 +65,8 @@ ClassListIterator::ClassListIterator(const ClassList &cllist) :
 
 bool ClassSDict::declVisible(const ClassDef::CompoundType *filter) const
 {
-  static bool hideUndocClasses = Config_getBool("HIDE_UNDOC_CLASSES");
-  static bool extractLocalClasses = Config_getBool("EXTRACT_LOCAL_CLASSES");
+  static bool hideUndocClasses = DOXY_CONFIG_GET_BOOL("HIDE_UNDOC_CLASSES");
+  static bool extractLocalClasses = DOXY_CONFIG_GET_BOOL("EXTRACT_LOCAL_CLASSES");
   if (count()>0)
   {
     ClassSDict::Iterator sdi(*this);
@@ -95,7 +95,7 @@ bool ClassSDict::declVisible(const ClassDef::CompoundType *filter) const
 void ClassSDict::writeDeclaration(OutputList &ol,const ClassDef::CompoundType *filter,
                                   const char *header,bool localNames)
 {
-  static bool extractPrivate = Config_getBool("EXTRACT_PRIVATE");
+  static bool extractPrivate = DOXY_CONFIG_GET_BOOL("EXTRACT_PRIVATE");
   if (count()>0)
   {
     ClassSDict::Iterator sdi(*this);
@@ -119,10 +119,10 @@ void ClassSDict::writeDeclaration(OutputList &ol,const ClassDef::CompoundType *f
 
 void ClassSDict::writeDocumentation(OutputList &ol,Definition * container)
 {
-  static bool fortranOpt = Config_getBool("OPTIMIZE_FOR_FORTRAN");
+  static bool fortranOpt = DOXY_CONFIG_GET_BOOL("OPTIMIZE_FOR_FORTRAN");
 
-  static bool inlineGroupedClasses = Config_getBool("INLINE_GROUPED_CLASSES");
-  static bool inlineSimpleClasses = Config_getBool("INLINE_SIMPLE_STRUCTS");
+  static bool inlineGroupedClasses = DOXY_CONFIG_GET_BOOL("INLINE_GROUPED_CLASSES");
+  static bool inlineSimpleClasses = DOXY_CONFIG_GET_BOOL("INLINE_SIMPLE_STRUCTS");
   if (!inlineGroupedClasses && !inlineSimpleClasses) return;
 
   if (count()>0)

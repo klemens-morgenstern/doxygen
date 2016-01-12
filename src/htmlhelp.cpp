@@ -303,7 +303,7 @@ static QDict<QCString> s_languageDict;
  */
 void HtmlHelp::initialize()
 {
-  const char *str = Config_getString("CHM_INDEX_ENCODING");
+  const char *str = DOXY_CONFIG_GET_STRING("CHM_INDEX_ENCODING");
   if (!str) str = "CP1250"; // use safe and likely default
   m_fromUtf8 = portable_iconv_open(str,"UTF-8"); 
   if (m_fromUtf8==(void *)(-1))
@@ -313,7 +313,7 @@ void HtmlHelp::initialize()
   }
 
   /* open the contents file */
-  QCString fName = Config_getString("HTML_OUTPUT") + "/index.hhc";
+  QCString fName = DOXY_CONFIG_GET_STRING("HTML_OUTPUT") + "/index.hhc";
   cf = new QFile(fName);
   if (!cf->open(IO_WriteOnly))
   {
@@ -330,7 +330,7 @@ void HtmlHelp::initialize()
          "<UL>\n";
   
   /* open the contents file */
-  fName = Config_getString("HTML_OUTPUT") + "/index.hhk";
+  fName = DOXY_CONFIG_GET_STRING("HTML_OUTPUT") + "/index.hhk";
   kf = new QFile(fName);
   if (!kf->open(IO_WriteOnly))
   {
@@ -466,7 +466,7 @@ static QCString getLanguageString()
 void HtmlHelp::createProjectFile()
 {
   /* Write the project file */
-  QCString fName = Config_getString("HTML_OUTPUT") + "/index.hhp";
+  QCString fName = DOXY_CONFIG_GET_STRING("HTML_OUTPUT") + "/index.hhp";
   QFile f(fName);
   if (f.open(IO_WriteOnly))
   {
@@ -474,9 +474,9 @@ void HtmlHelp::createProjectFile()
     
     QCString indexName="index"+Doxygen::htmlFileExtension;
     t << "[OPTIONS]\n";
-    if (!Config_getString("CHM_FILE").isEmpty())
+    if (!DOXY_CONFIG_GET_STRING("CHM_FILE").isEmpty())
     {
-      t << "Compiled file=" << Config_getString("CHM_FILE") << "\n";
+      t << "Compiled file=" << DOXY_CONFIG_GET_STRING("CHM_FILE") << "\n";
     }
     t << "Compatibility=1.1\n"
          "Full-text search=Yes\n"
@@ -485,9 +485,9 @@ void HtmlHelp::createProjectFile()
          "Default topic=" << indexName << "\n"
          "Index file=index.hhk\n"
          "Language=" << getLanguageString() << endl;
-    if (Config_getBool("BINARY_TOC")) t << "Binary TOC=YES\n";
-    if (Config_getBool("GENERATE_CHI")) t << "Create CHI file=YES\n";
-    t << "Title=" << recode(Config_getString("PROJECT_NAME")) << endl << endl;
+    if (DOXY_CONFIG_GET_BOOL("BINARY_TOC")) t << "Binary TOC=YES\n";
+    if (DOXY_CONFIG_GET_BOOL("GENERATE_CHI")) t << "Create CHI file=YES\n";
+    t << "Title=" << recode(DOXY_CONFIG_GET_STRING("PROJECT_NAME")) << endl << endl;
     
     t << "[WINDOWS]" << endl;
 
@@ -501,15 +501,15 @@ void HtmlHelp::createProjectFile()
     //       are shown. They can only be shown in case of a binary toc.
     //          dee http://www.mif2go.com/xhtml/htmlhelp_0016_943addingtabsandtoolbarbuttonstohtmlhelp.htm#Rz108x95873
     //       Value has been taken from htmlhelp.h file of the HTML Help Workshop
-    if (Config_getBool("BINARY_TOC"))
+    if (DOXY_CONFIG_GET_BOOL("BINARY_TOC"))
     {
-      t << "main=\"" << recode(Config_getString("PROJECT_NAME")) << "\",\"index.hhc\","
+      t << "main=\"" << recode(DOXY_CONFIG_GET_STRING("PROJECT_NAME")) << "\",\"index.hhc\","
          "\"index.hhk\",\"" << indexName << "\",\"" << 
          indexName << "\",,,,,0x23520,,0x70387e,,,,,,,,0" << endl << endl;
     }
     else
     {
-      t << "main=\"" << recode(Config_getString("PROJECT_NAME")) << "\",\"index.hhc\","
+      t << "main=\"" << recode(DOXY_CONFIG_GET_STRING("PROJECT_NAME")) << "\",\"index.hhc\","
          "\"index.hhk\",\"" << indexName << "\",\"" << 
          indexName << "\",,,,,0x23520,,0x10387e,,,,,,,,0" << endl << endl;
     }
@@ -682,7 +682,7 @@ void HtmlHelp::addIndexItem(Definition *context,MemberDef *md,
 {
   if (md)
   {
-    static bool separateMemberPages = Config_getBool("SEPARATE_MEMBER_PAGES");
+    static bool separateMemberPages = DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES");
     if (context==0) // global member
     {
       if (md->getGroupDef())

@@ -65,7 +65,7 @@ static const char *secLabels[maxLevels] =
 
 static const char *getSectionName(int level)
 {
-  static bool compactLatex = Config_getBool("COMPACT_LATEX");
+  static bool compactLatex = DOXY_CONFIG_GET_BOOL("COMPACT_LATEX");
   int l = level;
   if (compactLatex) l++;
   if (Doxygen::insideMainPage) l--;
@@ -237,7 +237,7 @@ void LatexDocVisitor::visit(DocSymbol *s)
 void LatexDocVisitor::visit(DocURL *u)
 {
   if (m_hide) return;
-  if (Config_getBool("PDF_HYPERLINKS"))
+  if (DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS"))
   {
     m_t << "\\href{";
     if (u->isEmail()) m_t << "mailto:";
@@ -344,7 +344,7 @@ void LatexDocVisitor::visit(DocVerbatim *s)
         QCString fileName(4096);
 
         fileName.sprintf("%s%d%s", 
-            (Config_getString("LATEX_OUTPUT")+"/inline_dotgraph_").data(), 
+            (DOXY_CONFIG_GET_STRING("LATEX_OUTPUT")+"/inline_dotgraph_").data(), 
             dotindex++,
             ".dot"
            );
@@ -362,7 +362,7 @@ void LatexDocVisitor::visit(DocVerbatim *s)
           visitCaption(this, s->children());
           endDotFile(s->hasCaption());
 
-          if (Config_getBool("DOT_CLEANUP")) file.remove();
+          if (DOXY_CONFIG_GET_BOOL("DOT_CLEANUP")) file.remove();
         }
       }
       break;
@@ -372,7 +372,7 @@ void LatexDocVisitor::visit(DocVerbatim *s)
         QCString baseName(4096);
 
         baseName.sprintf("%s%d", 
-            (Config_getString("LATEX_OUTPUT")+"/inline_mscgraph_").data(), 
+            (DOXY_CONFIG_GET_STRING("LATEX_OUTPUT")+"/inline_mscgraph_").data(), 
             mscindex++
            );
         QFile file(baseName+".msc");
@@ -390,13 +390,13 @@ void LatexDocVisitor::visit(DocVerbatim *s)
 
           writeMscFile(baseName, s);
 
-          if (Config_getBool("DOT_CLEANUP")) file.remove();
+          if (DOXY_CONFIG_GET_BOOL("DOT_CLEANUP")) file.remove();
         }
       }
       break;
     case DocVerbatim::PlantUML: 
       {
-        QCString latexOutput = Config_getString("LATEX_OUTPUT");
+        QCString latexOutput = DOXY_CONFIG_GET_STRING("LATEX_OUTPUT");
         QCString baseName = writePlantUMLSource(latexOutput,s->exampleFile(),s->text());
 
         writePlantUMLFile(baseName, s);
@@ -409,7 +409,7 @@ void LatexDocVisitor::visit(DocAnchor *anc)
 {
   if (m_hide) return;
   m_t << "\\label{" << stripPath(anc->file()) << "_" << anc->anchor() << "}%" << endl;
-  if (!anc->file().isEmpty() && Config_getBool("PDF_HYPERLINKS")) 
+  if (!anc->file().isEmpty() && DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS")) 
   {
     m_t << "\\hypertarget{" << stripPath(anc->file()) << "_" << anc->anchor() 
       << "}{}%" << endl;
@@ -787,7 +787,7 @@ void LatexDocVisitor::visitPost(DocSimpleListItem *)
 void LatexDocVisitor::visitPre(DocSection *s)
 {
   if (m_hide) return;
-  if (Config_getBool("PDF_HYPERLINKS"))
+  if (DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS"))
   {
     m_t << "\\hypertarget{" << stripPath(s->file()) << "_" << s->anchor() << "}{}";
   }
@@ -934,7 +934,7 @@ void LatexDocVisitor::visitPre(DocHtmlTable *t)
   if (t->hasCaption())
   {
     DocHtmlCaption *c = t->caption();
-    static bool pdfHyperLinks = Config_getBool("PDF_HYPERLINKS");
+    static bool pdfHyperLinks = DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS");
     if (!c->file().isEmpty() && pdfHyperLinks)
     {
       m_t << "\\hypertarget{" << stripPath(c->file()) << "_" << c->anchor()
@@ -1196,7 +1196,7 @@ void LatexDocVisitor::visitPost(DocInternal *)
 void LatexDocVisitor::visitPre(DocHRef *href)
 {
   if (m_hide) return;
-  if (Config_getBool("PDF_HYPERLINKS"))
+  if (DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS"))
   {
     m_t << "\\href{";
     m_t << href->url();
@@ -1334,7 +1334,7 @@ void LatexDocVisitor::visitPre(DocSecRefItem *ref)
 {
   if (m_hide) return;
   m_t << "\\item \\contentsline{section}{";
-  static bool pdfHyperlinks = Config_getBool("PDF_HYPERLINKS");
+  static bool pdfHyperlinks = DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS");
   if (pdfHyperlinks)
   {
     m_t << "\\hyperlink{" << ref->file() << "_" << ref->anchor() << "}{" ;
@@ -1344,7 +1344,7 @@ void LatexDocVisitor::visitPre(DocSecRefItem *ref)
 void LatexDocVisitor::visitPost(DocSecRefItem *ref) 
 {
   if (m_hide) return;
-  static bool pdfHyperlinks = Config_getBool("PDF_HYPERLINKS");
+  static bool pdfHyperlinks = DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS");
   if (pdfHyperlinks)
   {
     m_t << "}";
@@ -1542,7 +1542,7 @@ void LatexDocVisitor::visitPre(DocXRefItem *x)
   m_t << "}" << endl;
   bool anonymousEnum = x->file()=="@";
   m_t << "\\item[";
-  if (Config_getBool("PDF_HYPERLINKS") && !anonymousEnum)
+  if (DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS") && !anonymousEnum)
   {
     m_t << "\\hyperlink{" << stripPath(x->file()) << "_" << x->anchor() << "}{";
   }
@@ -1630,7 +1630,7 @@ void LatexDocVisitor::filter(const char *str)
 
 void LatexDocVisitor::startLink(const QCString &ref,const QCString &file,const QCString &anchor,bool refToTable)
 {
-  static bool pdfHyperLinks = Config_getBool("PDF_HYPERLINKS");
+  static bool pdfHyperLinks = DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS");
   if (ref.isEmpty() && pdfHyperLinks) // internal PDF link
   {
     if (refToTable)
@@ -1663,7 +1663,7 @@ void LatexDocVisitor::startLink(const QCString &ref,const QCString &file,const Q
 void LatexDocVisitor::endLink(const QCString &ref,const QCString &file,const QCString &anchor)
 {
   m_t << "}";
-  static bool pdfHyperLinks = Config_getBool("PDF_HYPERLINKS");
+  static bool pdfHyperLinks = DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS");
   if (ref.isEmpty() && !pdfHyperLinks)
   {
     m_t << "{";
@@ -1704,7 +1704,7 @@ void LatexDocVisitor::startDotFile(const QCString &fileName,
     baseName=baseName.left(i);
   }
   baseName.prepend("dot_");
-  QCString outDir = Config_getString("LATEX_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("LATEX_OUTPUT");
   QCString name = fileName;
   writeDotGraphFromFile(name,outDir,baseName,GOF_EPS);
   visitPreStart(m_t,hasCaption, baseName, width, height);
@@ -1734,7 +1734,7 @@ void LatexDocVisitor::startMscFile(const QCString &fileName,
   }
   baseName.prepend("msc_");
 
-  QCString outDir = Config_getString("LATEX_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("LATEX_OUTPUT");
   writeMscGraphFromFile(fileName,outDir,baseName,MSC_EPS); 
   visitPreStart(m_t,hasCaption, baseName, width, height);
 }
@@ -1754,7 +1754,7 @@ void LatexDocVisitor::writeMscFile(const QCString &baseName, DocVerbatim *s)
   {
     shortName=shortName.right(shortName.length()-i-1);
   } 
-  QCString outDir = Config_getString("LATEX_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("LATEX_OUTPUT");
   writeMscGraphFromFile(baseName+".msc",outDir,shortName,MSC_EPS);
   visitPreStart(m_t, s->hasCaption(), shortName, s->width(),s->height());
   visitCaption(this, s->children());
@@ -1780,7 +1780,7 @@ void LatexDocVisitor::startDiaFile(const QCString &fileName,
   }
   baseName.prepend("dia_");
 
-  QCString outDir = Config_getString("LATEX_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("LATEX_OUTPUT");
   writeDiaGraphFromFile(fileName,outDir,baseName,DIA_EPS);
   visitPreStart(m_t,hasCaption, baseName, width, height);
 }
@@ -1800,7 +1800,7 @@ void LatexDocVisitor::writeDiaFile(const QCString &baseName, DocVerbatim *s)
   {
     shortName=shortName.right(shortName.length()-i-1);
   }
-  QCString outDir = Config_getString("LATEX_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("LATEX_OUTPUT");
   writeDiaGraphFromFile(baseName+".dia",outDir,shortName,DIA_EPS);
   visitPreStart(m_t, s->hasCaption(), shortName, s->width(), s->height());
   visitCaption(this, s->children());
@@ -1815,7 +1815,7 @@ void LatexDocVisitor::writePlantUMLFile(const QCString &baseName, DocVerbatim *s
   {
     shortName=shortName.right(shortName.length()-i-1);
   }
-  QCString outDir = Config_getString("LATEX_OUTPUT");
+  QCString outDir = DOXY_CONFIG_GET_STRING("LATEX_OUTPUT");
   generatePlantUMLOutput(baseName,outDir,PUML_EPS);
   visitPreStart(m_t, s->hasCaption(), shortName, s->width(), s->height());
   visitCaption(this, s->children());

@@ -58,7 +58,7 @@ NamespaceDef::NamespaceDef(const char *df,int dl,int dc,
   memberGroupSDict = new MemberGroupSDict;
   memberGroupSDict->setAutoDelete(TRUE);
   visited=FALSE;
-  m_subGrouping=Config_getBool("SUBGROUPING");
+  m_subGrouping=DOXY_CONFIG_GET_BOOL("SUBGROUPING");
   if (type && !strcmp("module", type))
   {
     m_type = MODULE;
@@ -129,7 +129,7 @@ void NamespaceDef::insertUsedFile(FileDef *fd)
   if (fd==0) return;
   if (files.find(fd)==-1) 
   {
-    if (Config_getBool("SORT_MEMBER_DOCS"))
+    if (DOXY_CONFIG_GET_BOOL("SORT_MEMBER_DOCS"))
       files.inSort(fd);
     else
       files.append(fd);
@@ -153,7 +153,7 @@ void NamespaceDef::insertClass(ClassDef *cd)
 {
   if (classSDict->find(cd->name())==0)
   {
-    if (Config_getBool("SORT_BRIEF_DOCS"))
+    if (DOXY_CONFIG_GET_BOOL("SORT_BRIEF_DOCS"))
       classSDict->inSort(cd->name(),cd);
     else
       classSDict->append(cd->name(),cd);
@@ -164,7 +164,7 @@ void NamespaceDef::insertNamespace(NamespaceDef *nd)
 {
   if (namespaceSDict->find(nd->name())==0)
   {
-    if (Config_getBool("SORT_MEMBER_DOCS"))
+    if (DOXY_CONFIG_GET_BOOL("SORT_MEMBER_DOCS"))
       namespaceSDict->inSort(nd->name(),nd);
     else
       namespaceSDict->append(nd->name(),nd);
@@ -259,7 +259,7 @@ void NamespaceDef::computeAnchors()
 
 bool NamespaceDef::hasDetailedDescription() const
 {
-  static bool repeatBrief = Config_getBool("REPEAT_BRIEF");
+  static bool repeatBrief = DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF");
   return ((!briefDescription().isEmpty() && repeatBrief) ||
           !documentation().isEmpty());
 }
@@ -361,11 +361,11 @@ void NamespaceDef::writeDetailedDescription(OutputList &ol,const QCString &title
     ol.endGroupHeader();
 
     ol.startTextBlock();
-    if (!briefDescription().isEmpty() && Config_getBool("REPEAT_BRIEF"))
+    if (!briefDescription().isEmpty() && DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF"))
     {
       ol.generateDoc(briefFile(),briefLine(),this,0,briefDescription(),FALSE,FALSE);
     }
-    if (!briefDescription().isEmpty() && Config_getBool("REPEAT_BRIEF") &&
+    if (!briefDescription().isEmpty() && DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF") &&
         !documentation().isEmpty())
     {
       ol.pushGeneratorState();
@@ -434,7 +434,7 @@ void NamespaceDef::endMemberDeclarations(OutputList &ol)
 
 void NamespaceDef::startMemberDocumentation(OutputList &ol)
 {
-  if (Config_getBool("SEPARATE_MEMBER_PAGES"))
+  if (DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES"))
   {
     ol.disable(OutputGenerator::Html);
     Doxygen::suppressDocWarnings = TRUE;
@@ -443,7 +443,7 @@ void NamespaceDef::startMemberDocumentation(OutputList &ol)
 
 void NamespaceDef::endMemberDocumentation(OutputList &ol)
 {
-  if (Config_getBool("SEPARATE_MEMBER_PAGES"))
+  if (DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES"))
   {
     ol.enable(OutputGenerator::Html);
     Doxygen::suppressDocWarnings = FALSE;
@@ -493,7 +493,7 @@ void NamespaceDef::writeAuthorSection(OutputList &ol)
   ol.startGroupHeader();
   ol.parseText(theTranslator->trAuthor(TRUE,TRUE));
   ol.endGroupHeader();
-  ol.parseText(theTranslator->trGeneratedAutomatically(Config_getString("PROJECT_NAME")));
+  ol.parseText(theTranslator->trGeneratedAutomatically(DOXY_CONFIG_GET_STRING("PROJECT_NAME")));
   ol.popGeneratorState();
 }
 
@@ -551,7 +551,7 @@ void NamespaceDef::addNamespaceAttributes(OutputList &ol)
 
 void NamespaceDef::writeDocumentation(OutputList &ol)
 {
-  static bool generateTreeView = Config_getBool("GENERATE_TREEVIEW");
+  static bool generateTreeView = DOXY_CONFIG_GET_BOOL("GENERATE_TREEVIEW");
   //static bool outputJava = Config_getBool("OPTIMIZE_OUTPUT_JAVA");
   //static bool fortranOpt = Config_getBool("OPTIMIZE_FOR_FORTRAN");
 
@@ -690,7 +690,7 @@ void NamespaceDef::writeDocumentation(OutputList &ol)
 
   endFileWithNavPath(this,ol);
 
-  if (Config_getBool("SEPARATE_MEMBER_PAGES"))
+  if (DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES"))
   {
     MemberList *allMemberList = getMemberList(MemberListType_allMembersList);
     if (allMemberList) allMemberList->sort();
@@ -717,7 +717,7 @@ void NamespaceDef::writeMemberPages(OutputList &ol)
 
 void NamespaceDef::writeQuickMemberLinks(OutputList &ol,MemberDef *currentMd) const
 {
-  static bool createSubDirs=Config_getBool("CREATE_SUBDIRS");
+  static bool createSubDirs=DOXY_CONFIG_GET_BOOL("CREATE_SUBDIRS");
 
   ol.writeString("      <div class=\"navtab\">\n");
   ol.writeString("        <table>\n");
@@ -943,7 +943,7 @@ void NamespaceSDict::writeDeclaration(OutputList &ol,const char *title,
 
   if (count()==0) return; // no namespaces in the list
 
-  if (Config_getBool("OPTIMIZE_OUTPUT_VHDL")) return;
+  if (DOXY_CONFIG_GET_BOOL("OPTIMIZE_OUTPUT_VHDL")) return;
  
 
   SDict<NamespaceDef>::Iterator ni(*this);
@@ -1006,7 +1006,7 @@ void NamespaceSDict::writeDeclaration(OutputList &ol,const char *title,
       }
       ol.writeObjectLink(nd->getReference(),nd->getOutputFileBase(),0,name);
       ol.endMemberItem();
-      if (!nd->briefDescription().isEmpty() && Config_getBool("BRIEF_MEMBER_DESC"))
+      if (!nd->briefDescription().isEmpty() && DOXY_CONFIG_GET_BOOL("BRIEF_MEMBER_DESC"))
       {
         ol.startMemberDescription(nd->getOutputFileBase());
         ol.generateDoc(nd->briefFile(),nd->briefLine(),nd,0,nd->briefDescription(),FALSE,FALSE,0,TRUE);
@@ -1038,8 +1038,8 @@ MemberList *NamespaceDef::createMemberList(MemberListType lt)
 
 void NamespaceDef::addMemberToList(MemberListType lt,MemberDef *md)
 {
-  static bool sortBriefDocs = Config_getBool("SORT_BRIEF_DOCS");
-  static bool sortMemberDocs = Config_getBool("SORT_MEMBER_DOCS");
+  static bool sortBriefDocs = DOXY_CONFIG_GET_BOOL("SORT_BRIEF_DOCS");
+  static bool sortMemberDocs = DOXY_CONFIG_GET_BOOL("SORT_MEMBER_DOCS");
   MemberList *ml = createMemberList(lt);
   ml->setNeedsSorting(
       ((ml->listType()&MemberListType_declarationLists) && sortBriefDocs) ||
@@ -1107,7 +1107,7 @@ bool NamespaceDef::isLinkableInProject() const
 {
   int i = name().findRev("::");
   if (i==-1) i=0; else i+=2;
-  static bool extractAnonNs = Config_getBool("EXTRACT_ANON_NSPACES");
+  static bool extractAnonNs = DOXY_CONFIG_GET_BOOL("EXTRACT_ANON_NSPACES");
   if (extractAnonNs &&                             // extract anonymous ns
       name().mid(i,20)=="anonymous_namespace{"     // correct prefix
      )                                             // not disabled by config

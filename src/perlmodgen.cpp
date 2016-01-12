@@ -2209,7 +2209,7 @@ bool PerlModGenerator::createOutputFile(QFile &f, const char *s)
 
 bool PerlModGenerator::createOutputDir(QDir &perlModDir)
 {
-  QCString outputDirectory = Config_getString("OUTPUT_DIRECTORY");
+  QCString outputDirectory = DOXY_CONFIG_GET_STRING("OUTPUT_DIRECTORY");
   if (outputDirectory.isEmpty())
   {
     outputDirectory=QDir::currentDirPath().utf8();
@@ -2446,8 +2446,8 @@ bool PerlModGenerator::generateDoxyRules()
   if (!createOutputFile(doxyRules, pathDoxyRules))
     return false;
 
-  bool perlmodLatex = Config_getBool("PERLMOD_LATEX");
-  QCString prefix = Config_getString("PERLMOD_MAKEVAR_PREFIX");
+  bool perlmodLatex = DOXY_CONFIG_GET_BOOL("PERLMOD_LATEX");
+  QCString prefix = DOXY_CONFIG_GET_STRING("PERLMOD_MAKEVAR_PREFIX");
 
   FTextStream doxyRulesStream(&doxyRules);
   doxyRulesStream <<
@@ -2543,8 +2543,8 @@ bool PerlModGenerator::generateMakefile()
   if (!createOutputFile(makefile, pathMakefile))
     return false;
 
-  bool perlmodLatex = Config_getBool("PERLMOD_LATEX");
-  QCString prefix = Config_getString("PERLMOD_MAKEVAR_PREFIX");
+  bool perlmodLatex = DOXY_CONFIG_GET_BOOL("PERLMOD_LATEX");
+  QCString prefix = DOXY_CONFIG_GET_STRING("PERLMOD_MAKEVAR_PREFIX");
 
   FTextStream makefileStream(&makefile);
   makefileStream <<
@@ -2924,7 +2924,7 @@ void PerlModGenerator::generate()
   if (!createOutputDir(perlModDir))
     return;
 
-  bool perlmodLatex = Config_getBool("PERLMOD_LATEX");
+  bool perlmodLatex = DOXY_CONFIG_GET_BOOL("PERLMOD_LATEX");
 
   QCString perlModAbsPath = perlModDir.absPath().utf8();
   pathDoxyDocsPM = perlModAbsPath + "/DoxyDocs.pm";
@@ -2960,7 +2960,7 @@ void PerlModGenerator::generate()
 
 void generatePerlMod()
 {
-  PerlModGenerator pmg(Config_getBool("PERLMOD_PRETTY"));
+  PerlModGenerator pmg(DOXY_CONFIG_GET_BOOL("PERLMOD_PRETTY"));
   pmg.generate();
 }
 

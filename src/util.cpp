@@ -251,8 +251,8 @@ void writePageRef(OutputDocInterface &od,const char *cn,const char *mn)
   
   od.disable(OutputGenerator::Html);
   od.disable(OutputGenerator::Man);
-  if (Config_getBool("PDF_HYPERLINKS")) od.disable(OutputGenerator::Latex);
-  if (Config_getBool("RTF_HYPERLINKS")) od.disable(OutputGenerator::RTF);
+  if (DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS")) od.disable(OutputGenerator::Latex);
+  if (DOXY_CONFIG_GET_BOOL("RTF_HYPERLINKS")) od.disable(OutputGenerator::RTF);
   od.startPageRef();
   od.docify(theTranslator->trPageAbbreviation());
   od.endPageRef(cn,mn);
@@ -298,7 +298,7 @@ static QCString stripFromPath(const QCString &path,QStrList &l)
  */
 QCString stripFromPath(const QCString &path)
 {
-  return stripFromPath(path,Config_getList("STRIP_FROM_PATH"));
+  return stripFromPath(path,DOXY_CONFIG_GET_LIST("STRIP_FROM_PATH"));
 }
 
 /*! strip part of \a path if it matches
@@ -306,7 +306,7 @@ QCString stripFromPath(const QCString &path)
  */
 QCString stripFromIncludePath(const QCString &path)
 {
-  return stripFromPath(path,Config_getList("STRIP_FROM_INC_PATH"));
+  return stripFromPath(path,DOXY_CONFIG_GET_LIST("STRIP_FROM_INC_PATH"));
 }
 
 /*! try to determine if \a name is a source or a header file name by looking
@@ -1571,7 +1571,7 @@ ClassDef *getResolvedClass(Definition *scope,
     QCString *pResolvedType
     )
 {
-  static bool optimizeOutputVhdl = Config_getBool("OPTIMIZE_OUTPUT_VHDL");
+  static bool optimizeOutputVhdl = DOXY_CONFIG_GET_BOOL("OPTIMIZE_OUTPUT_VHDL");
   g_resolvedTypedefs.clear();
   if (scope==0 ||
       (scope->definitionType()!=Definition::TypeClass && 
@@ -1655,8 +1655,8 @@ static const char virtualScope[] = { 'v', 'i', 'r', 't', 'u', 'a', 'l', ':' };
 // Note: this function is not reentrant due to the use of static buffer!
 QCString removeRedundantWhiteSpace(const QCString &s)
 {
-  static bool cliSupport = Config_getBool("CPP_CLI_SUPPORT");
-  static bool vhdl = Config_getBool("OPTIMIZE_OUTPUT_VHDL");
+  static bool cliSupport = DOXY_CONFIG_GET_BOOL("CPP_CLI_SUPPORT");
+  static bool vhdl = DOXY_CONFIG_GET_BOOL("OPTIMIZE_OUTPUT_VHDL");
    
   if (s.isEmpty() || vhdl) return s;
   static GrowBuf growBuf;
@@ -2348,8 +2348,8 @@ QCString getFileFilter(const char* name,bool isSourceCode)
   // sanity check
   if (name==0) return "";
 
-  QStrList& filterSrcList = Config_getList("FILTER_SOURCE_PATTERNS");
-  QStrList& filterList    = Config_getList("FILTER_PATTERNS");
+  QStrList& filterSrcList = DOXY_CONFIG_GET_LIST("FILTER_SOURCE_PATTERNS");
+  QStrList& filterList    = DOXY_CONFIG_GET_LIST("FILTER_PATTERNS");
 
   QCString filterName;
   bool found=FALSE;
@@ -2363,7 +2363,7 @@ QCString getFileFilter(const char* name,bool isSourceCode)
   }
   if (!found)
   { // then use the generic input filter
-    return Config_getString("INPUT_FILTER");
+    return DOXY_CONFIG_GET_STRING("INPUT_FILTER");
   }
   else
   {
@@ -2375,7 +2375,7 @@ QCString getFileFilter(const char* name,bool isSourceCode)
 QCString transcodeCharacterStringToUTF8(const QCString &input)
 {
   bool error=FALSE;
-  static QCString inputEncoding = Config_getString("INPUT_ENCODING");
+  static QCString inputEncoding = DOXY_CONFIG_GET_STRING("INPUT_ENCODING");
   const char *outputEncoding = "UTF-8";
   if (inputEncoding.isEmpty() || qstricmp(inputEncoding,outputEncoding)==0) return input;
   int inputSize=input.length();
@@ -5132,7 +5132,7 @@ QCString substituteKeywords(const QCString &s,const char *title,
   result = substitute(result,"$projectname",projName);
   result = substitute(result,"$projectnumber",projNum);
   result = substitute(result,"$projectbrief",projBrief);
-  result = substitute(result,"$projectlogo",stripPath(Config_getString("PROJECT_LOGO")));
+  result = substitute(result,"$projectlogo",stripPath(DOXY_CONFIG_GET_STRING("PROJECT_LOGO")));
   return result;
 }
 
@@ -5145,7 +5145,7 @@ QCString substituteKeywords(const QCString &s,const char *title,
 int getPrefixIndex(const QCString &name)
 {
   if (name.isEmpty()) return 0;
-  static QStrList &sl = Config_getList("IGNORE_PREFIX");
+  static QStrList &sl = DOXY_CONFIG_GET_LIST("IGNORE_PREFIX");
   char *s = sl.first();
   while (s)
   {
@@ -5242,8 +5242,8 @@ bool hasVisibleRoot(BaseClassList *bcl)
 // note that this function is not reentrant due to the use of static growBuf!
 QCString escapeCharsInString(const char *name,bool allowDots,bool allowUnderscore)
 {
-  static bool caseSenseNames = Config_getBool("CASE_SENSE_NAMES");
-  static bool allowUnicodeNames = Config_getBool("ALLOW_UNICODE_NAMES");
+  static bool caseSenseNames = DOXY_CONFIG_GET_BOOL("CASE_SENSE_NAMES");
+  static bool allowUnicodeNames = DOXY_CONFIG_GET_BOOL("ALLOW_UNICODE_NAMES");
   static GrowBuf growBuf;
   growBuf.clear();
   char c;
@@ -5354,8 +5354,8 @@ QCString escapeCharsInString(const char *name,bool allowDots,bool allowUnderscor
  */
 QCString convertNameToFile(const char *name,bool allowDots,bool allowUnderscore)
 {
-  static bool shortNames = Config_getBool("SHORT_NAMES");
-  static bool createSubdirs = Config_getBool("CREATE_SUBDIRS");
+  static bool shortNames = DOXY_CONFIG_GET_BOOL("SHORT_NAMES");
+  static bool createSubdirs = DOXY_CONFIG_GET_BOOL("CREATE_SUBDIRS");
   QCString result;
   if (shortNames) // use short names only
   {
@@ -5437,7 +5437,7 @@ QCString convertNameToFile(const char *name,bool allowDots,bool allowUnderscore)
 QCString relativePathToRoot(const char *name)
 {
   QCString result;
-  if (Config_getBool("CREATE_SUBDIRS"))
+  if (DOXY_CONFIG_GET_BOOL("CREATE_SUBDIRS"))
   {
     if (name==0)
     {
@@ -5458,7 +5458,7 @@ QCString relativePathToRoot(const char *name)
 
 void createSubDirs(QDir &d)
 {
-  if (Config_getBool("CREATE_SUBDIRS"))
+  if (DOXY_CONFIG_GET_BOOL("CREATE_SUBDIRS"))
   {
     // create 4096 subdirectories
     int l1,l2;
@@ -6470,10 +6470,10 @@ void addRefItem(const QList<ListItemInfo> *sli,
           &&
           (
            // either not a built-in list or the list is enabled
-           (lii->type!="todo"       || Config_getBool("GENERATE_TODOLIST")) &&
-           (lii->type!="test"       || Config_getBool("GENERATE_TESTLIST")) &&
-           (lii->type!="bug"        || Config_getBool("GENERATE_BUGLIST"))  &&
-           (lii->type!="deprecated" || Config_getBool("GENERATE_DEPRECATEDLIST"))
+           (lii->type!="todo"       || DOXY_CONFIG_GET_BOOL("GENERATE_TODOLIST")) &&
+           (lii->type!="test"       || DOXY_CONFIG_GET_BOOL("GENERATE_TESTLIST")) &&
+           (lii->type!="bug"        || DOXY_CONFIG_GET_BOOL("GENERATE_BUGLIST"))  &&
+           (lii->type!="deprecated" || DOXY_CONFIG_GET_BOOL("GENERATE_DEPRECATEDLIST"))
           )
          )
       {
@@ -6608,13 +6608,13 @@ void filterLatexString(FTextStream &t,const char *str,
         case '>':  t << "$>$";           break;
         case '|':  t << "$\\vert$";      break;
         case '~':  t << "$\\sim$";       break;
-        case '[':  if (Config_getBool("PDF_HYPERLINKS") || insideItem) 
+        case '[':  if (DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS") || insideItem) 
                      t << "\\mbox{[}"; 
                    else
                      t << "[";
                    break;
         case ']':  if (pc=='[') t << "$\\,$";
-                     if (Config_getBool("PDF_HYPERLINKS") || insideItem)
+                     if (DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS") || insideItem)
                        t << "\\mbox{]}";
                      else
                        t << "]";             
@@ -6914,7 +6914,7 @@ QCString stripLeadingAndTrailingEmptyLines(const QCString &s,int &docLine)
 void stringToSearchIndex(const QCString &docBaseUrl,const QCString &title,
     const QCString &str,bool priority,const QCString &anchor)
 {
-  static bool searchEngine = Config_getBool("SEARCHENGINE");
+  static bool searchEngine = DOXY_CONFIG_GET_BOOL("SEARCHENGINE");
   if (searchEngine)
   {
     Doxygen::searchIndex->setCurrentDoc(title,docBaseUrl,anchor);
@@ -7744,7 +7744,7 @@ bool readInputFile(const char *fileName,BufStr &inBuf,bool filter,bool isSourceC
   {
     // do character transcoding if needed.
     transcodeCharacterBuffer(fileName,inBuf,inBuf.curPos(),
-        Config_getString("INPUT_ENCODING"),"UTF-8");
+        DOXY_CONFIG_GET_STRING("INPUT_ENCODING"),"UTF-8");
   }
 
   //inBuf.addChar('\n'); /* to prevent problems under Windows ? */
@@ -7850,7 +7850,7 @@ void writeSummaryLink(OutputList &ol,const char *label,const char *title,
 
 QCString externalLinkTarget()
 {
-  static bool extLinksInWindow = Config_getBool("EXT_LINKS_IN_WINDOW");
+  static bool extLinksInWindow = DOXY_CONFIG_GET_BOOL("EXT_LINKS_IN_WINDOW");
   if (extLinksInWindow) return "target=\"_blank\" "; else return "";
 }
 
@@ -7889,9 +7889,9 @@ QCString externalRef(const QCString &relPath,const QCString &ref,bool href)
  */
 void writeColoredImgData(const char *dir,ColoredImgDataItem data[])
 {
-  static int hue   = Config_getInt("HTML_COLORSTYLE_HUE");
-  static int sat   = Config_getInt("HTML_COLORSTYLE_SAT");
-  static int gamma = Config_getInt("HTML_COLORSTYLE_GAMMA");
+  static int hue   = DOXY_CONFIG_GET_INT("HTML_COLORSTYLE_HUE");
+  static int sat   = DOXY_CONFIG_GET_INT("HTML_COLORSTYLE_SAT");
+  static int gamma = DOXY_CONFIG_GET_INT("HTML_COLORSTYLE_GAMMA");
   while (data->name)
   {
     QCString fileName;
@@ -7924,9 +7924,9 @@ QCString replaceColorMarkers(const char *str)
   if (s.isEmpty()) return result;
   static QRegExp re("##[0-9A-Fa-f][0-9A-Fa-f]");
   static const char hex[] = "0123456789ABCDEF";
-  static int hue   = Config_getInt("HTML_COLORSTYLE_HUE");
-  static int sat   = Config_getInt("HTML_COLORSTYLE_SAT");
-  static int gamma = Config_getInt("HTML_COLORSTYLE_GAMMA");
+  static int hue   = DOXY_CONFIG_GET_INT("HTML_COLORSTYLE_HUE");
+  static int sat   = DOXY_CONFIG_GET_INT("HTML_COLORSTYLE_SAT");
+  static int gamma = DOXY_CONFIG_GET_INT("HTML_COLORSTYLE_GAMMA");
   int i,l,sl=s.length(),p=0;
   while ((i=re.match(s,p,&l))!=-1)
   {
@@ -8098,8 +8098,8 @@ QCString correctURL(const QCString &url,const QCString &relPath)
 
 bool protectionLevelVisible(Protection prot)
 {
-  static bool extractPrivate = Config_getBool("EXTRACT_PRIVATE");
-  static bool extractPackage = Config_getBool("EXTRACT_PACKAGE");
+  static bool extractPrivate = DOXY_CONFIG_GET_BOOL("EXTRACT_PRIVATE");
+  static bool extractPackage = DOXY_CONFIG_GET_BOOL("EXTRACT_PACKAGE");
 
   return (prot!=Private && prot!=Package)  || 
          (prot==Private && extractPrivate) || 
@@ -8119,7 +8119,7 @@ QCString stripIndentation(const QCString &s)
   int indent=0;
   int minIndent=1000000; // "infinite"
   bool searchIndent=TRUE;
-  static int tabSize=Config_getInt("TAB_SIZE");
+  static int tabSize=DOXY_CONFIG_GET_INT("TAB_SIZE");
   while ((c=*p++))
   {
     if      (c=='\t') indent+=tabSize - (indent%tabSize);
@@ -8177,7 +8177,7 @@ QCString stripIndentation(const QCString &s)
 
 bool fileVisibleInIndex(FileDef *fd,bool &genSourceFile)
 {
-  static bool allExternals = Config_getBool("ALLEXTERNALS");
+  static bool allExternals = DOXY_CONFIG_GET_BOOL("ALLEXTERNALS");
   bool isDocFile = fd->isDocumentationFile();
   genSourceFile = !isDocFile && fd->generateSourceFile();
   return ( ((allExternals && fd->isLinkable()) ||
@@ -8189,8 +8189,8 @@ bool fileVisibleInIndex(FileDef *fd,bool &genSourceFile)
 
 void addDocCrossReference(MemberDef *src,MemberDef *dst)
 {
-  static bool referencedByRelation = Config_getBool("REFERENCED_BY_RELATION");
-  static bool referencesRelation   = Config_getBool("REFERENCES_RELATION");
+  static bool referencedByRelation = DOXY_CONFIG_GET_BOOL("REFERENCED_BY_RELATION");
+  static bool referencesRelation   = DOXY_CONFIG_GET_BOOL("REFERENCES_RELATION");
 
   //printf("--> addDocCrossReference src=%s,dst=%s\n",src->name().data(),dst->name().data());
   if (dst->isTypedef() || dst->isEnumerate()) return; // don't add types
@@ -8334,7 +8334,7 @@ bool namespaceHasVisibleChild(NamespaceDef *nd,bool includeClasses)
 
 bool classVisibleInIndex(ClassDef *cd)
 {
-  static bool allExternals = Config_getBool("ALLEXTERNALS");
+  static bool allExternals = DOXY_CONFIG_GET_BOOL("ALLEXTERNALS");
   return (allExternals && cd->isLinkable()) || cd->isLinkableInProject();
 }
 
@@ -8383,7 +8383,7 @@ void convertProtectionLevel(
                    int *outListType2
                   )
 {
-  static bool extractPrivate = Config_getBool("EXTRACT_PRIVATE");
+  static bool extractPrivate = DOXY_CONFIG_GET_BOOL("EXTRACT_PRIVATE");
   // default representing 1-1 mapping
   *outListType1=inListType;
   *outListType2=-1;
@@ -8562,7 +8562,7 @@ bool mainPageHasTitle()
 
 QCString getDotImageExtension(void)
 {
-  QCString imgExt      = Config_getEnum("DOT_IMAGE_FORMAT");
+  QCString imgExt      = DOXY_CONFIG_GET_ENUM("DOT_IMAGE_FORMAT");
   imgExt = imgExt.replace( QRegExp(":.*"), "" );
   return imgExt;
 }
@@ -8570,7 +8570,7 @@ QCString getDotImageExtension(void)
 void initFilePattern(void)
 {
   // add default pattern if needed
-  QStrList &filePatternList = Config_getList("FILE_PATTERNS");
+  QStrList &filePatternList = DOXY_CONFIG_GET_LIST("FILE_PATTERNS");
   if (filePatternList.isEmpty())
   {
     QDictIterator<int> it( g_extLookup );

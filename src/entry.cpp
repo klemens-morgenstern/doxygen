@@ -217,8 +217,8 @@ void Entry::addSubEntry(Entry *current)
 
 void Entry::reset()
 {
-  static bool entryCallGraph   = Config_getBool("CALL_GRAPH");
-  static bool entryCallerGraph = Config_getBool("CALLER_GRAPH");
+  static bool entryCallGraph   = DOXY_CONFIG_GET_BOOL("CALL_GRAPH");
+  static bool entryCallerGraph = DOXY_CONFIG_GET_BOOL("CALLER_GRAPH");
   //printf("Entry::reset()\n");
   name.resize(0);
   type.resize(0);

@@ -19,263 +19,234 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include <qstrlist.h>
-#include <qdict.h>
-#include <qlist.h>
-#include <qregexp.h>
-#include "ftextstream.h"
+#include <vector>
+#include <string>
+#include <unordered_map>
+#include <list>
+#include <regex>
+#include <ostream>
+#include <boost/range/iterator_range.hpp>
+#include <boost/variant.hpp>
 
-
-/** Abstract base class for any configuration option.
- */
-class ConfigOption
+namespace DoxyFrame
 {
-    friend class Config;
 
-  public:
+/** Abstract base class for any configuration option. */
+struct ConfigOptionAbstract
+{
+	ConfigOptionAbstract(const std::string & name = "", const std::string &doc = "")
+			: m_name(name), m_doc(doc)
+	{}
 
-    /*! The type of option */
-    enum OptionType 
-    { 
-      O_Info,      //<! A section header
-      O_List,      //<! A list of items
-      O_Enum,      //<! A fixed set of items
-      O_String,    //<! A single item
-      O_Int,       //<! An integer value
-      O_Bool,      //<! A boolean value
-      O_Obsolete,  //<! An obsolete option
-      O_Disabled   //<! Disabled compile time option
-    };
-    enum 
-    { 
-     /*! Maximum length of an option in the config file. Used for 
-      *  alignment purposes.
-      */
-      MAX_OPTION_LENGTH = 23  
-    };
-    ConfigOption(OptionType t) : m_kind(t) 
-    {
-      m_spaces.fill(' ',40);
-    }
-    virtual ~ConfigOption()
-    {
-    }
+    std::string m_spaces{' ', 40};
+    std::string m_name;
+    std::string m_doc;
+    std::string m_dependency;
+    std::string m_encoding;
+    std::string m_userComment;
 
-    /*! returns the kind of option this is. */
-    OptionType kind() const { return m_kind; }
-    QCString name() const { return m_name; }
-    QCString docs() const { return m_doc; }
 
-    QCString dependsOn() const { return m_dependency; }
-    void addDependency(const char *dep) { m_dependency = dep; }
-    void setEncoding(const QCString &e) { m_encoding = e; }
-    void setUserComment(const QCString &u) { m_userComment += u; }
+    void write(std::ostream &t, bool v);
+    void write(std::ostream &t, int i);
+    void write(std::ostream &t, const std::string &s);
+    void write(std::ostream &t, const std::vector<std::string> &l);
 
-  protected:
-    virtual void writeTemplate(FTextStream &t,bool sl,bool upd) = 0;
-    virtual void convertStrToVal() {}
-    virtual void substEnvVars() = 0;
-    virtual void init() {}
+    void writeTemplate(std::ostream &t,bool sl,bool upd) {}
 
-    void writeBoolValue(FTextStream &t,bool v);
-    void writeIntValue(FTextStream &t,int i);
-    void writeStringValue(FTextStream &t,QCString &s);
-    void writeStringList(FTextStream &t,QStrList &l);
-
-    QCString m_spaces;
-    QCString m_name;
-    QCString m_doc;
-    QCString m_dependency;
-    QCString m_encoding;
-    QCString m_userComment;
-    OptionType m_kind;
 };
 
-/** Section marker for grouping the configuration options.
- */
-class ConfigInfo : public ConfigOption
-{
-  public:
-    ConfigInfo(const char *name,const char *doc) 
-      : ConfigOption(O_Info)
-    {
-      m_name = name;
-      m_doc = doc;
-    }
-    void writeTemplate(FTextStream &t, bool sl,bool);
-    void substEnvVars() {}
-};
 
 /** Class respresenting a list type option.
  */
-class ConfigList : public ConfigOption
+struct ConfigList : public ConfigOptionAbstract
 {
-  public:
     enum WidgetType { String, File, Dir, FileAndDir };
-    ConfigList(const char *name,const char *doc) 
-      : ConfigOption(O_List)
+    ConfigList(const std::string &name,const std::string &doc) :
+    	ConfigOptionAbstract(name, doc)
     {
-      m_name = name;
-      m_doc = doc;
       m_widgetType = String;
     }
-    void addValue(const char *v) { m_value.append(v); }
-    void setWidgetType(WidgetType w) { m_widgetType = w; }
-    WidgetType widgetType() const { return m_widgetType; }
-    QStrList *valueRef() { return &m_value; }
-    void writeTemplate(FTextStream &t,bool sl,bool);
-    void substEnvVars();
-    void init() { m_value.clear(); }
-  private:
-    QStrList m_value;
+
+    std::vector<std::string> m_value;
     WidgetType m_widgetType;
+
+    void writeTemplate(std::ostream &t,bool sl,bool);
+    void substEnvVars();
+
 };
+
+
+/** Section marker for grouping the configuration options.
+ */
+struct ConfigInfo : public ConfigOptionAbstract
+{
+    ConfigInfo(const std::string &name,const std::string &doc)
+      : ConfigOptionAbstract(name, doc) {}
+
+    void writeTemplate(std::ostream &t, bool sl,bool);
+    void substEnvVars() {}
+};
+
 
 /** Class representing an enum type option.
  */
-class ConfigEnum : public ConfigOption
+struct ConfigEnum : public ConfigOptionAbstract
 {
-  public:
-    ConfigEnum(const char *name,const char *doc,const char *defVal) 
-      : ConfigOption(O_Enum)
+    ConfigEnum(const std::string &name,const std::string & doc,const std::string &defVal)
+      : ConfigOptionAbstract(name, doc), m_value(defVal), m_defValue(defVal)
     {
-      m_name = name;
-      m_doc = doc;
-      m_value = defVal;
-      m_defValue = defVal;
     }
-    void addValue(const char *v) { m_valueRange.append(v); }
-    QStrListIterator iterator() 
-    {
-      return QStrListIterator(m_valueRange);
-    }
-    QCString *valueRef() { return &m_value; }
-    void substEnvVars();
-    void writeTemplate(FTextStream &t,bool sl,bool);
-    void init() { m_value = m_defValue.copy(); }
+    void writeTemplate(std::ostream &t,bool sl,bool);
 
-  private:
-    QStrList m_valueRange;
-    QCString m_value;
-    QCString m_defValue;
+    std::vector<std::string> m_valueRange;
+    std::string m_value;
+    std::string m_defValue;
 };
 
 /** Class representing a string type option.
  */
-class ConfigString : public ConfigOption
+struct ConfigString : public ConfigOptionAbstract
 {
-  public:
     enum WidgetType { String, File, Dir, Image };
-    ConfigString(const char *name,const char *doc) 
-      : ConfigOption(O_String)
-    {
-      m_name = name;
-      m_doc = doc;
-      m_widgetType = String;
-    }
-   ~ConfigString()
+    ConfigString(const std::string &name,const std::string &doc)
+      : ConfigOptionAbstract(name, doc), m_widgetType(String)
     {
     }
-    void setWidgetType(WidgetType w) { m_widgetType = w; }
-    WidgetType widgetType() const { return m_widgetType; }
-    void setDefaultValue(const char *v) { m_defValue = v; }
-    QCString *valueRef() { return &m_value; }
-    void writeTemplate(FTextStream &t,bool sl,bool);
-    void substEnvVars();
-    void init() { m_value = m_defValue.copy(); }
-  
-  private:
-    QCString m_value;
-    QCString m_defValue;
+    void writeTemplate(std::ostream &t,bool sl,bool);
+
+    std::string m_value;
+    std::string m_defValue;
     WidgetType m_widgetType;
 };
 
 /** Class representing an integer type option.
  */
-class ConfigInt : public ConfigOption
+struct ConfigInt : public ConfigOptionAbstract
 {
-  public:
-    ConfigInt(const char *name,const char *doc,int minVal,int maxVal,int defVal) 
-      : ConfigOption(O_Int)
+    ConfigInt(const std::string &name, const std::string &doc, int minVal, int maxVal, int defVal)
+      : ConfigOptionAbstract(name, doc), m_value(defVal), m_defValue(defVal), m_minVal(minVal), m_maxVal(maxVal)
     {
-      m_name = name;
-      m_doc = doc;
-      m_value = defVal;
-      m_defValue = defVal;
-      m_minVal = minVal;
-      m_maxVal = maxVal;
     }
-    QCString *valueStringRef() { return &m_valueString; }
-    int *valueRef() { return &m_value; }
+    std::string &valueString() { return m_valueString; }
+    int &value() { return m_value; }
     int minVal() const { return m_minVal; }
     int maxVal() const { return m_maxVal; }
     void convertStrToVal();
     void substEnvVars();
-    void writeTemplate(FTextStream &t,bool sl,bool upd);
+    void writeTemplate(std::ostream &t,bool sl,bool upd);
     void init() { m_value = m_defValue; }
   private:
     int m_value;
     int m_defValue;
     int m_minVal;
     int m_maxVal;
-    QCString m_valueString;
+    std::string m_valueString;
 };
 
 /** Class representing a Boolean type option.
  */
-class ConfigBool : public ConfigOption
+struct ConfigBool : public ConfigOptionAbstract
 {
-  public:
-    ConfigBool(const char *name,const char *doc,bool defVal) 
-      : ConfigOption(O_Bool)
+    ConfigBool(const std::string &name,const std::string &doc,bool defVal)
+      : ConfigOptionAbstract(name, doc), m_value(defVal), m_defValue(defVal)
     {
-      m_name = name;
-      m_doc = doc;
-      m_value = defVal;
-      m_defValue = defVal;
     }
-    QCString *valueStringRef() { return &m_valueString; }
-    bool *valueRef() { return &m_value; }
+    std::string &valueString() 	{ return m_valueString; }
+    bool &value() 				{ return m_value; }
     void convertStrToVal();
     void substEnvVars();
-    void setValueString(const QCString &v) { m_valueString = v; }
-    void writeTemplate(FTextStream &t,bool sl,bool upd);
+    void setValueString(const std::string &v) { m_valueString = v; }
+    void writeTemplate(std::ostream &t,bool sl,bool upd);
     void init() { m_value = m_defValue; }
   private:
     bool m_value;
     bool m_defValue;
-    QCString m_valueString;
+    std::string m_valueString;
 };
 
 /** Section marker for obsolete options
  */
-class ConfigObsolete : public ConfigOption
+struct ConfigObsolete : public ConfigOptionAbstract
 {
-  public:
-    ConfigObsolete(const char *name) : ConfigOption(O_Obsolete)  
-    { m_name = name; }
-    void writeTemplate(FTextStream &,bool,bool);
+    ConfigObsolete(const std::string &name) : ConfigOptionAbstract(name)
+    {}
     void substEnvVars() {}
 };
 
 /** Section marker for compile time optional options
  */
-class ConfigDisabled : public ConfigOption
+struct ConfigDisabled : public ConfigOptionAbstract
 {
-  public:
-    ConfigDisabled(const char *name) : ConfigOption(O_Disabled)  
-    { m_name = name; }
-    void writeTemplate(FTextStream &,bool,bool);
+    ConfigDisabled(const std::string &name) : ConfigOptionAbstract(name)
+    {}
     void substEnvVars() {}
 };
 
+struct ConfigOption : boost::variant<ConfigList, ConfigInfo, ConfigEnum, ConfigString, ConfigInt, ConfigBool, ConfigObsolete, ConfigDisabled>
+{
+
+    std::string dependsOn() const
+    {
+    	dependsOnVis vis;
+    	return boost::apply_visitor(vis, *this);
+    }
+
+
+
+    std::string name() const
+    {
+    	nameVis vis;
+    	return boost::apply_visitor(vis, *this);
+    }
+
+
+    void writeTemplate(std::ostream &t,bool sl,bool upd)
+    {
+    	writeTemplateVis vis;
+    	vis.os = &t;
+    	vis.sl = sl;
+    	vis.upd= upd;
+    	boost::apply_visitor(vis, *this);
+    }
+
+    void convertStrToVal()
+    {
+    	convertStrToValVis vis;
+    	boost::apply_visitor(vis, *this);
+    };
+
+    static constexpr std::size_t max_option_length = 23;
+private:
+	struct writeTemplateVis : boost::static_visitor<>
+	{
+		std::ostream *os; bool sl; bool upd;
+		template<typename T>
+		void operator()(T& value) {value.writeTemplate(*os, sl, upd);}
+	} ;
+	struct convertStrToValVis : boost::static_visitor<>
+	{
+		void operator()(ConfigOptionAbstract &value) {};
+		void operator()(ConfigInt & ce)  {ce.convertStrToVal();};
+		void operator()(ConfigBool & ce) {ce.convertStrToVal();};
+	} ;
+    struct nameVis : boost::static_visitor<std::string>
+    {
+		template<typename T>
+    	const std::string & operator()(const T& value) {return value.m_name;}
+    };
+	struct dependsOnVis: boost::static_visitor<std::string>
+	{
+		template<typename T>
+		const std::string & operator()(const T& value) {return value.m_dependency;};
+	};
+};
 
 // some convenience macros for access the config options
-#define Config_getString(val)  Config::instance()->getString(__FILE__,__LINE__,val)
-#define Config_getInt(val)     Config::instance()->getInt(__FILE__,__LINE__,val)
-#define Config_getList(val)    Config::instance()->getList(__FILE__,__LINE__,val)
-#define Config_getEnum(val)    Config::instance()->getEnum(__FILE__,__LINE__,val)
-#define Config_getBool(val)    Config::instance()->getBool(__FILE__,__LINE__,val)
+#define DOXY_CONFIG_GET_STRING(val)  Config::getString	(val, __FILE__,__LINE__)
+#define DOXY_CONFIG_GET_INT(val)     Config::getInt		(val, __FILE__,__LINE__)
+#define DOXY_CONFIG_GET_LIST(val)    Config::getList	(val, __FILE__,__LINE__)
+#define DOXY_CONFIG_GET_ENUM(val)    Config::getEnum	(val, __FILE__,__LINE__)
+#define DOXY_CONFIG_GET_BOOL(val)    Config::getBool	(val, __FILE__,__LINE__)
 
 /** Singleton for configuration variables.
  *
@@ -296,24 +267,23 @@ class Config
     /////////////////////////////
 
     /*! Returns the one and only instance of this class */
-    static Config *instance()
+    static Config &instance()
     {
-      if (m_instance==0) m_instance = new Config;
-      return m_instance;
+      if (m_instance==nullptr) m_instance = std::unique_ptr<Config>();
+      return *m_instance;
     }
     /*! Delete the instance */
     static void deleteInstance()
     {
-      delete m_instance;
-      m_instance=0;
+      m_instance = nullptr;
     }
     
     /*! Returns an iterator that can by used to iterate over the 
      *  configuration options.
      */
-    QListIterator<ConfigOption> iterator()
+    boost::iterator_range<typename std::vector<ConfigOption>::iterator> range()
     {
-      return QListIterator<ConfigOption>(*m_options);
+      return boost::make_iterator_range(m_options);
     }
 
     /*! 
@@ -325,36 +295,36 @@ class Config
      *  The arguments \a num and \a name are for debugging purposes only.
      *  There is a convenience function Config_getString() for this.
      */
-    QCString &getString(const char *fileName,int num,const char *name) const;
+    std::string &getString(const std::string &name, const std::string &fileName = "",int num = -1) const;
 
     /*! Returns the value of the list option with name \a fileName. 
      *  The arguments \a num and \a name are for debugging purposes only.
      *  There is a convenience function Config_getList() for this.
      */
-    QStrList &getList(const char *fileName,int num,const char *name) const;
+    std::vector<std::string> &getList(const std::string &name, const std::string &fileName = "",int num = -1) const;
 
     /*! Returns the value of the enum option with name \a fileName. 
      *  The arguments \a num and \a name are for debugging purposes only.
      *  There is a convenience function Config_getEnum() for this.
      */
-    QCString &getEnum(const char *fileName,int num,const char *name) const;
+    std::string  &getEnum(const std::string &name, const std::string &fileName = "",int num = -1) const;
 
     /*! Returns the value of the integer option with name \a fileName. 
      *  The arguments \a num and \a name are for debugging purposes only.
      *  There is a convenience function Config_getInt() for this.
      */
-    int      &getInt(const char *fileName,int num,const char *name) const;
+    int      &getInt(const std::string &name, const std::string &fileName = "",int num = -1) const;
 
     /*! Returns the value of the boolean option with name \a fileName. 
      *  The arguments \a num and \a name are for debugging purposes only.
      *  There is a convenience function Config_getBool() for this.
      */
-    bool     &getBool(const char *fileName,int num,const char *name) const;
+    bool     &getBool(const std::string &name, const std::string &fileName = "",int num = -1) const;
 
     /*! Returns the ConfigOption corresponding with \a name or 0 if
      *  the option is not supported.
      */
-    ConfigOption *get(const char *name) const
+    ConfigOptionAbstract *get(const std::string &name) const
     {
       return m_dict->find(name); 
     }
@@ -368,7 +338,7 @@ class Config
     /*! Starts a new configuration section with \a name and description \a doc.
      *  \returns An object representing the option.
      */
-    ConfigInfo   *addInfo(const char *name,const char *doc)
+    ConfigInfo   *addInfo(const std::string &name,const std::string &doc)
     {
       ConfigInfo *result = new ConfigInfo(name,doc);
       m_options->append(result);
@@ -378,8 +348,8 @@ class Config
     /*! Adds a new string option with \a name and documentation \a doc.
      *  \returns An object representing the option.
      */
-    ConfigString *addString(const char *name,
-                            const char *doc)
+    ConfigString *addString(const std::string &name,
+                            const std::string &doc)
     {
       ConfigString *result = new ConfigString(name,doc);
       m_options->append(result);
@@ -391,9 +361,9 @@ class Config
      *  and initial value \a defVal. 
      *  \returns An object representing the option.
      */
-    ConfigEnum   *addEnum(const char *name,
-                          const char *doc,
-                          const char *defVal)
+    ConfigEnum   *addEnum(const std::string &name,
+                          const std::string &doc,
+                          const std::string &defVal)
     {
       ConfigEnum *result = new ConfigEnum(name,doc,defVal);
       m_options->append(result);
@@ -404,8 +374,8 @@ class Config
     /*! Adds a new string option with \a name and documentation \a doc.
      *  \returns An object representing the option.
      */
-    ConfigList   *addList(const char *name,
-                          const char *doc)
+    ConfigList   *addList(const std::string &name,
+                          const std::string &doc)
     {
       ConfigList *result = new ConfigList(name,doc);
       m_options->append(result);
@@ -418,8 +388,8 @@ class Config
      *  default value of \a defVal.
      *  \returns An object representing the option.
      */
-    ConfigInt    *addInt(const char *name,
-                         const char *doc,
+    ConfigInt    *addInt(const std::string &name,
+                         const std::string &doc,
                          int minVal,int maxVal,int defVal)
     {
       ConfigInt *result = new ConfigInt(name,doc,minVal,maxVal,defVal);
@@ -432,8 +402,8 @@ class Config
      *  The boolean has a default value of \a defVal.
      *  \returns An object representing the option.
      */
-    ConfigBool   *addBool(const char *name,
-                          const char *doc,
+    ConfigBool   *addBool(const std::string &name,
+                          const std::string &doc,
                           bool defVal)
     {
       ConfigBool *result = new ConfigBool(name,doc,defVal);
@@ -442,7 +412,7 @@ class Config
       return result;
     }
     /*! Adds an option that has become obsolete. */
-    ConfigOption *addObsolete(const char *name)
+    ConfigOptionAbstract *addObsolete(const std::string &name)
     {
       ConfigObsolete *option = new ConfigObsolete(name);
       m_dict->insert(name,option);
@@ -450,7 +420,7 @@ class Config
       return option;
     }
     /*! Adds an option that has been disabled at compile time. */
-    ConfigOption *addDisabled(const char *name)
+    ConfigOptionAbstract *addDisabled(const std::string &name)
     {
       ConfigDisabled *option = new ConfigDisabled(name);
       m_dict->insert(name,option);
@@ -463,9 +433,9 @@ class Config
      *  is \c TRUE the description of each configuration option will
      *  be omitted.
      */
-    void writeTemplate(FTextStream &t,bool shortIndex,bool updateOnly);
+    void writeTemplate(std::ostream &t,bool shortIndex,bool updateOnly);
 
-    void setHeader(const char *header) { m_header = header; }
+    void setHeader(const std::string &header) { m_header = header; }
 
     /////////////////////////////
     // internal API
@@ -493,19 +463,15 @@ class Config
      *  \returns TRUE if successful, or FALSE if the string could not be
      *  parsed.
      */ 
-    //bool parseString(const char *fn,const char *str);
-    bool parseString(const char *fn,const char *str,bool upd = FALSE);
+    //bool parseString(const std::string &fn,const std::string &str);
+    bool parseString(const std::string &fn,const std::string &str,bool upd = FALSE);
 
     /*! Parse a configuration file with name \a fn.
      *  \returns TRUE if successful, FALSE if the file could not be 
      *  opened or read.
      */ 
-    bool parse(const char *fn,bool upd = FALSE);
+    bool parse(const std::string &fn,bool upd = FALSE);
 
-    /*! Called from the constructor, will add doxygen's default options
-     *  to the configuration object 
-     */
-    void create();
 
     /*! Append user start comment
      */
@@ -538,39 +504,33 @@ class Config
       return result.replace(QRegExp("\r"),"");
     }
 
+    static std::string configStringRecode(
+        const std::string &str,
+        const std::string &fromEncoding,
+        const std::string &toEncoding);
+
   protected:
 
     Config()
     { 
-      m_options  = new QList<ConfigOption>;
-      m_obsolete = new QList<ConfigOption>;
-      m_disabled = new QList<ConfigOption>;
-      m_dict     = new QDict<ConfigOption>(257);
-      m_options->setAutoDelete(TRUE);
-      m_obsolete->setAutoDelete(TRUE);
-      m_disabled->setAutoDelete(TRUE);
-      m_initialized = FALSE;
-      create();
+    	addConfigOptions(*this);
     }
    ~Config()
     {
-      delete m_options;
-      delete m_obsolete;
-      delete m_disabled;
-      delete m_dict;
     }
-
+   static std::string convertToComment(const std::string &s, const std::string &u);
+   static void Config::addConfigOptions(Config &cfg);
   private:
-    void checkFileName(const char *);
-    QList<ConfigOption> *m_options;
-    QList<ConfigOption> *m_obsolete;
-    QList<ConfigOption> *m_disabled;
-    QDict<ConfigOption> *m_dict;
-    static Config *m_instance;
-    QCString m_startComment;
-    QCString m_userComment;
-    bool m_initialized;
-    QCString m_header;
+    void checkFileName(const std::string &);
+    std::vector<ConfigOption> m_options;
+    std::vector<ConfigOption> m_obsolete;
+    std::vector<ConfigOption> m_disabled;
+    std::vector<ConfigOption> m_dict;
+    static std::unique_ptr<Config> m_instance = std::make_unique<Config>();
+    std::string m_startComment;
+    std::string m_userComment;
+    std::string m_header;
 };
 
+}
 #endif

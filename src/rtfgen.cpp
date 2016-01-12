@@ -59,14 +59,14 @@ static QCString dateToRTFDateString()
 
 RTFGenerator::RTFGenerator() : OutputGenerator()
 {
-  dir=Config_getString("RTF_OUTPUT");
+  dir=DOXY_CONFIG_GET_STRING("RTF_OUTPUT");
   col=0;
   //insideTabbing=FALSE;
   m_listLevel = 0;
   m_bstartedBody = FALSE;
   m_omitParagraph = FALSE;
   m_numCols = 0;
-  m_prettyCode=Config_getBool("RTF_SOURCE_CODE");
+  m_prettyCode=DOXY_CONFIG_GET_BOOL("RTF_SOURCE_CODE");
 }
 
 RTFGenerator::~RTFGenerator()
@@ -165,7 +165,7 @@ void RTFGenerator::writeExtensionsFile(QFile &file)
 
 void RTFGenerator::init()
 {
-  QCString dir=Config_getString("RTF_OUTPUT");
+  QCString dir=DOXY_CONFIG_GET_STRING("RTF_OUTPUT");
   QDir d(dir);
   if (!d.exists() && !d.mkdir(dir))
   {
@@ -186,14 +186,14 @@ void RTFGenerator::init()
   }
 
   // overwrite some (or all) definitions from file
-  QCString &rtfStyleSheetFile = Config_getString("RTF_STYLESHEET_FILE");
+  QCString &rtfStyleSheetFile = DOXY_CONFIG_GET_STRING("RTF_STYLESHEET_FILE");
   if (!rtfStyleSheetFile.isEmpty())
   {
     loadStylesheet(rtfStyleSheetFile, rtf_Style);
   }
 
   // If user has defined an extension file, load its contents.
-  QCString &rtfExtensionsFile = Config_getString("RTF_EXTENSIONS_FILE");
+  QCString &rtfExtensionsFile = DOXY_CONFIG_GET_STRING("RTF_EXTENSIONS_FILE");
   if (!rtfExtensionsFile.isEmpty())
   {
     loadExtensions(rtfExtensionsFile);
@@ -296,7 +296,7 @@ void RTFGenerator::beginRTFChapter()
   t << rtf_Style_Reset;
 
   // if we are compact, no extra page breaks...
-  if (Config_getBool("COMPACT_RTF"))
+  if (DOXY_CONFIG_GET_BOOL("COMPACT_RTF"))
   {
     //      t <<"\\sect\\sectd\\sbknone\n";
     t <<"\\sect\\sbknone\n";
@@ -316,7 +316,7 @@ void RTFGenerator::beginRTFSection()
   t << rtf_Style_Reset;
 
   // if we are compact, no extra page breaks...
-  if (Config_getBool("COMPACT_RTF"))
+  if (DOXY_CONFIG_GET_BOOL("COMPACT_RTF"))
   {
     //      t <<"\\sect\\sectd\\sbknone\n";
     t <<"\\sect\\sbknone\n";
@@ -538,10 +538,10 @@ void RTFGenerator::startIndexSection(IndexSections is)
 
 void RTFGenerator::endIndexSection(IndexSections is)
 {
-  bool fortranOpt = Config_getBool("OPTIMIZE_FOR_FORTRAN");
-  bool vhdlOpt    = Config_getBool("OPTIMIZE_OUTPUT_VHDL");  
-  static bool sourceBrowser = Config_getBool("SOURCE_BROWSER");
-  static QCString projectName = Config_getString("PROJECT_NAME");
+  bool fortranOpt = DOXY_CONFIG_GET_BOOL("OPTIMIZE_FOR_FORTRAN");
+  bool vhdlOpt    = DOXY_CONFIG_GET_BOOL("OPTIMIZE_OUTPUT_VHDL");  
+  static bool sourceBrowser = DOXY_CONFIG_GET_BOOL("SOURCE_BROWSER");
+  static QCString projectName = DOXY_CONFIG_GET_STRING("PROJECT_NAME");
 
   switch (is)
   {
@@ -609,7 +609,7 @@ void RTFGenerator::endIndexSection(IndexSections is)
         else
           t << "{\\field\\fldedit {\\*\\fldinst AUTHOR \\\\*MERGEFORMAT}{\\fldrslt AUTHOR}}\\par" << endl;
 
-        t << theTranslator->trVersion() << " " << Config_getString("PROJECT_NUMBER") << "\\par";
+        t << theTranslator->trVersion() << " " << DOXY_CONFIG_GET_STRING("PROJECT_NUMBER") << "\\par";
         t << "{\\field\\fldedit {\\*\\fldinst CREATEDATE \\\\*MERGEFORMAT}"
           "{\\fldrslt "<< dateToString(FALSE) << " }}\\par"<<endl;
         t << "\\page\\page";
@@ -1075,7 +1075,7 @@ void RTFGenerator::endIndexItem(const char *ref,const char *fn)
 void RTFGenerator::startHtmlLink(const char *url)
 {
 
-  if (Config_getBool("RTF_HYPERLINKS"))
+  if (DOXY_CONFIG_GET_BOOL("RTF_HYPERLINKS"))
   {
     t << "{\\field {\\*\\fldinst { HYPERLINK \"";
     t << url;
@@ -1090,7 +1090,7 @@ void RTFGenerator::startHtmlLink(const char *url)
 
 void RTFGenerator::endHtmlLink()
 {
-  if (Config_getBool("RTF_HYPERLINKS"))
+  if (DOXY_CONFIG_GET_BOOL("RTF_HYPERLINKS"))
   {
     t << "}}}" << endl;
   }
@@ -1113,7 +1113,7 @@ void RTFGenerator::writeStartAnnoItem(const char *,const char *f,
   DBG_RTF(t << "{\\comment (writeStartAnnoItem)}" << endl)
   t << "{\\b ";
   if (path) docify(path);
-  if (f && Config_getBool("RTF_HYPERLINKS"))
+  if (f && DOXY_CONFIG_GET_BOOL("RTF_HYPERLINKS"))
   {
     t << "{\\field {\\*\\fldinst { HYPERLINK  \\\\l \"";
     t << rtfFormatBmkStr(f);
@@ -1292,7 +1292,7 @@ void RTFGenerator::endSubsubsection()
 //
 void RTFGenerator::startTextLink(const char *f,const char *anchor)
 {
-  if (Config_getBool("RTF_HYPERLINKS"))
+  if (DOXY_CONFIG_GET_BOOL("RTF_HYPERLINKS"))
   {
     QCString ref;
     if (f)
@@ -1314,7 +1314,7 @@ void RTFGenerator::startTextLink(const char *f,const char *anchor)
 
 void RTFGenerator::endTextLink()
 {
-  if (Config_getBool("RTF_HYPERLINKS"))
+  if (DOXY_CONFIG_GET_BOOL("RTF_HYPERLINKS"))
   {
     t << "}}}" << endl;
   }
@@ -1323,7 +1323,7 @@ void RTFGenerator::endTextLink()
 void RTFGenerator::writeObjectLink(const char *ref, const char *f,
     const char *anchor, const char *text)
 {
-  if (!ref && Config_getBool("RTF_HYPERLINKS"))
+  if (!ref && DOXY_CONFIG_GET_BOOL("RTF_HYPERLINKS"))
   {
     QCString refName;
     if (f)
@@ -1380,7 +1380,7 @@ void RTFGenerator::writeCodeLink(const char *ref,const char *f,
                                  const char *anchor,const char *name,
                                  const char *)
 {
-  if (!ref && Config_getBool("RTF_HYPERLINKS"))
+  if (!ref && DOXY_CONFIG_GET_BOOL("RTF_HYPERLINKS"))
   {
     QCString refName;
     if (f)
@@ -1445,7 +1445,7 @@ void RTFGenerator::endTitleHead(const char *fileName,const char *name)
 void RTFGenerator::startTitle()
 {
   DBG_RTF(t <<"{\\comment startTitle}" << endl)
-  if (Config_getBool("COMPACT_RTF"))
+  if (DOXY_CONFIG_GET_BOOL("COMPACT_RTF"))
     beginRTFSection();
   else
     beginRTFChapter();
@@ -1803,7 +1803,7 @@ void RTFGenerator::codify(const char *str)
 
       switch(c)
       {
-        case '\t':  spacesToNextTabStop = Config_getInt("TAB_SIZE") - (col%Config_getInt("TAB_SIZE"));
+        case '\t':  spacesToNextTabStop = DOXY_CONFIG_GET_INT("TAB_SIZE") - (col%DOXY_CONFIG_GET_INT("TAB_SIZE"));
                     t << Doxygen::spaces.left(spacesToNextTabStop);
                     col+=spacesToNextTabStop;
                     break;
@@ -2445,7 +2445,7 @@ void RTFGenerator::endDotGraph(const DotClassGraph &g)
   newParagraph();
 
   QCString fn =
-    g.writeGraph(t,GOF_BITMAP,EOF_Rtf,Config_getString("RTF_OUTPUT"),fileName,relPath,TRUE,FALSE);
+    g.writeGraph(t,GOF_BITMAP,EOF_Rtf,DOXY_CONFIG_GET_STRING("RTF_OUTPUT"),fileName,relPath,TRUE,FALSE);
 
   // display the file
   t << "{" << endl;
@@ -2468,7 +2468,7 @@ void RTFGenerator::endInclDepGraph(const DotInclDepGraph &g)
 {
   newParagraph();
 
-  QCString fn = g.writeGraph(t,GOF_BITMAP,EOF_Rtf,Config_getString("RTF_OUTPUT"),
+  QCString fn = g.writeGraph(t,GOF_BITMAP,EOF_Rtf,DOXY_CONFIG_GET_STRING("RTF_OUTPUT"),
                          fileName,relPath,FALSE);
 
   // display the file
@@ -2499,7 +2499,7 @@ void RTFGenerator::endCallGraph(const DotCallGraph &g)
 {
   newParagraph();
 
-  QCString fn = g.writeGraph(t,GOF_BITMAP,EOF_Rtf,Config_getString("RTF_OUTPUT"),
+  QCString fn = g.writeGraph(t,GOF_BITMAP,EOF_Rtf,DOXY_CONFIG_GET_STRING("RTF_OUTPUT"),
                         fileName,relPath,FALSE);
 
   // display the file
@@ -2522,7 +2522,7 @@ void RTFGenerator::endDirDepGraph(const DotDirDeps &g)
 {
   newParagraph();
 
-  QCString fn = g.writeGraph(t,GOF_BITMAP,EOF_Rtf,Config_getString("RTF_OUTPUT"),
+  QCString fn = g.writeGraph(t,GOF_BITMAP,EOF_Rtf,DOXY_CONFIG_GET_STRING("RTF_OUTPUT"),
                         fileName,relPath,FALSE);
 
   // display the file

@@ -222,7 +222,7 @@ void ClassDefImpl::init(const char *defFileName, const char *name,
   constraintClassDict=0;
   memberGroupSDict = 0;
   innerClasses = 0;
-  subGrouping=Config_getBool("SUBGROUPING");
+  subGrouping=DOXY_CONFIG_GET_BOOL("SUBGROUPING");
   templateInstances = 0;
   variableInstances = 0;
   templateMaster =0;
@@ -233,7 +233,7 @@ void ClassDefImpl::init(const char *defFileName, const char *name,
   membersMerged = FALSE;
   categoryOf = 0;
   usedOnly = FALSE;
-  isSimple = Config_getBool("INLINE_SIMPLE_STRUCTS");
+  isSimple = DOXY_CONFIG_GET_BOOL("INLINE_SIMPLE_STRUCTS");
   arrowOperator = 0;
   taggedInnerClasses = 0;
   tagLessRef = 0;
@@ -375,7 +375,7 @@ void ClassDef::insertSubClass(ClassDef *cd,Protection p,
                                 Specifier s,const char *t)
 {
   //printf("*** insert sub class %s into %s\n",cd->name().data(),name().data());
-  static bool extractPrivate = Config_getBool("EXTRACT_PRIVATE");
+  static bool extractPrivate = DOXY_CONFIG_GET_BOOL("EXTRACT_PRIVATE");
   if (!extractPrivate && cd->protection()==Private) return;
   if (m_impl->inheritedBy==0)
   {
@@ -683,7 +683,7 @@ void ClassDef::internalInsertMember(MemberDef *md,
 
   //::addClassMemberNameToIndex(md);
   if (addToAllList &&
-      !(Config_getBool("HIDE_FRIEND_COMPOUNDS") &&
+      !(DOXY_CONFIG_GET_BOOL("HIDE_FRIEND_COMPOUNDS") &&
         md->isFriend() &&
         (QCString(md->typeString())=="friend class" ||
          QCString(md->typeString())=="friend struct" ||
@@ -959,7 +959,7 @@ void ClassDef::writeBriefDescription(OutputList &ol,bool exampleFlag)
 
 void ClassDef::writeDetailedDocumentationBody(OutputList &ol)
 {
-  static bool repeatBrief = Config_getBool("REPEAT_BRIEF");
+  static bool repeatBrief = DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF");
 
   ol.startTextBlock();
 
@@ -1007,8 +1007,8 @@ void ClassDef::writeDetailedDocumentationBody(OutputList &ol)
 
 bool ClassDef::hasDetailedDescription() const
 {
-  static bool repeatBrief = Config_getBool("REPEAT_BRIEF");
-  static bool sourceBrowser = Config_getBool("SOURCE_BROWSER");
+  static bool repeatBrief = DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF");
+  static bool sourceBrowser = DOXY_CONFIG_GET_BOOL("SOURCE_BROWSER");
   return ((!briefDescription().isEmpty() && repeatBrief) ||
           !documentation().isEmpty() ||
           (sourceBrowser && getStartBodyLine()!=-1 && getBodyDef()));
@@ -1104,7 +1104,7 @@ void ClassDef::showUsedFiles(OutputList &ol)
 
     ol.startItemListItem();
     QCString path=fd->getPath();
-    if (Config_getBool("FULL_PATH_NAMES"))
+    if (DOXY_CONFIG_GET_BOOL("FULL_PATH_NAMES"))
     {
       ol.docify(stripFromPath(path));
     }
@@ -1185,8 +1185,8 @@ void ClassDef::writeInheritanceGraph(OutputList &ol)
   const int count=countInheritanceNodes();
 
   bool renderDiagram = FALSE;
-  if (Config_getBool("HAVE_DOT") &&
-      (Config_getBool("CLASS_DIAGRAMS") || Config_getBool("CLASS_GRAPH")))
+  if (DOXY_CONFIG_GET_BOOL("HAVE_DOT") &&
+      (DOXY_CONFIG_GET_BOOL("CLASS_DIAGRAMS") || DOXY_CONFIG_GET_BOOL("CLASS_GRAPH")))
     // write class diagram using dot
   {
     DotClassGraph inheritanceGraph(this,DotNode::Inheritance);
@@ -1201,7 +1201,7 @@ void ClassDef::writeInheritanceGraph(OutputList &ol)
       renderDiagram = TRUE;
     }
   }
-  else if (Config_getBool("CLASS_DIAGRAMS") && count>0)
+  else if (DOXY_CONFIG_GET_BOOL("CLASS_DIAGRAMS") && count>0)
     // write class diagram using build-in generator
   {
     ClassDiagram diagram(this); // create a diagram of this class.
@@ -1306,7 +1306,7 @@ void ClassDef::writeInheritanceGraph(OutputList &ol)
 
 void ClassDef::writeCollaborationGraph(OutputList &ol)
 {
-  if (Config_getBool("HAVE_DOT") /*&& Config_getBool("COLLABORATION_GRAPH")*/)
+  if (DOXY_CONFIG_GET_BOOL("HAVE_DOT") /*&& Config_getBool("COLLABORATION_GRAPH")*/)
   {
     DotClassGraph usageImplGraph(this,DotNode::Collaboration);
     if (!usageImplGraph.isTrivial())
@@ -1390,7 +1390,7 @@ void ClassDef::writeAllMembersLink(OutputList &ol)
 {
   // write link to list of all members (HTML only)
   if (m_impl->allMemberNameInfoSDict &&
-      !Config_getBool("OPTIMIZE_OUTPUT_FOR_C")
+      !DOXY_CONFIG_GET_BOOL("OPTIMIZE_OUTPUT_FOR_C")
      )
   {
     ol.pushGeneratorState();
@@ -1449,7 +1449,7 @@ void ClassDef::writeInlineClasses(OutputList &ol)
 void ClassDef::startMemberDocumentation(OutputList &ol)
 {
   //printf("%s: ClassDef::startMemberDocumentation()\n",name().data());
-  if (Config_getBool("SEPARATE_MEMBER_PAGES"))
+  if (DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES"))
   {
     ol.disable(OutputGenerator::Html);
     Doxygen::suppressDocWarnings = TRUE;
@@ -1459,7 +1459,7 @@ void ClassDef::startMemberDocumentation(OutputList &ol)
 void ClassDef::endMemberDocumentation(OutputList &ol)
 {
   //printf("%s: ClassDef::endMemberDocumentation()\n",name().data());
-  if (Config_getBool("SEPARATE_MEMBER_PAGES"))
+  if (DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES"))
   {
     ol.enable(OutputGenerator::Html);
     Doxygen::suppressDocWarnings = FALSE;
@@ -1475,7 +1475,7 @@ void ClassDef::startMemberDeclarations(OutputList &ol)
 void ClassDef::endMemberDeclarations(OutputList &ol)
 {
   //printf("%s: ClassDef::endMemberDeclarations()\n",name().data());
-  static bool inlineInheritedMembers = Config_getBool("INLINE_INHERITED_MEMB");
+  static bool inlineInheritedMembers = DOXY_CONFIG_GET_BOOL("INLINE_INHERITED_MEMB");
   if (!inlineInheritedMembers && countAdditionalInheritedMembers()>0)
   {
     ol.startMemberHeader("inherited");
@@ -1494,7 +1494,7 @@ void ClassDef::writeAuthorSection(OutputList &ol)
   ol.startGroupHeader();
   ol.parseText(theTranslator->trAuthor(TRUE,TRUE));
   ol.endGroupHeader();
-  ol.parseText(theTranslator->trGeneratedAutomatically(Config_getString("PROJECT_NAME")));
+  ol.parseText(theTranslator->trGeneratedAutomatically(DOXY_CONFIG_GET_STRING("PROJECT_NAME")));
   ol.popGeneratorState();
 }
 
@@ -1524,7 +1524,7 @@ void ClassDef::writeSummaryLinks(OutputList &ol)
       }
       else if (lde->kind()==LayoutDocEntry::ClassAllMembersLink &&
                m_impl->allMemberNameInfoSDict &&
-               !Config_getBool("OPTIMIZE_OUTPUT_FOR_C")
+               !DOXY_CONFIG_GET_BOOL("OPTIMIZE_OUTPUT_FOR_C")
               )
       {
         ol.writeSummaryLink(getMemberListFileName(),"all-members-list",theTranslator->trListOfAllMembers(),first);
@@ -1594,7 +1594,7 @@ void ClassDef::writeTagFile(FTextStream &tagFile)
       ClassDef *cd=ibcd->classDef;
       if (cd && cd->isLinkable())
       {
-        if (!Config_getString("GENERATE_TAGFILE").isEmpty())
+        if (!DOXY_CONFIG_GET_STRING("GENERATE_TAGFILE").isEmpty())
         {
           tagFile << "    <base";
           if (ibcd->prot==Protected)
@@ -1794,9 +1794,9 @@ void ClassDef::writeMoreLink(OutputList &ol,const QCString &anchor)
 {
   // TODO: clean up this mess by moving it to
   // the output generators...
-  static bool pdfHyperlinks = Config_getBool("PDF_HYPERLINKS");
-  static bool rtfHyperlinks = Config_getBool("RTF_HYPERLINKS");
-  static bool usePDFLatex   = Config_getBool("USE_PDFLATEX");
+  static bool pdfHyperlinks = DOXY_CONFIG_GET_BOOL("PDF_HYPERLINKS");
+  static bool rtfHyperlinks = DOXY_CONFIG_GET_BOOL("RTF_HYPERLINKS");
+  static bool usePDFLatex   = DOXY_CONFIG_GET_BOOL("USE_PDFLATEX");
 
   // HTML only
   ol.pushGeneratorState();
@@ -1835,9 +1835,9 @@ void ClassDef::writeMoreLink(OutputList &ol,const QCString &anchor)
 
 bool ClassDef::visibleInParentsDeclList() const
 {
-  static bool extractPrivate      = Config_getBool("EXTRACT_PRIVATE");
-  static bool hideUndocClasses = Config_getBool("HIDE_UNDOC_CLASSES");
-  static bool extractLocalClasses = Config_getBool("EXTRACT_LOCAL_CLASSES");
+  static bool extractPrivate      = DOXY_CONFIG_GET_BOOL("EXTRACT_PRIVATE");
+  static bool hideUndocClasses = DOXY_CONFIG_GET_BOOL("HIDE_UNDOC_CLASSES");
+  static bool extractLocalClasses = DOXY_CONFIG_GET_BOOL("EXTRACT_LOCAL_CLASSES");
   bool linkable = isLinkable();
   return (!isAnonymous() && !isExtension() &&
           (protection()!=::Private || extractPrivate) &&
@@ -1907,7 +1907,7 @@ void ClassDef::writeDeclarationLink(OutputList &ol,bool &found,const char *heade
     ol.endMemberItem();
 
     // add the brief description if available
-    if (!briefDescription().isEmpty() && Config_getBool("BRIEF_MEMBER_DESC"))
+    if (!briefDescription().isEmpty() && DOXY_CONFIG_GET_BOOL("BRIEF_MEMBER_DESC"))
     {
       DocRoot *rootNode = validatingParseDoc(briefFile(),briefLine(),this,0,
                                 briefDescription(),FALSE,FALSE,0,TRUE,FALSE);
@@ -2103,7 +2103,7 @@ QCString ClassDef::title() const
   }
   else
   {
-    if (Config_getBool("HIDE_COMPOUND_REFERENCE"))
+    if (DOXY_CONFIG_GET_BOOL("HIDE_COMPOUND_REFERENCE"))
     {
       pageTitle = displayName();
     }
@@ -2120,7 +2120,7 @@ QCString ClassDef::title() const
 // write all documentation for this class
 void ClassDef::writeDocumentation(OutputList &ol)
 {
-  static bool generateTreeView = Config_getBool("GENERATE_TREEVIEW");
+  static bool generateTreeView = DOXY_CONFIG_GET_BOOL("GENERATE_TREEVIEW");
   //static bool fortranOpt = Config_getBool("OPTIMIZE_FOR_FORTRAN");
   //static bool vhdlOpt    = Config_getBool("OPTIMIZE_OUTPUT_VHDL");
   QCString pageTitle = title();
@@ -2144,7 +2144,7 @@ void ClassDef::writeDocumentation(OutputList &ol)
 
   endFileWithNavPath(this,ol);
 
-  if (Config_getBool("SEPARATE_MEMBER_PAGES"))
+  if (DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES"))
   {
     writeMemberPages(ol);
   }
@@ -2175,7 +2175,7 @@ void ClassDef::writeMemberPages(OutputList &ol)
 
 void ClassDef::writeQuickMemberLinks(OutputList &ol,MemberDef *currentMd) const
 {
-  static bool createSubDirs=Config_getBool("CREATE_SUBDIRS");
+  static bool createSubDirs=DOXY_CONFIG_GET_BOOL("CREATE_SUBDIRS");
 
   ol.writeString("      <div class=\"navtab\">\n");
   ol.writeString("        <table>\n");
@@ -2250,9 +2250,9 @@ void ClassDef::writeDocumentationForInnerClasses(OutputList &ol)
 // write the list of all (inherited) members for this class
 void ClassDef::writeMemberList(OutputList &ol)
 {
-  static bool cOpt    = Config_getBool("OPTIMIZE_OUTPUT_FOR_C");
+  static bool cOpt    = DOXY_CONFIG_GET_BOOL("OPTIMIZE_OUTPUT_FOR_C");
   //static bool vhdlOpt = Config_getBool("OPTIMIZE_OUTPUT_VHDL");
-  static bool generateTreeView = Config_getBool("GENERATE_TREEVIEW");
+  static bool generateTreeView = DOXY_CONFIG_GET_BOOL("GENERATE_TREEVIEW");
   if (m_impl->allMemberNameInfoSDict==0 || cOpt) return;
   // only for HTML
   ol.pushGeneratorState();
@@ -2355,7 +2355,7 @@ void ClassDef::writeMemberList(OutputList &ol)
           memberWritten=TRUE;
         }
         else if (!cd->isArtificial() &&
-                 !Config_getBool("HIDE_UNDOC_MEMBERS") &&
+                 !DOXY_CONFIG_GET_BOOL("HIDE_UNDOC_MEMBERS") &&
                   (protectionLevelVisible(md->protection()) || md->isFriend())
                 ) // no documentation,
                   // generate link to the class instead.
@@ -2427,7 +2427,7 @@ void ClassDef::writeMemberList(OutputList &ol)
         if (
             (prot!=Public || (virt!=Normal && getLanguage()!=SrcLangExt_ObjC) ||
              md->isFriend() || md->isRelated() || md->isExplicit() ||
-             md->isMutable() || (md->isInline() && Config_getBool("INLINE_INFO")) ||
+             md->isMutable() || (md->isInline() && DOXY_CONFIG_GET_BOOL("INLINE_INFO")) ||
              md->isSignal() || md->isSlot() ||
              (getLanguage()==SrcLangExt_IDL &&
               (md->isOptional() || md->isAttribute() || md->isUNOProperty())) ||
@@ -2445,7 +2445,7 @@ void ClassDef::writeMemberList(OutputList &ol)
           else if (md->isRelated()) sl.append("related");
           else
           {
-            if (Config_getBool("INLINE_INFO") && md->isInline())
+            if (DOXY_CONFIG_GET_BOOL("INLINE_INFO") && md->isInline())
                                        sl.append("inline");
             if (md->isExplicit())      sl.append("explicit");
             if (md->isMutable())       sl.append("mutable");
@@ -2530,7 +2530,7 @@ bool ClassDef::hasExamples() const
 void ClassDef::addTypeConstraint(const QCString &typeConstraint,const QCString &type)
 {
   //printf("addTypeContraint(%s,%s)\n",type.data(),typeConstraint.data());
-  static bool hideUndocRelation = Config_getBool("HIDE_UNDOC_RELATIONS");
+  static bool hideUndocRelation = DOXY_CONFIG_GET_BOOL("HIDE_UNDOC_RELATIONS");
   if (typeConstraint.isEmpty() || type.isEmpty()) return;
   ClassDef *cd = getResolvedClass(this,getFileDef(),typeConstraint);
   if (cd==0 && !hideUndocRelation)
@@ -2707,9 +2707,9 @@ void ClassDef::writeDeclaration(OutputList &ol,MemberDef *md,bool inGroup,
 /*! a link to this class is possible within this project */
 bool ClassDef::isLinkableInProject() const
 {
-  static bool extractLocal   = Config_getBool("EXTRACT_LOCAL_CLASSES");
-  static bool extractStatic  = Config_getBool("EXTRACT_STATIC");
-  static bool hideUndoc      = Config_getBool("HIDE_UNDOC_CLASSES");
+  static bool extractLocal   = DOXY_CONFIG_GET_BOOL("EXTRACT_LOCAL_CLASSES");
+  static bool extractStatic  = DOXY_CONFIG_GET_BOOL("EXTRACT_STATIC");
+  static bool hideUndoc      = DOXY_CONFIG_GET_BOOL("HIDE_UNDOC_CLASSES");
   if (m_impl->templateMaster)
   {
     return m_impl->templateMaster->isLinkableInProject();
@@ -2743,9 +2743,9 @@ bool ClassDef::isLinkable() const
 /*! the class is visible in a class diagram, or class hierarchy */
 bool ClassDef::isVisibleInHierarchy()
 {
-  static bool allExternals     = Config_getBool("ALLEXTERNALS");
-  static bool hideUndocClasses = Config_getBool("HIDE_UNDOC_CLASSES");
-  static bool extractStatic    = Config_getBool("EXTRACT_STATIC");
+  static bool allExternals     = DOXY_CONFIG_GET_BOOL("ALLEXTERNALS");
+  static bool hideUndocClasses = DOXY_CONFIG_GET_BOOL("HIDE_UNDOC_CLASSES");
+  static bool extractStatic    = DOXY_CONFIG_GET_BOOL("EXTRACT_STATIC");
 
   return // show all classes or a subclass is visible
       (allExternals || hasNonReferenceSuperClass()) &&
@@ -2854,7 +2854,7 @@ void ClassDef::mergeMembers()
 
   m_impl->membersMerged=TRUE;
   //printf("  mergeMembers for %s\n",name().data());
-  bool inlineInheritedMembers = Config_getBool("INLINE_INHERITED_MEMB" );
+  bool inlineInheritedMembers = DOXY_CONFIG_GET_BOOL("INLINE_INHERITED_MEMB" );
   if (baseClasses())
   {
     //printf("  => has base classes!\n");
@@ -3095,7 +3095,7 @@ void ClassDef::mergeMembers()
  */
 void ClassDef::mergeCategory(ClassDef *category)
 {
-  static bool extractLocalMethods = Config_getBool("EXTRACT_LOCAL_METHODS");
+  static bool extractLocalMethods = DOXY_CONFIG_GET_BOOL("EXTRACT_LOCAL_METHODS");
   bool makePrivate = category->isLocal();
   // in case extract local methods is not enabled we don't add the methods
   // of the category in case it is defined in the .m file.
@@ -3234,8 +3234,8 @@ void ClassDef::mergeCategory(ClassDef *category)
 void ClassDef::addUsedClass(ClassDef *cd,const char *accessName,
                Protection prot)
 {
-  static bool extractPrivate = Config_getBool("EXTRACT_PRIVATE");
-  static bool umlLook = Config_getBool("UML_LOOK");
+  static bool extractPrivate = DOXY_CONFIG_GET_BOOL("EXTRACT_PRIVATE");
+  static bool umlLook = DOXY_CONFIG_GET_BOOL("UML_LOOK");
   if (prot==Private && !extractPrivate) return;
   //printf("%s::addUsedClass(%s,%s)\n",name().data(),cd->name().data(),accessName);
   if (m_impl->usesImplClassDict==0)
@@ -3268,8 +3268,8 @@ void ClassDef::addUsedClass(ClassDef *cd,const char *accessName,
 void ClassDef::addUsedByClass(ClassDef *cd,const char *accessName,
                Protection prot)
 {
-  static bool extractPrivate = Config_getBool("EXTRACT_PRIVATE");
-  static bool umlLook = Config_getBool("UML_LOOK");
+  static bool extractPrivate = DOXY_CONFIG_GET_BOOL("EXTRACT_PRIVATE");
+  static bool umlLook = DOXY_CONFIG_GET_BOOL("UML_LOOK");
   if (prot==Private && !extractPrivate) return;
   //printf("%s::addUsedByClass(%s,%s)\n",name().data(),cd->name().data(),accessName);
   if (m_impl->usedByImplClassDict==0)
@@ -3533,8 +3533,8 @@ QCString ClassDef::compoundTypeString() const
 
 QCString ClassDef::getOutputFileBase() const
 {
-  static bool inlineGroupedClasses = Config_getBool("INLINE_GROUPED_CLASSES");
-  static bool inlineSimpleClasses = Config_getBool("INLINE_SIMPLE_STRUCTS");
+  static bool inlineGroupedClasses = DOXY_CONFIG_GET_BOOL("INLINE_GROUPED_CLASSES");
+  static bool inlineSimpleClasses = DOXY_CONFIG_GET_BOOL("INLINE_SIMPLE_STRUCTS");
   if (!Doxygen::generatingXmlOutput)
   {
     Definition *scope=0;
@@ -3857,7 +3857,7 @@ QCString ClassDef::qualifiedNameWithTemplateParameters(
     QList<ArgumentList> *actualParams,int *actualParamIndex) const
 {
   //static bool optimizeOutputJava = Config_getBool("OPTIMIZE_OUTPUT_JAVA");
-  static bool hideScopeNames = Config_getBool("HIDE_SCOPE_NAMES");
+  static bool hideScopeNames = DOXY_CONFIG_GET_BOOL("HIDE_SCOPE_NAMES");
   //printf("qualifiedNameWithTemplateParameters() localName=%s\n",localName().data());
   QCString scName;
   Definition *d=getOuterScope();
@@ -4035,8 +4035,8 @@ MemberList *ClassDef::getMemberList(MemberListType lt)
 
 void ClassDef::addMemberToList(MemberListType lt,MemberDef *md,bool isBrief)
 {
-  static bool sortBriefDocs = Config_getBool("SORT_BRIEF_DOCS");
-  static bool sortMemberDocs = Config_getBool("SORT_MEMBER_DOCS");
+  static bool sortBriefDocs = DOXY_CONFIG_GET_BOOL("SORT_BRIEF_DOCS");
+  static bool sortMemberDocs = DOXY_CONFIG_GET_BOOL("SORT_MEMBER_DOCS");
   MemberList *ml = createMemberList(lt);
   ml->setNeedsSorting((isBrief && sortBriefDocs) || (!isBrief && sortMemberDocs));
   ml->append(md);
@@ -4091,7 +4091,7 @@ int ClassDef::countMemberDeclarations(MemberListType lt,ClassDef *inheritedFrom,
         if (lt2!=1) count+=mg->countGroupedInheritedMembers((MemberListType)lt2);
       }
     }
-    static bool inlineInheritedMembers = Config_getBool("INLINE_INHERITED_MEMB");
+    static bool inlineInheritedMembers = DOXY_CONFIG_GET_BOOL("INLINE_INHERITED_MEMB");
     if (!inlineInheritedMembers) // show inherited members as separate lists
     {
       count+=countInheritedDecMembers(lt,inheritedFrom,invert,showAlways,visitedClasses);
@@ -4325,7 +4325,7 @@ void ClassDef::writeMemberDeclarations(OutputList &ol,MemberListType lt,const QC
       //printf("  writeDeclaration type=%d count=%d\n",lt2,ml2->numDecMembers());
       ml2->writeDeclarations(ol,this,0,0,0,tt,st,FALSE,showInline,inheritedFrom,lt);
     }
-    static bool inlineInheritedMembers = Config_getBool("INLINE_INHERITED_MEMB");
+    static bool inlineInheritedMembers = DOXY_CONFIG_GET_BOOL("INLINE_INHERITED_MEMB");
     if (!inlineInheritedMembers) // show inherited members as separate lists
     {
       QPtrDict<void> visited(17);
@@ -4630,8 +4630,8 @@ QCString ClassDef::anchor() const
 
 bool ClassDef::isEmbeddedInOuterScope() const
 {
-  static bool inlineGroupedClasses = Config_getBool("INLINE_GROUPED_CLASSES");
-  static bool inlineSimpleClasses = Config_getBool("INLINE_SIMPLE_STRUCTS");
+  static bool inlineGroupedClasses = DOXY_CONFIG_GET_BOOL("INLINE_GROUPED_CLASSES");
+  static bool inlineSimpleClasses = DOXY_CONFIG_GET_BOOL("INLINE_SIMPLE_STRUCTS");
 
   Definition *container = getOuterScope();
 

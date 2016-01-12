@@ -86,18 +86,18 @@ void initWarningFormat()
   //    replace(QRegExp("\\$line"),"%d")+
   //    '\n';
 
-  outputFormat = Config_getString("WARN_FORMAT");
+  outputFormat = DOXY_CONFIG_GET_STRING("WARN_FORMAT");
 
-  if (!Config_getString("WARN_LOGFILE").isEmpty())
+  if (!DOXY_CONFIG_GET_STRING("WARN_LOGFILE").isEmpty())
   {
-    warnFile = portable_fopen(Config_getString("WARN_LOGFILE"),"w");
+    warnFile = portable_fopen(DOXY_CONFIG_GET_STRING("WARN_LOGFILE"),"w");
   }
   if (!warnFile) // point it to something valid, because warn() relies on it
   {
     warnFile = stderr;
   }
 
-  if (Config_getBool("WARN_AS_ERROR"))
+  if (DOXY_CONFIG_GET_BOOL("WARN_AS_ERROR"))
   {
     warning_str = error_str;
   }
@@ -106,7 +106,7 @@ void initWarningFormat()
 
 void msg(const char *fmt, ...)
 {
-  if (!Config_getBool("QUIET"))
+  if (!DOXY_CONFIG_GET_BOOL("QUIET"))
   {
     if (Debug::isFlagSet(Debug::Time))
     {
@@ -135,7 +135,7 @@ static void format_warn(const char *file,int line,const char *text)
     }
   }
   // substitute markers by actual values
-  bool warnAsError = Config_getBool("WARN_AS_ERROR");
+  bool warnAsError = DOXY_CONFIG_GET_BOOL("WARN_AS_ERROR");
   QCString msgText =
       substitute(
         substitute(
@@ -166,7 +166,7 @@ static void format_warn(const char *file,int line,const char *text)
 
 static void do_warn(const char *tag, const char *file, int line, const char *prefix, const char *fmt, va_list args)
 {
-  if (tag && !Config_getBool(tag)) return; // warning type disabled
+  if (tag && !DOXY_CONFIG_GET_BOOL(tag)) return; // warning type disabled
   const int bufSize = 40960;
   char text[bufSize];
   int l=0;
@@ -195,7 +195,7 @@ void va_warn(const char *file,int line,const char *fmt,va_list args)
 
 void warn_simple(const char *file,int line,const char *text)
 {
-  if (!Config_getBool("WARNINGS")) return; // warning type disabled
+  if (!DOXY_CONFIG_GET_BOOL("WARNINGS")) return; // warning type disabled
   format_warn(file,line,QCString(warning_str) + text);
 }
 

@@ -119,7 +119,7 @@ QCString LayoutNavEntry::url() const
     }
     if (!found)
     {
-      msg("explicit link request to '%s' in layout file '%s' could not be resolved\n",qPrint(url.mid(5)),qPrint(Config_getString("LAYOUT_FILE")));
+      msg("explicit link request to '%s' in layout file '%s' could not be resolved\n",qPrint(url.mid(5)),qPrint(DOXY_CONFIG_GET_STRING("LAYOUT_FILE")));
     }
   }
   //printf("LayoutNavEntry::url()=%s\n",url.data());
@@ -893,12 +893,12 @@ class LayoutParser : public QXmlDefaultHandler
 
     void startNavEntry(const QXmlAttributes &attrib)
     {
-      static bool javaOpt    = Config_getBool("OPTIMIZE_OUTPUT_JAVA");
-      static bool fortranOpt = Config_getBool("OPTIMIZE_FOR_FORTRAN");
-      static bool vhdlOpt    = Config_getBool("OPTIMIZE_OUTPUT_VHDL");  
-      static bool hasGraphicalHierarchy = Config_getBool("HAVE_DOT") &&
-                                          Config_getBool("GRAPHICAL_HIERARCHY");
-      static bool extractAll = Config_getBool("EXTRACT_ALL");
+      static bool javaOpt    = DOXY_CONFIG_GET_BOOL("OPTIMIZE_OUTPUT_JAVA");
+      static bool fortranOpt = DOXY_CONFIG_GET_BOOL("OPTIMIZE_FOR_FORTRAN");
+      static bool vhdlOpt    = DOXY_CONFIG_GET_BOOL("OPTIMIZE_OUTPUT_VHDL");  
+      static bool hasGraphicalHierarchy = DOXY_CONFIG_GET_BOOL("HAVE_DOT") &&
+                                          DOXY_CONFIG_GET_BOOL("GRAPHICAL_HIERARCHY");
+      static bool extractAll = DOXY_CONFIG_GET_BOOL("EXTRACT_ALL");
       static struct NavEntryMap
       {
         const char *typeStr;       // type attribute name in the XML file

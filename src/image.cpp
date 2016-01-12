@@ -210,9 +210,9 @@ static Color palette3[] =
 
 Image::Image(int w,int h)
 {
-  static int hue   = Config_getInt("HTML_COLORSTYLE_HUE");
-  static int sat   = Config_getInt("HTML_COLORSTYLE_SAT");
-  static int gamma = Config_getInt("HTML_COLORSTYLE_GAMMA");
+  static int hue   = DOXY_CONFIG_GET_INT("HTML_COLORSTYLE_HUE");
+  static int sat   = DOXY_CONFIG_GET_INT("HTML_COLORSTYLE_SAT");
+  static int gamma = DOXY_CONFIG_GET_INT("HTML_COLORSTYLE_GAMMA");
 
   double red1,green1,blue1;
   double red2,green2,blue2;
@@ -400,7 +400,7 @@ bool Image::save(const char *fileName,int mode)
     return FALSE;
   }
 #endif
-  static bool useTransparency = Config_getBool("FORMULA_TRANSPARENT");
+  static bool useTransparency = DOXY_CONFIG_GET_BOOL("FORMULA_TRANSPARENT");
   uchar* buffer;
   size_t bufferSize;
   LodePNG_Encoder encoder;

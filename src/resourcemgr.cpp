@@ -138,7 +138,7 @@ bool ResourceMgr::copyResourceAs(const char *name,const char *targetDir,const ch
             buf = replaceColorMarkers(buf);
             if (qstrcmp(name,"navtree.css")==0)
             {
-              t << substitute(buf,"$width",QCString().setNum(Config_getInt("TREEVIEW_WIDTH"))+"px");
+              t << substitute(buf,"$width",QCString().setNum(DOXY_CONFIG_GET_INT("TREEVIEW_WIDTH"))+"px");
             }
             else
             {

@@ -31,6 +31,6 @@ build-project translations ;
 import lex ;
 
 
-lib test : lang/code.ll : <include>./qtools <include>./src ;
+lib test : config.cpp : <include>./src ;
 
 install trc : translations//translations ;

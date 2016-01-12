@@ -72,7 +72,7 @@ GroupDef::GroupDef(const char *df,int dl,const char *na,const char *t,
 
   visited = 0;
   groupScope = 0;
-  m_subGrouping=Config_getBool("SUBGROUPING");
+  m_subGrouping=DOXY_CONFIG_GET_BOOL("SUBGROUPING");
 }
 
 GroupDef::~GroupDef()
@@ -138,7 +138,7 @@ void GroupDef::findSectionsInDocumentation()
 
 void GroupDef::addFile(const FileDef *def)
 {
-  static bool sortBriefDocs = Config_getBool("SORT_BRIEF_DOCS");
+  static bool sortBriefDocs = DOXY_CONFIG_GET_BOOL("SORT_BRIEF_DOCS");
   if (def->isHidden()) return;
   updateLanguage(def);
   if (sortBriefDocs)
@@ -149,7 +149,7 @@ void GroupDef::addFile(const FileDef *def)
 
 bool GroupDef::addClass(const ClassDef *cd)
 {
-  static bool sortBriefDocs = Config_getBool("SORT_BRIEF_DOCS");
+  static bool sortBriefDocs = DOXY_CONFIG_GET_BOOL("SORT_BRIEF_DOCS");
   if (cd->isHidden()) return FALSE;
   updateLanguage(cd);
   QCString qn = cd->name();
@@ -197,7 +197,7 @@ bool GroupDef::addClass(const ClassDef *cd)
 
 bool GroupDef::addNamespace(const NamespaceDef *def)
 {
-  static bool sortBriefDocs = Config_getBool("SORT_BRIEF_DOCS");
+  static bool sortBriefDocs = DOXY_CONFIG_GET_BOOL("SORT_BRIEF_DOCS");
   if (def->isHidden()) return FALSE;
   updateLanguage(def);
   if (namespaceSDict->find(def->name())==0)
@@ -214,7 +214,7 @@ bool GroupDef::addNamespace(const NamespaceDef *def)
 void GroupDef::addDir(const DirDef *def)
 {
   if (def->isHidden()) return;
-  if (Config_getBool("SORT_BRIEF_DOCS"))
+  if (DOXY_CONFIG_GET_BOOL("SORT_BRIEF_DOCS"))
     dirList->inSort(def);  
   else
     dirList->append(def);
@@ -708,7 +708,7 @@ void GroupDef::writeTagFile(FTextStream &tagFile)
 
 void GroupDef::writeDetailedDescription(OutputList &ol,const QCString &title)
 {
-  if ((!briefDescription().isEmpty() && Config_getBool("REPEAT_BRIEF")) 
+  if ((!briefDescription().isEmpty() && DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF")) 
       || !documentation().isEmpty() || !inbodyDocumentation().isEmpty()
      )
   {
@@ -728,12 +728,12 @@ void GroupDef::writeDetailedDescription(OutputList &ol,const QCString &title)
     }
 
     // repeat brief description
-    if (!briefDescription().isEmpty() && Config_getBool("REPEAT_BRIEF"))
+    if (!briefDescription().isEmpty() && DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF"))
     {
       ol.generateDoc(briefFile(),briefLine(),this,0,briefDescription(),FALSE,FALSE);
     }
     // write separator between brief and details
-    if (!briefDescription().isEmpty() && Config_getBool("REPEAT_BRIEF") &&
+    if (!briefDescription().isEmpty() && DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF") &&
         !documentation().isEmpty())
     {
       ol.pushGeneratorState();
@@ -763,7 +763,7 @@ void GroupDef::writeDetailedDescription(OutputList &ol,const QCString &title)
 
 void GroupDef::writeBriefDescription(OutputList &ol)
 {
-  if (!briefDescription().isEmpty() && Config_getBool("BRIEF_MEMBER_DESC"))
+  if (!briefDescription().isEmpty() && DOXY_CONFIG_GET_BOOL("BRIEF_MEMBER_DESC"))
   {
     DocRoot *rootNode = validatingParseDoc(briefFile(),briefLine(),this,0,
                                 briefDescription(),TRUE,FALSE,0,TRUE,FALSE);
@@ -776,7 +776,7 @@ void GroupDef::writeBriefDescription(OutputList &ol)
       ol.writeString(" \n");
       ol.enable(OutputGenerator::RTF);
 
-      if (Config_getBool("REPEAT_BRIEF") ||
+      if (DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF") ||
           !documentation().isEmpty()
          )
       {
@@ -794,7 +794,7 @@ void GroupDef::writeBriefDescription(OutputList &ol)
 
 void GroupDef::writeGroupGraph(OutputList &ol)
 {
-  if (Config_getBool("HAVE_DOT") /*&& Config_getBool("GROUP_GRAPHS")*/ )
+  if (DOXY_CONFIG_GET_BOOL("HAVE_DOT") /*&& Config_getBool("GROUP_GRAPHS")*/ )
   {
     DotGroupCollaboration graph(this);
     if (!graph.isTrivial())
@@ -832,7 +832,7 @@ void GroupDef::writeFiles(OutputList &ol,const QCString &title)
       ol.insertMemberAlign();
       ol.writeObjectLink(fd->getReference(),fd->getOutputFileBase(),0,fd->name());
       ol.endMemberItem();
-      if (!fd->briefDescription().isEmpty() && Config_getBool("BRIEF_MEMBER_DESC"))
+      if (!fd->briefDescription().isEmpty() && DOXY_CONFIG_GET_BOOL("BRIEF_MEMBER_DESC"))
       {
         ol.startMemberDescription(fd->getOutputFileBase());
         ol.generateDoc(briefFile(),briefLine(),fd,0,fd->briefDescription(),FALSE,FALSE,0,TRUE,FALSE);
@@ -869,7 +869,7 @@ void GroupDef::writeNestedGroups(OutputList &ol,const QCString &title)
     ol.parseText(title);
     ol.endMemberHeader();
     ol.startMemberList();
-    if (Config_getBool("SORT_GROUP_NAMES"))
+    if (DOXY_CONFIG_GET_BOOL("SORT_GROUP_NAMES"))
     {
       groupList->sort();
     }
@@ -887,7 +887,7 @@ void GroupDef::writeNestedGroups(OutputList &ol,const QCString &title)
         ol.insertMemberAlign();
         ol.writeObjectLink(gd->getReference(),gd->getOutputFileBase(),0,gd->groupTitle());
         ol.endMemberItem();
-        if (!gd->briefDescription().isEmpty() && Config_getBool("BRIEF_MEMBER_DESC"))
+        if (!gd->briefDescription().isEmpty() && DOXY_CONFIG_GET_BOOL("BRIEF_MEMBER_DESC"))
         {
           ol.startMemberDescription(gd->getOutputFileBase());
           ol.generateDoc(briefFile(),briefLine(),gd,0,gd->briefDescription(),FALSE,FALSE,0,TRUE,FALSE);
@@ -920,7 +920,7 @@ void GroupDef::writeDirs(OutputList &ol,const QCString &title)
       ol.insertMemberAlign();
       ol.writeObjectLink(dd->getReference(),dd->getOutputFileBase(),0,dd->shortName());
       ol.endMemberItem();
-      if (!dd->briefDescription().isEmpty() && Config_getBool("BRIEF_MEMBER_DESC"))
+      if (!dd->briefDescription().isEmpty() && DOXY_CONFIG_GET_BOOL("BRIEF_MEMBER_DESC"))
       {
         ol.startMemberDescription(dd->getOutputFileBase());
         ol.generateDoc(briefFile(),briefLine(),dd,0,dd->briefDescription(),FALSE,FALSE,0,TRUE,FALSE);
@@ -996,7 +996,7 @@ void GroupDef::endMemberDeclarations(OutputList &ol)
 void GroupDef::startMemberDocumentation(OutputList &ol)
 {
   //printf("** GroupDef::startMemberDocumentation()\n");
-  if (Config_getBool("SEPARATE_MEMBER_PAGES"))
+  if (DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES"))
   {
     ol.pushGeneratorState();
     ol.disable(OutputGenerator::Html);
@@ -1007,7 +1007,7 @@ void GroupDef::startMemberDocumentation(OutputList &ol)
 void GroupDef::endMemberDocumentation(OutputList &ol)
 {
   //printf("** GroupDef::endMemberDocumentation()\n");
-  if (Config_getBool("SEPARATE_MEMBER_PAGES"))
+  if (DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES"))
   {
     ol.popGeneratorState();
     Doxygen::suppressDocWarnings = FALSE;
@@ -1022,7 +1022,7 @@ void GroupDef::writeAuthorSection(OutputList &ol)
   ol.startGroupHeader();
   ol.parseText(theTranslator->trAuthor(TRUE,TRUE));
   ol.endGroupHeader();
-  ol.parseText(theTranslator->trGeneratedAutomatically(Config_getString("PROJECT_NAME")));
+  ol.parseText(theTranslator->trGeneratedAutomatically(DOXY_CONFIG_GET_STRING("PROJECT_NAME")));
   ol.popGeneratorState();
 }
 
@@ -1235,7 +1235,7 @@ void GroupDef::writeDocumentation(OutputList &ol)
 
   ol.popGeneratorState();
 
-  if (Config_getBool("SEPARATE_MEMBER_PAGES"))
+  if (DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES"))
   {
     allMemberList->sort();
     writeMemberPages(ol);
@@ -1263,7 +1263,7 @@ void GroupDef::writeMemberPages(OutputList &ol)
 
 void GroupDef::writeQuickMemberLinks(OutputList &ol,MemberDef *currentMd) const
 {
-  static bool createSubDirs=Config_getBool("CREATE_SUBDIRS");
+  static bool createSubDirs=DOXY_CONFIG_GET_BOOL("CREATE_SUBDIRS");
 
   ol.writeString("      <div class=\"navtab\">\n");
   ol.writeString("        <table>\n");
@@ -1572,8 +1572,8 @@ MemberList *GroupDef::createMemberList(MemberListType lt)
 
 void GroupDef::addMemberToList(MemberListType lt,MemberDef *md)
 {
-  static bool sortBriefDocs = Config_getBool("SORT_BRIEF_DOCS");
-  static bool sortMemberDocs = Config_getBool("SORT_MEMBER_DOCS");
+  static bool sortBriefDocs = DOXY_CONFIG_GET_BOOL("SORT_BRIEF_DOCS");
+  static bool sortMemberDocs = DOXY_CONFIG_GET_BOOL("SORT_MEMBER_DOCS");
   MemberList *ml = createMemberList(lt);
   ml->setNeedsSorting(
       ((ml->listType()&MemberListType_declarationLists) && sortBriefDocs) ||
@@ -1607,7 +1607,7 @@ MemberList *GroupDef::getMemberList(MemberListType lt) const
 
 void GroupDef::writeMemberDeclarations(OutputList &ol,MemberListType lt,const QCString &title)
 {
-  static bool optimizeVhdl = Config_getBool("OPTIMIZE_OUTPUT_VHDL");
+  static bool optimizeVhdl = DOXY_CONFIG_GET_BOOL("OPTIMIZE_OUTPUT_VHDL");
 
   MemberList * ml = getMemberList(lt);
   if (optimizeVhdl && ml) 
@@ -1660,7 +1660,7 @@ void GroupDef::updateLanguage(const Definition *d)
 
 bool GroupDef::hasDetailedDescription() const
 {
-  static bool repeatBrief = Config_getBool("REPEAT_BRIEF");
+  static bool repeatBrief = DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF");
   return ((!briefDescription().isEmpty() && repeatBrief) ||
           !documentation().isEmpty());
 }

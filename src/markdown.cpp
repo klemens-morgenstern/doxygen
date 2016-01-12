@@ -2240,7 +2240,7 @@ static QCString extractPageTitle(QCString &docs,QCString &id)
 
 static QCString detab(const QCString &s,int &refIndent)
 {
-  static int tabSize = Config_getInt("TAB_SIZE");
+  static int tabSize = DOXY_CONFIG_GET_INT("TAB_SIZE");
   GrowBuf out;
   int size = s.length();
   const char *data = s.data();
@@ -2366,7 +2366,7 @@ void MarkdownFileParser::parseInput(const char *fileName,
   QCString title=extractPageTitle(docs,id).stripWhiteSpace();
   QCString titleFn = QFileInfo(fileName).baseName().utf8();
   QCString fn      = QFileInfo(fileName).fileName().utf8();
-  static QCString mdfileAsMainPage = Config_getString("USE_MDFILE_AS_MAINPAGE");
+  static QCString mdfileAsMainPage = DOXY_CONFIG_GET_STRING("USE_MDFILE_AS_MAINPAGE");
   if (id.isEmpty()) id = markdownFileNameToId(fileName);
   if (!mdfileAsMainPage.isEmpty() &&
       (fn==mdfileAsMainPage || // name reference

@@ -659,7 +659,7 @@ void MemberDefImpl::init(Definition *def,
   explExt=FALSE;
   tspec=FALSE;
   cachedAnonymousType=0;
-  maxInitLines=Config_getInt("MAX_INITIALIZER_LINES");
+  maxInitLines=DOXY_CONFIG_GET_INT("MAX_INITIALIZER_LINES");
   userInitLines=-1;
   docEnumValues=FALSE;
   // copy function template arguments (if any)
@@ -941,8 +941,8 @@ bool MemberDef::hasExamples()
 
 QCString MemberDef::getOutputFileBase() const
 {
-  static bool separateMemberPages = Config_getBool("SEPARATE_MEMBER_PAGES");
-  static bool inlineSimpleClasses = Config_getBool("INLINE_SIMPLE_STRUCTS");
+  static bool separateMemberPages = DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES");
+  static bool inlineSimpleClasses = DOXY_CONFIG_GET_BOOL("INLINE_SIMPLE_STRUCTS");
   QCString baseName;
 
   //printf("Member: %s: templateMaster=%p group=%p classDef=%p nspace=%p fileDef=%p\n",
@@ -1054,7 +1054,7 @@ QCString MemberDef::anchor() const
 
 void MemberDef::_computeLinkableInProject()
 {
-  static bool extractStatic  = Config_getBool("EXTRACT_STATIC");
+  static bool extractStatic  = DOXY_CONFIG_GET_BOOL("EXTRACT_STATIC");
   m_isLinkableCached = 2; // linkable
   //printf("MemberDef::isLinkableInProject(name=%s)\n",name().data());
   if (isHidden())
@@ -1185,7 +1185,7 @@ void MemberDef::writeLink(OutputList &ol,ClassDef *,NamespaceDef *,
                       FileDef *fd,GroupDef *gd,bool onlyText)
 {
   SrcLangExt lang = getLanguage();
-  static bool hideScopeNames     = Config_getBool("HIDE_SCOPE_NAMES");
+  static bool hideScopeNames     = DOXY_CONFIG_GET_BOOL("HIDE_SCOPE_NAMES");
   QCString sep = getLanguageSpecificSeparator(lang,TRUE);
   QCString n = name();
   if (!hideScopeNames)
@@ -1289,11 +1289,11 @@ ClassDef *MemberDef::getClassDefOfAnonymousType()
  */
 bool MemberDef::isBriefSectionVisible() const
 {
-  static bool extractStatic       = Config_getBool("EXTRACT_STATIC");
-  static bool hideUndocMembers    = Config_getBool("HIDE_UNDOC_MEMBERS");
-  static bool briefMemberDesc     = Config_getBool("BRIEF_MEMBER_DESC");
-  static bool repeatBrief         = Config_getBool("REPEAT_BRIEF");
-  static bool hideFriendCompounds = Config_getBool("HIDE_FRIEND_COMPOUNDS");
+  static bool extractStatic       = DOXY_CONFIG_GET_BOOL("EXTRACT_STATIC");
+  static bool hideUndocMembers    = DOXY_CONFIG_GET_BOOL("HIDE_UNDOC_MEMBERS");
+  static bool briefMemberDesc     = DOXY_CONFIG_GET_BOOL("BRIEF_MEMBER_DESC");
+  static bool repeatBrief         = DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF");
+  static bool hideFriendCompounds = DOXY_CONFIG_GET_BOOL("HIDE_FRIEND_COMPOUNDS");
 
   //printf("Member %s grpId=%d docs=%s file=%s args=%s\n",
   //    name().data(),
@@ -1606,8 +1606,8 @@ void MemberDef::writeDeclaration(OutputList &ol,
     //printf("Member name=`%s gd=%p md->groupDef=%p inGroup=%d isLinkable()=%d\n",name().data(),gd,getGroupDef(),inGroup,isLinkable());
     if (!(name().isEmpty() || name().at(0)=='@') && // name valid
         (hasDocumentation() || isReference()) && // has docs
-        !(m_impl->prot==Private && !Config_getBool("EXTRACT_PRIVATE") && m_impl->mtype!=MemberType_Friend) && // hidden due to protection
-        !(isStatic() && m_impl->classDef==0 && !Config_getBool("EXTRACT_STATIC")) // hidden due to static-ness
+        !(m_impl->prot==Private && !DOXY_CONFIG_GET_BOOL("EXTRACT_PRIVATE") && m_impl->mtype!=MemberType_Friend) && // hidden due to protection
+        !(isStatic() && m_impl->classDef==0 && !DOXY_CONFIG_GET_BOOL("EXTRACT_STATIC")) // hidden due to static-ness
        )
     {
       if (m_impl->annMemb)
@@ -1733,7 +1733,7 @@ void MemberDef::writeDeclaration(OutputList &ol,
     ol.endTypewriter();
   }
   
-  bool extractPrivate = Config_getBool("EXTRACT_PRIVATE");
+  bool extractPrivate = DOXY_CONFIG_GET_BOOL("EXTRACT_PRIVATE");
 
   if (isProperty() && (isSettable() || isGettable() ||
       isPrivateSettable() || isPrivateGettable() ||
@@ -1799,7 +1799,7 @@ void MemberDef::writeDeclaration(OutputList &ol,
 
   // write brief description
   if (!briefDescription().isEmpty() &&
-      Config_getBool("BRIEF_MEMBER_DESC")
+      DOXY_CONFIG_GET_BOOL("BRIEF_MEMBER_DESC")
       /* && !annMemb */
      )
   {
@@ -1813,7 +1813,7 @@ void MemberDef::writeDeclaration(OutputList &ol,
       ol.writeDoc(rootNode,getOuterScope()?getOuterScope():d,this);
       if (detailsVisible)
       {
-        static bool separateMemberPages = Config_getBool("SEPARATE_MEMBER_PAGES");
+        static bool separateMemberPages = DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES");
         ol.pushGeneratorState();
         ol.disableAllBut(OutputGenerator::Html);
         //ol.endEmphasis();
@@ -1852,12 +1852,12 @@ void MemberDef::writeDeclaration(OutputList &ol,
 
 bool MemberDef::isDetailedSectionLinkable() const
 {
-  static bool extractAll        = Config_getBool("EXTRACT_ALL");
-  static bool alwaysDetailedSec = Config_getBool("ALWAYS_DETAILED_SEC");
-  static bool repeatBrief       = Config_getBool("REPEAT_BRIEF");
-  static bool briefMemberDesc   = Config_getBool("BRIEF_MEMBER_DESC");
-  static bool hideUndocMembers  = Config_getBool("HIDE_UNDOC_MEMBERS");
-  static bool extractStatic     = Config_getBool("EXTRACT_STATIC");
+  static bool extractAll        = DOXY_CONFIG_GET_BOOL("EXTRACT_ALL");
+  static bool alwaysDetailedSec = DOXY_CONFIG_GET_BOOL("ALWAYS_DETAILED_SEC");
+  static bool repeatBrief       = DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF");
+  static bool briefMemberDesc   = DOXY_CONFIG_GET_BOOL("BRIEF_MEMBER_DESC");
+  static bool hideUndocMembers  = DOXY_CONFIG_GET_BOOL("HIDE_UNDOC_MEMBERS");
+  static bool extractStatic     = DOXY_CONFIG_GET_BOOL("EXTRACT_STATIC");
 
   // the member has details documentation for any of the following reasons
   bool docFilter =
@@ -1904,7 +1904,7 @@ bool MemberDef::isDetailedSectionLinkable() const
 
   // hide friend (class|struct|union) member if HIDE_FRIEND_COMPOUNDS
   // is true
-  bool friendCompoundFilter = !(Config_getBool("HIDE_FRIEND_COMPOUNDS") &&
+  bool friendCompoundFilter = !(DOXY_CONFIG_GET_BOOL("HIDE_FRIEND_COMPOUNDS") &&
                                 isFriend() &&
                                 (m_impl->type=="friend class" ||
                                  m_impl->type=="friend struct" ||
@@ -1920,9 +1920,9 @@ bool MemberDef::isDetailedSectionLinkable() const
 
 bool MemberDef::isDetailedSectionVisible(bool inGroup,bool inFile) const
 {
-  static bool separateMemPages = Config_getBool("SEPARATE_MEMBER_PAGES");
-  static bool inlineSimpleStructs = Config_getBool("INLINE_SIMPLE_STRUCTS");
-  static bool hideUndocMembers = Config_getBool("HIDE_UNDOC_MEMBERS");
+  static bool separateMemPages = DOXY_CONFIG_GET_BOOL("SEPARATE_MEMBER_PAGES");
+  static bool inlineSimpleStructs = DOXY_CONFIG_GET_BOOL("INLINE_SIMPLE_STRUCTS");
+  static bool hideUndocMembers = DOXY_CONFIG_GET_BOOL("HIDE_UNDOC_MEMBERS");
   bool groupFilter = getGroupDef()==0 || inGroup || separateMemPages;
   bool fileFilter  = getNamespaceDef()==0 || !getNamespaceDef()->isLinkable() || !inFile;
   bool simpleFilter = (hasBriefDescription() || !hideUndocMembers) && inlineSimpleStructs &&
@@ -1938,7 +1938,7 @@ bool MemberDef::isDetailedSectionVisible(bool inGroup,bool inFile) const
 
 void MemberDef::getLabels(QStrList &sl,Definition *container) const
 {
-  static bool inlineInfo = Config_getBool("INLINE_INFO");
+  static bool inlineInfo = DOXY_CONFIG_GET_BOOL("INLINE_INFO");
 
   Specifier lvirt=virtualness();
   if ((!isObjCMethod() || isOptional() || isRequired()) &&
@@ -1958,7 +1958,7 @@ void MemberDef::getLabels(QStrList &sl,Definition *container) const
     //ol.docify(" [");
     SrcLangExt lang = getLanguage();
     bool optVhdl = lang==SrcLangExt_VHDL;
-    bool extractPrivate = Config_getBool("EXTRACT_PRIVATE");
+    bool extractPrivate = DOXY_CONFIG_GET_BOOL("EXTRACT_PRIVATE");
     if (optVhdl)
     {
       sl.append(VhdlDocGen::trTypeString(getMemberSpecifiers()));
@@ -1969,7 +1969,7 @@ void MemberDef::getLabels(QStrList &sl,Definition *container) const
       else if (isRelated()) sl.append("related");
       else
       {
-        if      (Config_getBool("INLINE_INFO") && isInline()) sl.append("inline");
+        if      (DOXY_CONFIG_GET_BOOL("INLINE_INFO") && isInline()) sl.append("inline");
         if      (isExplicit())            sl.append("explicit");
         if      (isMutable())             sl.append("mutable");
         if      (isStatic())              sl.append("static");
@@ -2057,7 +2057,7 @@ void MemberDef::_writeCallGraph(OutputList &ol)
 {
   // write call graph
   if (m_impl->hasCallGraph
-      && (isFunction() || isSlot() || isSignal()) && Config_getBool("HAVE_DOT")
+      && (isFunction() || isSlot() || isSignal()) && DOXY_CONFIG_GET_BOOL("HAVE_DOT")
      )
   {
     DotCallGraph callGraph(this,FALSE);
@@ -2082,7 +2082,7 @@ void MemberDef::_writeCallGraph(OutputList &ol)
 void MemberDef::_writeCallerGraph(OutputList &ol)
 {
   if (m_impl->hasCallerGraph
-      && (isFunction() || isSlot() || isSignal()) && Config_getBool("HAVE_DOT")
+      && (isFunction() || isSlot() || isSignal()) && DOXY_CONFIG_GET_BOOL("HAVE_DOT")
      )
   {
     DotCallGraph callerGraph(this, TRUE);
@@ -2484,7 +2484,7 @@ void MemberDef::_writeGroupInclude(OutputList &ol,bool inGroup)
 {
   // only write out the include file if this is not part of a class or file
   // definition
-  static bool showGroupedMembInc = Config_getBool("SHOW_GROUPED_MEMB_INC");
+  static bool showGroupedMembInc = DOXY_CONFIG_GET_BOOL("SHOW_GROUPED_MEMB_INC");
   FileDef *fd = getFileDef();
   QCString nm;
   if (fd) nm = getFileDef()->docName();
@@ -2665,7 +2665,7 @@ void MemberDef::writeDocumentation(MemberList *ml,OutputList &ol,
 
     ClassDef *cd=getClassDef();
     NamespaceDef *nd=getNamespaceDef();
-    if (!Config_getBool("HIDE_SCOPE_NAMES"))
+    if (!DOXY_CONFIG_GET_BOOL("HIDE_SCOPE_NAMES"))
     {
       bool first=TRUE;
       SrcLangExt lang = getLanguage();
@@ -2893,8 +2893,8 @@ void MemberDef::writeDocumentation(MemberList *ml,OutputList &ol,
 
   /* write brief description */
   if (!brief.isEmpty() &&
-      (Config_getBool("REPEAT_BRIEF") ||
-       !Config_getBool("BRIEF_MEMBER_DESC")
+      (DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF") ||
+       !DOXY_CONFIG_GET_BOOL("BRIEF_MEMBER_DESC")
       )
      )
   {
@@ -2927,8 +2927,8 @@ void MemberDef::writeDocumentation(MemberList *ml,OutputList &ol,
                   inbodyDocumentation()+"\n",TRUE,FALSE);
     }
   }
-  else if (!brief.isEmpty() && (Config_getBool("REPEAT_BRIEF") ||
-        !Config_getBool("BRIEF_MEMBER_DESC")))
+  else if (!brief.isEmpty() && (DOXY_CONFIG_GET_BOOL("REPEAT_BRIEF") ||
+        !DOXY_CONFIG_GET_BOOL("BRIEF_MEMBER_DESC")))
   {
     if (!inbodyDocumentation().isEmpty())
     {
@@ -2998,9 +2998,9 @@ void MemberDef::writeDocumentation(MemberList *ml,OutputList &ol,
 
   //------------------------------------------------
 
-  if (!Config_getBool("EXTRACT_ALL") &&
-      Config_getBool("WARN_IF_UNDOCUMENTED") &&
-      Config_getBool("WARN_NO_PARAMDOC") &&
+  if (!DOXY_CONFIG_GET_BOOL("EXTRACT_ALL") &&
+      DOXY_CONFIG_GET_BOOL("WARN_IF_UNDOCUMENTED") &&
+      DOXY_CONFIG_GET_BOOL("WARN_NO_PARAMDOC") &&
       !Doxygen::suppressDocWarnings)
   {
     if (!hasDocumentedParams())
@@ -3231,7 +3231,7 @@ void MemberDef::warnIfUndocumented()
     t="group", d=gd;
   else
     t="file", d=fd;
-  static bool extractAll = Config_getBool("EXTRACT_ALL");
+  static bool extractAll = DOXY_CONFIG_GET_BOOL("EXTRACT_ALL");
 
   //printf("%s:warnIfUndoc: hasUserDocs=%d isFriendClass=%d protection=%d isRef=%d isDel=%d\n",
   //    name().data(),
@@ -3481,7 +3481,7 @@ void MemberDef::setInitializer(const char *initializer)
 
 void MemberDef::addListReference(Definition *)
 {
-  static bool optimizeOutputForC = Config_getBool("OPTIMIZE_OUTPUT_FOR_C");
+  static bool optimizeOutputForC = DOXY_CONFIG_GET_BOOL("OPTIMIZE_OUTPUT_FOR_C");
   //static bool hideScopeNames     = Config_getBool("HIDE_SCOPE_NAMES");
   //static bool optimizeOutputJava = Config_getBool("OPTIMIZE_OUTPUT_JAVA");
   //static bool fortranOpt = Config_getBool("OPTIMIZE_FOR_FORTRAN");
@@ -3800,7 +3800,7 @@ void MemberDef::writeEnumDeclaration(OutputList &typeDecl,
     typeDecl.writeChar(' ');
   }
 
-  uint enumValuesPerLine = (uint)Config_getInt("ENUM_VALUES_PER_LINE");
+  uint enumValuesPerLine = (uint)DOXY_CONFIG_GET_INT("ENUM_VALUES_PER_LINE");
   if (numVisibleEnumValues>0 && enumValuesPerLine>0)
   {
     typeDecl.docify("{ ");
@@ -3937,9 +3937,9 @@ void MemberDef::enableCallerGraph(bool e)
 bool MemberDef::protectionVisible() const
 {
   return m_impl->prot==Public ||
-         (m_impl->prot==Private   && Config_getBool("EXTRACT_PRIVATE"))   ||
-         (m_impl->prot==Protected && Config_getBool("EXTRACT_PROTECTED")) ||
-         (m_impl->prot==Package   && Config_getBool("EXTRACT_PACKAGE"));
+         (m_impl->prot==Private   && DOXY_CONFIG_GET_BOOL("EXTRACT_PRIVATE"))   ||
+         (m_impl->prot==Protected && DOXY_CONFIG_GET_BOOL("EXTRACT_PROTECTED")) ||
+         (m_impl->prot==Package   && DOXY_CONFIG_GET_BOOL("EXTRACT_PACKAGE"));
 }
 #endif
 
@@ -5102,7 +5102,7 @@ const ArgumentList *MemberDef::typeConstraints() const
 
 bool MemberDef::isFriendToHide() const
 {
-  static bool hideFriendCompounds = Config_getBool("HIDE_FRIEND_COMPOUNDS");
+  static bool hideFriendCompounds = DOXY_CONFIG_GET_BOOL("HIDE_FRIEND_COMPOUNDS");
   bool isFriendToHide = hideFriendCompounds &&
      (m_impl->type=="friend class"  ||
       m_impl->type=="friend struct" ||
