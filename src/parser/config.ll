@@ -29,6 +29,8 @@
 #include <boost/type_index.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/property_tree/ptree.hpp>
+#include <boost/filesystem/fstream.hpp>
+
 
 using namespace std;
 using namespace DoxyFrame::Config;
@@ -51,7 +53,7 @@ static RawOption &o() {return *current_option;}
 
 struct file_reader
 {
-	int 	line_nr = 0;
+	int line_nr = 1;
 	string file_name;
 	string input_buffer;
 	string::const_iterator input_buffer_iterator = input_buffer.begin();
@@ -66,16 +68,16 @@ static stack<file_reader, vector<file_reader>> include_stack;
 static file_reader &f() {return include_stack.top();};
 
 
-static string 			 user_comment;
-static int               lastState;
+static string 		user_comment;
+static int          lastState;
 
-static string 	   		 start_comment;
+static string 	   	start_comment;
 
-static RawOption	 	 include_path;
-static std::string 		 encoding = "UTF-8";
+static RawOption	include_path;
+static string 		encoding = "UTF-8";
 
-static string		 qStringBuf;
-static string		 GetStrList_buf;
+static string		qStringBuf;
+static string		GetStrList_buf;
 
 
 /* -----------------------------------------------------------------
@@ -97,15 +99,14 @@ static int yyread(char *buf, int &bytes_read, int max_size)
 	return bytes_read;
 }
 
-//Overwrite YY_DECL
-
 #define YY_DECL float lexscan( RawConfig &raw_cfg )
 
 namespace DoxyFrame
 {
 namespace Config
 {
-static bool parse_include_file(RawConfig &rc, const std::string & file_name, const std::string & encoding);
+static bool parse_include_file(RawConfig &rc, const std::string & file_name,
+								const std::string & encoding, int from_line = 0, const std::string & from_file = "");
 }}
 
 %}
@@ -123,12 +124,12 @@ static bool parse_include_file(RawConfig &rc, const std::string & file_name, con
 %%
 
 <*>\0x0d
-<PreStart>"##".*"\n" { raw_cfg.startComment += yytext; }
+<PreStart>"##".*"\n" { raw_cfg.startComment += (yytext + 2); }
 <PreStart>. {
               BEGIN(Start);
               unput(*yytext);
             }
-<Start,GetStrList>"##".*"\n" { user_comment += yytext; }
+<Start,GetStrList>"##".*"\n" { user_comment += (yytext + 2); }
 <Start,GetStrList>"#"	   	 { BEGIN(SkipComment); }
 <Start>[a-z_A-Z\.][a-z_A-Z0-9\.]*[ \t]*"=" {
 								string opt_name = yytext;
@@ -136,6 +137,8 @@ static bool parse_include_file(RawConfig &rc, const std::string & file_name, con
 								opt_name.resize(opt_name.size()-1); //remove the "="
 								boost::trim(opt_name);
 								current_option = &raw_cfg[opt_name];
+								current_option->line_nr   = f().line_nr;
+								current_option->file_name = f().file_name;
 								std::swap(current_option->comment, user_comment); //put the comment in the thingy.
 								user_comment.clear();
 								current_option->data.clear();
@@ -154,7 +157,7 @@ static bool parse_include_file(RawConfig &rc, const std::string & file_name, con
 <Start>"@INCLUDE_PATH"[ \t]*"=" { BEGIN(GetStrList); current_option = &include_path; }
 <Start>"@INCLUDE"[ \t]*"=" { BEGIN(Include); }
 <Include>([^ \"\t\r\n]+)|("\""[^\n\"]+"\"") { 
-						parse_include_file(raw_cfg, yytext, "UTF-8") ;
+						parse_include_file(raw_cfg, yytext, "UTF-8", f().line_nr, f().file_name) ;
   					  	BEGIN(Start);
 					}
 <<EOF>>				{
@@ -201,9 +204,7 @@ static bool parse_include_file(RawConfig &rc, const std::string & file_name, con
 					  				}
 					  				BEGIN(lastState);
   								}
-<GetQuotedString>"\\\""		{
-  					 			 qStringBuf+='"';
-  							}
+<GetQuotedString>"\\\""		{ qStringBuf+='"'; 		}
 <GetQuotedString>.			{ qStringBuf += *yytext; }
 
 <GetStrList>[^ \#\"\t\r\n]+		{ GetStrList_buf += yytext; }
@@ -224,6 +225,23 @@ namespace DoxyFrame
 namespace Config
 {
 
+static void yy_user_init()
+{
+	current_option 	= nullptr;
+	include_stack 	= stack<file_reader, vector<file_reader>>();
+	user_comment 	= "";
+	lastState		= 0;
+
+	start_comment	= "";
+
+	include_path	= {};
+	encoding 		= "UTF-8";
+
+	qStringBuf		= "";
+	GetStrList_buf = {};
+}
+
+
 bool parse_string(RawConfig &rc, const string &filename , string &&content)
 {
 
@@ -234,9 +252,38 @@ bool parse_string(RawConfig &rc, const string &filename , string &&content)
 
   	return lexscan (rc);;
 }
-bool parse_include_file(RawConfig &rc, const std::string & file_name, const std::string & encoding)
+bool parse_include_file(RawConfig &rc, const std::string & file_name, const std::string & encoding,
+						int from_line, const std::string & from_file)
 {
-	ifstream fs(file_name);
+	boost::filesystem::path found;
+
+
+	//look if the file exist in the current directory
+	if (is_regular_file(boost::filesystem::path(file_name)))
+	{
+		found = file_name;
+	}
+	else
+	{
+		for (auto & in : include_path.data)
+		{
+			auto t = boost::filesystem::path(in) / file_name;
+			if (is_regular_file(t))
+			{
+				found = t;
+				break;
+			}
+		}
+
+		if (found.empty())
+		{
+			cerr << from_file << "(" << from_line << "): Error: Include file " << file_name << " not found.\n"
+					"Exiting..." << endl;
+			exit(1);
+		}
+	}
+
+	boost::filesystem::ifstream fs(found);
 
 	stringstream ss;
 	ss << fs.rdbuf();
@@ -245,21 +292,42 @@ bool parse_include_file(RawConfig &rc, const std::string & file_name, const std:
 
 }
 
-bool parse_file(RawConfig &rc, const string& filename)
+bool parse_file(RawConfig &rc, const boost::filesystem::path& filename)
 {
-	ifstream fs(filename);
+	boost::filesystem::ifstream fs(filename);
 
 	stringstream ss;
 	ss << fs.rdbuf();
 
   	int retval;
+  	yy_user_init();
 
   	//printlex(yy_flex_debug, true, __FILE__, filename);
-  	retval =  parse_string(rc, filename, ss.str());
+  	retval =  parse_string(rc, filename.generic_string<string>(), ss.str());
   	//printlex(yy_flex_debug, false, __FILE__, filename);
+
+  	//used as a reset.
+  	yy_user_init();
+
  	return retval;
 }
+
+RawConfig parse(const boost::filesystem::path& file_name)
+{
+	RawConfig rc;
+	auto res = parse_file(rc, file_name);
+	if (res != 0)
+	{
+		//TODO: ERROR Handling
+	}
+
+	return std::move(rc);
+
+}
+
+
 }}
+
 int main()
 {
 	RawConfig rc;
