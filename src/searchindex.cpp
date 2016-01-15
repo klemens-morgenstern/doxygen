@@ -28,7 +28,6 @@
 #include "pagedef.h"
 #include "growbuf.h"
 #include "message.h"
-#include "version.h"
 #include "groupdef.h"
 #include "classlist.h"
 #include "config.hpp"
@@ -37,6 +36,7 @@
 #include "filename.h"
 #include "membername.h"
 #include "resourcemgr.h"
+#include "version.hpp"
 
 // file format: (all multi-byte values are stored in big endian format)
 //   4 byte header

@@ -22,7 +22,6 @@
 #include "vhdldocgen.h"
 #include "util.h"
 #include "doxygen.h"
-#include "version.h"
 #include <assert.h>
 #include <qxml.h>
 #include <qfile.h>
@@ -30,6 +29,7 @@
 #include <qfileinfo.h>
 #include <qtextstream.h>
 #include "config.hpp"
+#include "version.hpp"
 
 static const char layout_default[] =
 #include "layout_default.xml.h"

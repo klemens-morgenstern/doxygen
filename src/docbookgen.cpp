@@ -34,7 +34,6 @@
 #include "dot.h"
 #include "pagedef.h"
 #include "filename.h"
-#include "version.h"
 #include "docbookvisitor.h"
 #include "docparser.h"
 #include "language.h"
@@ -47,6 +46,7 @@
 #include "membergroup.h"
 #include "dirdef.h"
 #include "section.h"
+#include "version.hpp"
 
 // no debug info
 #define Docbook_DB(x) do {} while(0)

@@ -22,9 +22,9 @@
 
 #include "config.hpp"
 #include "util.h"
-#include "version.h"
 #include "ftextstream.h"
 #include "message.h"
+#include "version.hpp"
 
 class ResourceMgr::Private
 {

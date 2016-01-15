@@ -40,7 +40,6 @@
 #include "language.h"
 #include "htmlhelp.h"
 #include "example.h"
-#include "version.h"
 #include "groupdef.h"
 #include "reflist.h"
 #include "pagedef.h"
@@ -63,6 +62,7 @@
 #include "membergroup.h"
 #include "dirdef.h"
 #include "htmlentity.h"
+#include "version.hpp"
 
 #define ENABLE_TRACINGSUPPORT 0
 

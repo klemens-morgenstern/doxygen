@@ -33,7 +33,6 @@
 #include "dot.h"
 #include "pagedef.h"
 #include "filename.h"
-#include "version.h"
 #include "xmldocvisitor.h"
 #include "docparser.h"
 #include "language.h"
@@ -48,6 +47,7 @@
 #include "section.h"
 #include "htmlentity.h"
 #include "resourcemgr.h"
+#include "version.hpp"
 
 // no debug info
 #define XML_DB(x) do {} while(0)

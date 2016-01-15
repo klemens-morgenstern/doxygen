@@ -8,6 +8,7 @@
 
 
 #include <config.hpp>
+#include <version.hpp>
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/type_index.hpp>
@@ -30,7 +31,7 @@ std::unique_ptr<Config> Config::m_instance;
 *  The arguments \a num and \a name are for debugging purposes only.
 *  There is a convenience function Config_getString() for this.
 */
-std::string &getString(const std::string &name, const std::string &fileName, int num)
+std::string &Config::getString(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
 	if (val.entry.type() != boost::typeindex::type_id<String>())
@@ -58,7 +59,7 @@ std::string &getString(const std::string &name, const std::string &fileName, int
 *  The arguments \a num and \a name are for debugging purposes only.
 *  There is a convenience function Config_getString() for this.
 */
-boost::filesystem::path &getPath(const std::string &name, const std::string &fileName, int num)
+boost::filesystem::path &Config::getPath(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
 	if (val.entry.type() != boost::typeindex::type_id<Path>())
@@ -86,7 +87,7 @@ boost::filesystem::path &getPath(const std::string &name, const std::string &fil
 *  The arguments \a num and \a name are for debugging purposes only.
 *  There is a convenience function Config_getList() for this.
 */
-std::vector<std::string> &getStringList(const std::string &name, const std::string &fileName, int num)
+std::vector<std::string> &Config::getStringList(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
 	if (val.entry.type() != boost::typeindex::type_id<StringList>())
@@ -114,7 +115,7 @@ std::vector<std::string> &getStringList(const std::string &name, const std::stri
 *  The arguments \a num and \a name are for debugging purposes only.
 *  There is a convenience function Config_getList() for this.
 */
-std::vector<boost::filesystem::path> &getPathList(const std::string &name, const std::string &fileName, int num)
+std::vector<boost::filesystem::path> &Config::getPathList(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
 	if (val.entry.type() != boost::typeindex::type_id<PathList>())
@@ -142,7 +143,7 @@ std::vector<boost::filesystem::path> &getPathList(const std::string &name, const
 *  The arguments \a num and \a name are for debugging purposes only.
 *  There is a convenience function Config_getEnum() for this.
 */
-std::string  &getEnum(const std::string &name, const std::string &fileName, int num)
+std::string  &Config::getEnum(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
 	if (val.entry.type() != boost::typeindex::type_id<Enum>())
@@ -170,7 +171,7 @@ std::string  &getEnum(const std::string &name, const std::string &fileName, int 
 *  The arguments \a num and \a name are for debugging purposes only.
 *  There is a convenience function Config_getInt() for this.
 */
-int &getInt(const std::string &name, const std::string &fileName ,int num)
+int &Config::getInt(const std::string &name, const std::string &fileName ,int num)
 {
 	auto & val = get(name, fileName, num);
 	if (val.entry.type() != boost::typeindex::type_id<Int>())
@@ -199,7 +200,7 @@ int &getInt(const std::string &name, const std::string &fileName ,int num)
 *  The arguments \a num and \a name are for debugging purposes only.
 *  There is a convenience function Config_getBool() for this.
 */
-bool     &getBool(const std::string &name, const std::string &fileName, int num)
+bool     &Config::getBool(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
 	if (val.entry.type() != boost::typeindex::type_id<Bool>())
@@ -227,7 +228,7 @@ bool     &getBool(const std::string &name, const std::string &fileName, int num)
 /*! Returns the ConfigOption corresponding with \a name or 0 if
 *  the option is not supported.
 */
-Option 	 &get	 (const std::string &name, const std::string &fileName, int num)
+Option 	 &Config::get	 (const std::string &name, const std::string &fileName, int num)
 {
 	for (auto & opt : Config::instance().options())
 	{
@@ -291,7 +292,7 @@ Enum &Config::addEnum(const std::string &name, const std::string &doc, const std
 
 	m_options.push_back(std::move(op));
 
-	return boost::get<String>(m_options.back().entry);
+	return boost::get<Enum>(m_options.back().entry);
 }
 
 /*! Adds a new string option with \a name and documentation \a doc.
@@ -313,7 +314,7 @@ StringList   &Config::addStringList(const std::string &name, const std::string &
 /*! Adds a new string option with \a name and documentation \a doc.
  *  \returns An object representing the option.
  */
-StringList   &Config::addPathList(const std::string &name, const std::string &doc)
+PathList   &Config::addPathList(const std::string &name, const std::string &doc)
 {
 	Option op;
 	PathList s;
@@ -379,7 +380,7 @@ Option &Config::addObsolete(const std::string &name)
 
 	m_options.push_back(std::move(op));
 
-	return m_options.back().entry;
+	return m_options.back();
 }
 
 /*! Adds an option that has been disabled at compile time. */
@@ -391,16 +392,16 @@ Option &Config::addDisabled(const std::string &name)
 
 	m_options.push_back(std::move(op));
 
-	return m_options.back().entry;
+	return m_options.back();
 }
 /*! @} */
 
-std::string Config::convertToComment(const std::string &s, const std::string &u)
+std::string convertToComment(const std::string &doc, const std::string &user_comment)
 {
 	std::string result("#");
-	if (!s.empty())
+	if (!doc.empty())
 	{
-		std::string tmp = s;
+		std::string tmp = doc;
 		boost::trim(tmp);
 		auto p = tmp.begin();
 
@@ -420,86 +421,159 @@ std::string Config::convertToComment(const std::string &s, const std::string &u)
 		}
 		result+='\n';
 	}
-	if (!u.empty())
+	if (!user_comment.empty())
 	{
 		if (!result.empty())
 			result+='\n';
-		result+= u;
+		result+= user_comment;
 	}
 	return result;
 }
 
 void Config::init()
 {
-  ConfigOptionAbstract option;
-
-  // sanity check if all depends relations are valid
-  for (auto & option : range())
-  {
-    std::string depName = option.dependsOn();
-    if (!depName.empty())
-    {
-      ConfigOptionAbstract * opt = Config::instance().get(depName);
-      if (opt==0)
-      {
-    	  std::cerr << "Config option '"
-    			  	<< option.name()
-					<< depName
-					<< "' has invalid depends relation on unknown option '%s'\n";
-    	  std::exit(1);
-      }
-    }
-  }
+	// sanity check if all depends relations are valid
+	for (auto & option : options())
+	{
+		if (!option.dependency.empty())
+		{
+			if (!hasOption(option.dependency))
+			{
+				std::cerr << "Config option '"
+    		    			  	<< option.name
+    							<< option.dependency
+    							<< "' has invalid depends relation on unknown option '%s'\n";
+    		    std::exit(1);
+			}
+		}
+	}
 }
 
 void Config::writeTemplate(std::ostream &t,bool sl,bool upd)
 {
-  /* print first lines of user comment that were at the beginning of the file, might have special meaning for editors */
-  if (!m_startComment.empty())
-  {
-    t << takeStartComment() << endl;
-  }
-  t << "# Doxyfile " << versionString << endl << endl;
-  if (!sl)
-  {
-	  t << Config::convertToComment(m_header,"");
-  }
-  for (auto & option : range())
-  {
-    option.writeTemplate(t,sl,upd);
-  }
-  /* print last lines of user comment that were at the end of the file */
-  if (!m_userComment.empty())
-  {
-    t << "\n";
-    t << takeUserComment();
-  }
+	/* print first lines of user comment that were at the beginning of the file, might have special meaning for editors */
+	if (!m_startComment.empty())
+	{
+		t << takeStartComment() << std::endl;
+	}
+	t << "# Doxyfile " << DoxyFrame::Version::String() << std::endl << std::endl;
+	if (!sl)
+	{
+		t << convertToComment(m_header,"");
+  	}
+  	for (auto & option : options())
+  	{
+  		option.writeTemplate(t,sl,upd);
+  	}
+  	/* print last lines of user comment that were at the end of the file */
+  	if (!m_userComment.empty())
+  	{
+  		t << "\n";
+  		t << takeUserComment();
+  	}
 }
 
-void Config::convertStrToVal()
+struct writeVisitor : boost::static_visitor<>
 {
-	for (auto & option : range())
+	std::ostream &t;
+	Option & op;
+	writeVisitor(std::ostream &os, Option &op) : t(os), op(op) {};
+
+	void operator()(const Enum		 &e ) const;
+	void operator()(const Bool 		 &b ) const;
+	void operator()(const Int  		 &i ) const;
+	void operator()(const String 	 &s ) const;
+	void operator()(const Path 		 &p ) const;
+	void operator()(const StringList &sl) const;
+	void operator()(const PathList 	 &pl) const;
+
+};
+
+
+void writeVisitor::operator()(const Bool &b ) const
+{
+	t << " ";
+	if (b.value)
+		t << "YES";
+	else
+		t << "NO";
+}
+
+void writeVisitor::operator()(const Int& i) const
+{
+	t << " " << i.value;
+}
+
+void writeVisitor::operator()(const Path &s ) const
+{
+	bool needsEscaping = false;
+	// convert the string back to it original encoding
+	std::string se = s.value.string();
+	if (!se.empty())
 	{
-		option.convertStrToVal();
+		auto itr = se.begin();
+		t << " ";
+		char c;
+
+		while ((se.end()!=++itr)!=0 && !needsEscaping)
+			needsEscaping = (c==' ' || c=='\n' || c=='\t' || c=='"' || c=='#');
+		if (needsEscaping)
+		{
+			t << "\"";
+			auto p=se.data();
+			while (*p)
+			{
+				if (*p==' ' && *(p+1)=='\0') break; // skip inserted space at the end
+				if (*p=='"') t << "\\"; // escape quotes
+				t << *p++;
+			}
+			t << "\"";
+		}
+		else
+		{
+			t << se;
+		}
+	}}
+
+void writeVisitor::operator()(const String &s ) const
+{
+	bool needsEscaping = false;
+	// convert the string back to it original encoding
+	std::string se = Recode(s.value, "UTF-8", op.encoding);
+	if (!se.empty())
+	{
+		auto itr = se.begin();
+		t << " ";
+		char c;
+
+		while ((se.end()!=++itr)!=0 && !needsEscaping)
+		{
+			needsEscaping = (c==' ' || c=='\n' || c=='\t' || c=='"' || c=='#');
+		}
+		if (needsEscaping)
+		{
+			t << "\"";
+			auto p=se.data();
+			while (*p)
+			{
+				if (*p==' ' && *(p+1)=='\0') break; // skip inserted space at the end
+				if (*p=='"') t << "\\"; // escape quotes
+				t << *p++;
+			}
+			t << "\"";
+		}
+		else
+		{
+			t << se;
+		}
 	}
 }
 
-void ConfigOptionAbstract::write(std::ostream &t,bool v)
+void writeVisitor::operator()(const Enum &s ) const
 {
-  t << " ";
-  if (v) t << "YES"; else t << "NO";
-}
-
-void ConfigOptionAbstract::write(std::ostream &t,int i)
-{
-  t << " " << i;
-}
-
-void ConfigOptionAbstract::write(std::ostream &t, const std::string &s)
-{
-	bool needsEscaping=false;
+	bool needsEscaping = false;
 	// convert the string back to it original encoding
-	std::string se = Config::configStringRecode(s,"UTF-8",m_encoding);
+	std::string se = Recode(s.value, "UTF-8", op.encoding);
 	if (!se.empty())
 	{
 		auto itr = se.begin();
@@ -527,290 +601,257 @@ void ConfigOptionAbstract::write(std::ostream &t, const std::string &s)
 	}
 }
 
-void ConfigOptionAbstract::write(std::ostream &t, const std::vector<std::string> &l)
+void writeVisitor::operator()(const PathList &l ) const
 {
 	bool first = true;
 
-	for (auto & s : l)
+	for (auto & p : l.value)
+  	{
+		auto s = p.string();
+		if (!first)
+			t << "                        ";
+		else
+			if (s.empty()) t << " \\" << std::endl;
+
+		first = false;
+		t << s;
+  }
+}
+
+
+void writeVisitor::operator()(const StringList &l ) const
+{
+	bool first = true;
+
+	for (auto & s : l.value)
   	{
 
 		if (!first)
 			t << "                        ";
 		else
-			if (s.empty()) t << " \\" << endl;
+			if (s.empty()) t << " \\" << std::endl;
 
 		first = false;
-		write(t,s);
-  }
+		t << s;
+  	}
 }
 
-
-void ConfigInt::convertStrToVal()
+struct writeTemplateVisitor : boost::static_visitor<>
 {
-  if (!m_valueString.empty())
-  {
-    bool ok = true;
-    int val;
-    try {
-    	 val = std::stoi(m_valueString);
-    }
-    catch (std::logic_error& ) {ok = false;};
+	std::ostream &t;
+	Option & op;
+	bool sl;
+	bool upd;
 
-    if (!ok || val<m_minVal || val>m_maxVal)
-    {
-      std::cerr << "argument `" << m_valueString
-    		  	<< "' for option " << m_name
-				<<" is not a valid number in the range [" << m_minVal
-				<<".."<< m_maxVal
-				<< "]!\n"
-                << "Using the default: %d!\n"<<  m_value;
-    }
-    else
-    {
-      m_value=val;
-    }
-  }
-}
+	writeTemplateVisitor(std::ostream &os, Option &opm, bool sl, bool upd) : t(os), op(op), sl(sl), upd(upd) {};
 
-void ConfigBool::convertStrToVal()
-{
-	std::string val = boost::trim(m_valueString);
-	boost::algorithm::to_lower(val);
-	if (!val.empty())
-	{
-		if (val=="yes" || val=="true" || val=="1" || val=="all")
-		{
-			m_value = true;
-		}
-		else if (val=="no" || val=="false" || val=="0" || val=="none")
-		{
-			m_value = false;
-		}
-		else
-		{
-			std::cerr << "argument `" << m_valueString
-					  << "' for option " << m_name
-					  << " is not a valid boolean value\n"
-					  << "Using the default: " << (m_value ? "YES" : "NO") << "!\n";
-		}
-  }
-}
+	void operator()(const Info		 &i ) const;
+	void operator()(const Enum		 &i ) const;
+	void operator()(const Bool 		 &b ) const;
+	void operator()(const Int  		 &i ) const;
+	void operator()(const String 	 &s ) const;
+	void operator()(const Path 		 &p ) const;
+	void operator()(const StringList &sl) const;
+	void operator()(const PathList 	 &pl) const;
 
-std::string &Config::getString(const std::string &name, const std::string &fileName,int num) const
-{
-	auto itr = std::find_if(m_dict.begin(), m_dict.end(),
-							[&](ConfigOptionAbstract &coa){return coa.m_name == name;});
+};
 
-	if (itr != m_dict.end())
-	{
-		std::cerr 	<< fileName << "<" << num
-					<< ">: Internal error: Requested unknown option " << name ;
-		std::exit(1);
-	}
-	else if (itr->type() != boost::typeindex::type_id<ConfigString>())
-	{
-		std::cerr << fileName << "<" << num
-				  << ">: Internal error: Requested option " << name << " not of string type!\n";
-		std::exit(1);
-	}
-
-	return boost::get<ConfigString>(*itr).m_value;
-}
-
-std::vector<std::string> &Config::getList(const std::string &name, const std::string &fileName,int num) const
-{
-	auto itr = std::find_if(m_dict.begin(), m_dict.end(),
-							[&](ConfigOptionAbstract &coa){return coa.m_name == name;});
-
-	if (itr != m_dict.end())
-	{
-		std::cerr 	<< fileName << "<" << num
-					<< ">: Internal error: Requested unknown option " << name ;
-		std::exit(1);
-	}
-	else if (itr->type() != boost::typeindex::type_id<ConfigList>())
-	{
-		std::cerr << fileName << "<" << num
-				  << ">: Internal error: Requested option " << name << " not of list type!\n";
-		std::exit(1);
-	}
-	return boost::get<ConfigList>(*itr).m_value;
-}
-
-std::string &Config::getEnum(const std::string &name, const std::string &fileName,int num) const
-{
-	auto itr = std::find_if(m_dict.begin(), m_dict.end(),
-							[&](ConfigOptionAbstract &coa){return coa.m_name == name;});
-
-	if (itr != m_dict.end())
-	{
-		std::cerr 	<< fileName << "<" << num
-					<< ">: Internal error: Requested unknown option " << name ;
-		std::exit(1);
-	}
-	else if (itr->type() != boost::typeindex::type_id<ConfigEnum>())
-	{
-		std::cerr << fileName << "<" << num
-				  << ">: Internal error: Requested option " << name << " not of enum type!\n";
-		std::exit(1);
-	}
-	return boost::get<ConfigEnum>(*itr).m_value;
-}
-
-int &Config::getInt(const std::string &name, const std::string &fileName,int num) const
-{
-	auto itr = std::find_if(m_dict.begin(), m_dict.end(),
-							[&](ConfigOptionAbstract &coa){return coa.m_name == name;});
-
-	if (itr != m_dict.end())
-	{
-		std::cerr 	<< fileName << "<" << num
-					<< ">: Internal error: Requested unknown option " << name ;
-		std::exit(1);
-	}
-	else if (itr->type() != boost::typeindex::type_id<ConfigInt>())
-	{
-		std::cerr << fileName << "<" << num
-				  << ">: Internal error: Requested option " << name << " not of integer type!\n";
-		std::exit(1);
-	}
-	return boost::get<ConfigInt>(*itr).m_value;
-}
-
-bool &Config::getBool(const std::string &name, const std::string &fileName,int num) const
-{
-	auto itr = std::find_if(m_dict.begin(), m_dict.end(),
-							[&](ConfigOptionAbstract &coa){return coa.m_name == name;});
-
-	if (itr != m_dict.end())
-	{
-		std::cerr 	<< fileName << "<" << num
-					<< ">: Internal error: Requested unknown option " << name ;
-		std::exit(1);
-	}
-	else if (itr->type() != boost::typeindex::type_id<ConfigBool>())
-	{
-		std::cerr << fileName << "<" << num
-				  << ">: Internal error: Requested option " << name << " not of boolean type!\n";
-		std::exit(1);
-	}
-	return boost::get<ConfigBool>(*itr).m_value;
-}
-
-/* ------------------------------------------ */
-
-void ConfigInfo::writeTemplate(std::ostream &t, bool sl,bool)
+void writeTemplateVisitor::operator()(const Info & i) const
 {
 	if (!sl)
 	{
 		t << "\n";
 	}
 	t << "#---------------------------------------------------------------------------\n";
-	t << "# " << m_doc << endl;
+	t << "# " << op.doc << std::endl;
 	t << "#---------------------------------------------------------------------------\n";
 }
 
-void ConfigList::writeTemplate(std::ostream &t,bool sl,bool)
+void writeTemplateVisitor::operator()(const StringList & i) const
 {
   if (!sl)
   {
-    t << endl;
-    t << Config::convertToComment(m_doc, m_userComment);
-    t << endl;
+	  t << std::endl;
+	  t << convertToComment(op.doc, op.user_comment);
+	  t << std::endl;
   }
-  else if (!m_userComment.empty())
+  else if (!op.user_comment.empty())
   {
-	  t << Config::convertToComment("", m_userComment);
-  }
+	  t << convertToComment("", op.user_comment);
+  	}
 
-  t << m_name << std::string(ConfigOption::max_option_length-m_name.length(), ' ') << "=";
-  write(t, m_value);
-  t << "\n";
+  	t << op.name << std::string(Option::max_option_length-op.name.length(), ' ') << "=";
+  //	t << i.value;//TODO:
+  	t << "\n";
 }
 
-void ConfigEnum::writeTemplate(std::ostream &t,bool sl,bool)
+void writeTemplateVisitor::operator()(const Enum & e) const
 {
-  if (!sl)
-  {
-    t << endl;
-    t << Config::convertToComment(m_doc, m_userComment);
-    t << endl;
-  }
-  else if (!m_userComment.empty())
-  {
-    t << Config::convertToComment("", m_userComment);
-  }
-  t << m_name << std::string(ConfigOption::max_option_length-m_name.length(), ' ') << "=";
-  write(t,m_value);
-  t << "\n";
+	if (!sl)
+	{
+		t << std::endl;
+		t << convertToComment(op.doc, op.user_comment);
+		t << std::endl;
+	}
+	else if (!op.user_comment.empty())
+	{
+		t << convertToComment("", op.user_comment);
+	}
+	t << op.name << std::string(Option::max_option_length-op.name.length(), ' ') << "=";
+	t << e.value;
+	t << "\n";
 }
 
-void ConfigString::writeTemplate(std::ostream &t,bool sl,bool)
+void writeTemplateVisitor::operator()(const String &s) const
 {
-  if (!sl)
-  {
-    t << endl;
-    t << Config::convertToComment(m_doc, m_userComment);
-    t << endl;
-  }
-  else if (!m_userComment.empty())
-  {
-    t << Config::convertToComment("", m_userComment);
-  }
-  t << m_name << std::string(ConfigOption::max_option_length-m_name.length(), ' ') << "=";
-  write(t,m_value);
-  t << "\n";
+	if (!sl)
+	{
+		t << std::endl;
+		t << convertToComment(op.doc, op.user_comment);
+		t << std::endl;
+	}
+	else if (!op.user_comment.empty())
+	{
+		t << convertToComment("", op.user_comment);
+	}
+	t << op.name << std::string(Option::max_option_length-op.name.length(), ' ') << "=";
+	t << s.value;
+	t << "\n";
 }
 
-void ConfigInt::writeTemplate(std::ostream &t,bool sl,bool upd)
+void writeTemplateVisitor::operator()(const Int &s) const
 {
-  if (!sl)
-  {
-    t << endl;
-    t << Config::convertToComment(m_doc, m_userComment);
-    t << endl;
-  }
-  else if (!m_userComment.empty())
-  {
-    t << Config::convertToComment("", m_userComment);
-  }
-  t << m_name << std::string(ConfigOption::max_option_length-m_name.length(), ' ') << "=";
-  if (upd && !m_valueString.empty())
-  {
-	  write(t,m_valueString);
-  }
-  else
-  {
-	  write(t,m_value);
-  }
-  t << "\n";
+	if (!sl)
+  	{
+		t << std::endl;
+		t << convertToComment(op.doc, op.user_comment);
+    	t << std::endl;
+  	}
+	else if (!op.user_comment.empty())
+	{
+		t << convertToComment("", op.user_comment);
+	}
+	t << op.name << std::string(Option::max_option_length-op.name.length(), ' ') << "=";
+
+	t << s.value;
+
+	t << "\n";
 }
 
-void ConfigBool::writeTemplate(std::ostream &t,bool sl,bool upd)
+void writeTemplateVisitor::operator()(const Bool &s) const
 {
-  if (!sl)
-  {
-    t << endl;
-    t << Config::convertToComment(m_doc, m_userComment);
-    t << endl;
-  }
-  else if (!m_userComment.empty())
-  {
-    t << Config::convertToComment("", m_userComment);
-  }
-  t << m_name << std::string(ConfigOption::max_option_length-m_name.length(), ' ') << "=";
-  if (upd && !m_valueString.empty())
-  {
-	  write(t,m_valueString);
-  }
-  else
-  {
-	  write(t,m_value);
-  }
-  t << "\n";
+	if (!sl)
+	{
+		t << std::endl;
+		t << convertToComment(op.doc, op.user_comment);
+		t << std::endl;
+	}
+	else if (!op.user_comment.empty())
+	{
+		t << convertToComment("", op.user_comment);
+	}
+	t << op.name << std::string(Option::max_option_length-op.name.length(), ' ') << "=";
+
+	t << s.value;
+
+	t << "\n";
 }
 
-std::string Config::configStringRecode(
+struct assignVisitor : boost::static_visitor<>
+{
+	std::string value;
+	Option & op;
+	assignVisitor(const std::string &value, Option &op) : value(value), op(op) {}
+
+	void operator()(Info		 &i );
+	void operator()(Enum		 &i );
+	void operator()(Bool 		 &b );
+	void operator()(Int  		 &i );
+	void operator()(String 	 &s );
+	void operator()(Path 		 &p );
+	void operator()(StringList &sl);
+	void operator()(PathList 	 &pl);
+};
+
+void assignVisitor::operator()( Int& i)
+{
+	op.set = true;
+
+	bool ok = true;
+	int val;
+	try {
+		val = std::stoi(value);
+		op.set = true;
+	}
+	catch (std::logic_error& ) {ok = false;};
+
+	if (!ok || (val < i.min) || (val > i.max))
+	{
+		std::cerr << "argument `"  << i.value
+				<< "' for option " << op.name
+				<<" is not a valid number in the range [" << i.min
+				<<".."<< i.max
+				<< "]!\n";
+
+		if (i.default_value)
+		{
+			std::cerr << "Using the default: " << i.value << "!\n";
+			i.value = *i.default_value;
+			op.set = true;
+		}
+		else
+		{
+			std::cerr  << "No default value given, aborting..." << std::endl;
+			std::exit(1);
+		}
+	}
+	else
+	{
+		i.value = val;
+		op.set = true;
+	}
+
+}
+
+void assignVisitor::operator()(Bool& i)
+{
+	std::string val = boost::trim_copy(value);
+	boost::algorithm::to_lower(val);
+
+	if (val=="yes" || val=="true" || val=="1" || val=="all")
+	{
+		i.value = true;
+		op.set = true;
+	}
+	else if (val=="no" || val=="false" || val=="0" || val=="none")
+	{
+		i.value = false;
+		op.set = true;
+	}
+	else
+	{
+		std::cerr << "argument `" << val
+				  << "' for option " << op.name
+				  << " is not a valid boolean value\n";
+
+		if (i.default_value)
+		{
+			std::cerr  << "Using the default: " << (*i.default_value ? "YES" : "NO") << "!"  << std::endl;
+			i.value = *i.default_value;
+			op.set = true;
+
+		}
+		else
+		{
+			std::cerr  << "No default value given, aborting..." << std::endl;
+			std::exit(1);
+		}
+	}
+
+}
+
+
+std::string Recode(
     const std::string &str,
     const std::string &fromEncoding,
     const std::string &toEncoding)
@@ -822,8 +863,8 @@ std::string Config::configStringRecode(
 		(inputEncoding==outputEncoding))
 					return str;
 
-	int inputSize=str.length();
-	int outputSize=inputSize*4+1;
+	//int inputSize=str.length();
+//	int outputSize=inputSize*4+1;
 
 	std::string output;
 
@@ -839,7 +880,47 @@ std::string Config::configStringRecode(
 	}
 	return output;
 }
+///Checks if config has an option, including disabled, obsolete and unknown objects.
+bool Config::has(const std::string& name)
+{
+	auto it = std::find_if(m_options .begin(), m_options .end(), [&](const Option &op){return op .name == name;}); if (it != m_options .end()) return true;
+		 it = std::find_if(m_obsolete.begin(), m_obsolete.end(), [&](const Option &op){return op .name == name;}); if (it != m_obsolete.end()) return true;
+		 it = std::find_if(m_disabled.begin(), m_disabled.end(), [&](const Option &op){return op .name == name;}); if (it != m_disabled.end()) return true;
+		 it = std::find_if(m_unknown .begin(), m_unknown .end(), [&](const Option &op){return op .name == name;}); if (it != m_unknown .end()) return true;
+
+	return false;
+}
+
+bool Config::hasOption	(const std::string& name)
+{
+	auto it = std::find_if(m_options .begin(), m_options .end(), [&](const Option &op){return op .name == name;});
+	return it != m_options.end();
+}
+
+bool Config::hasObsolete(const std::string& name)
+{
+	auto it = std::find_if(m_obsolete .begin(), m_obsolete .end(), [&](const Option &op){return op .name == name;});
+	return it != m_obsolete.end();
+}
+
+
+bool Config::hasDisabled(const std::string& name)
+{
+	auto it = std::find_if(m_disabled .begin(), m_disabled .end(), [&](const Option &op){return op .name == name;});
+	return it != m_disabled.end();
+}
+
+bool Config::hasUnknown(const std::string& name)
+{
+	auto it = std::find_if(m_unknown .begin(), m_unknown .end(), [&](const Option &op){return op .name == name;});
+	return it != m_unknown.end();
+}
 
 
 }
+}
+
+void DoxyFrame::Config::Option::writeTemplate(std::ostream& t, bool sl, bool spd)
+{
+	writeTemplateVisitor vis(t, *this, sl, spd);
 }

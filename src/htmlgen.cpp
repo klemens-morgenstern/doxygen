@@ -25,7 +25,6 @@
 #include "doxygen.h"
 #include "logos.h"
 #include "diagram.h"
-#include "version.h"
 #include "dot.h"
 #include "language.h"
 #include "htmlhelp.h"
@@ -42,6 +41,7 @@
 #include "bufstr.h"
 #include "config.hpp"
 #include "resourcemgr.h"
+#include "version.hpp"
 
 
 //#define DBG_HTML(x) x;

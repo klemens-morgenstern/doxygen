@@ -29,7 +29,6 @@
 #include <qptrdict.h>
 #include <qtextstream.h>
 
-#include "version.h"
 #include "doxygen.h"
 
 #include "arguments.hpp"
@@ -99,6 +98,7 @@
 #include "settings.h"
 #include "context.h"
 #include "fileparser.h"
+#include "version.hpp"
 
 // provided by the generated file resources.cpp
 extern void initResources();

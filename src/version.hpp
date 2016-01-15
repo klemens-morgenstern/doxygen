@@ -3,6 +3,7 @@
  * 
  *
  * Copyright (C) 1997-2015 by Dimitri van Heesch.
+ * Copyright (C) 2016 by Klemens D. Morgenstern
  *
  * Permission to use, copy, modify, and distribute this software and its
  * documentation under the terms of the GNU General Public License is hereby 
@@ -18,6 +19,16 @@
 #ifndef VERSION_H
 #define VERSION_H
 
-extern char versionString[];
+#include <string>
+
+namespace DoxyFrame
+{
+
+struct Version
+{
+	static std::string String() {return "0.0.0.0";}
+};
+
+}
 
 #endif

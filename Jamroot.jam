@@ -14,6 +14,7 @@ project mw.test.gen :
 	<include>./libs/cereal/include
 	<include>$(boost-inc)
 	<include>./include
+	<include>./src
 	<toolset>gcc:<cxxflags>-std=gnu++1y
 	<linkflags>-L$(boost-lib-loc)
 	<toolset>gcc:<cxxflags>-ftemplate-depth=256
@@ -21,7 +22,7 @@ project mw.test.gen :
 	<linkflags>-lboost_filesystem$(postfix)
 	<linkflags>-lboost_system$(postfix)
 	<linkflags>-lboost_locale$(postfix)
-	<link>shared
+#	<link>shared
 	;
 	
 build-project translations ;	
@@ -31,6 +32,8 @@ build-project translations ;
 import lex ;
 
 
-lib test : config.cpp : <include>./src ;
+#lib test : config.cpp : <include>./src ;
 
 install trc : translations//translations ;
+
+run parser/config2.ll config.cpp ;

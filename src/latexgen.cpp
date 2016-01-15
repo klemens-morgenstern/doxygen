@@ -26,7 +26,6 @@
 #include "util.h"
 #include "diagram.h"
 #include "language.h"
-#include "version.h"
 #include "dot.h"
 #include "pagedef.h"
 #include "docparser.h"
@@ -38,6 +37,7 @@
 #include "namespacedef.h"
 #include "filename.h"
 #include "resourcemgr.h"
+#include "version.hpp"
 
 //-------------------------------
 

@@ -30,7 +30,6 @@
 #include "diagram.h"
 #include "language.h"
 #include "dot.h"
-#include "version.h"
 #include "pagedef.h"
 #include "rtfstyle.h"
 #include "rtfdocvisitor.h"
@@ -43,6 +42,7 @@
 #include "config.hpp"
 #include "filename.h"
 #include "namespacedef.h"
+#include "version.hpp"
 
 //#define DBG_RTF(x) x;
 #define DBG_RTF(x)
