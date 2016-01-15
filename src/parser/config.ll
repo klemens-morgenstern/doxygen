@@ -86,6 +86,8 @@ static string		GetStrList_buf;
 #define	YY_INPUT(buf,result,max_size) result=yyread(buf,result, max_size);
 static int yyread(char *buf, int &bytes_read, int max_size)
 {
+	assert (!include_stack.empty());
+
 	auto &itr = f().input_buffer_iterator;
 	int bytes_available = f().input_buffer.end() - itr;
 						
@@ -95,7 +97,6 @@ static int yyread(char *buf, int &bytes_read, int max_size)
 	itr += bytes_to_read;
 	
 	bytes_read = bytes_to_read;
-
 	return bytes_read;
 }
 
@@ -161,14 +162,11 @@ static bool parse_include_file(RawConfig &rc, const std::string & file_name,
   					  	BEGIN(Start);
 					}
 <<EOF>>				{
-					  	include_stack.pop();
-                        if (include_stack.empty())
-					  	{
-					    	yyterminate();
-					  	}
+						include_stack.pop();
+				    	yyterminate();
 					}
 
-<Start>[a-z_A-Z0-9]+ { cerr << "ignoring unknown tag `" << yytext << "' at line " << f().line_nr << ", file " << f().file_name << endl; }
+<Start>[a-z_A-Z0-9]+ { cerr << f().file_name << "(" << f().line_nr << "): Warn: Ignoring unknown tag '" << yytext << "'" << endl;  }
 <GetStrList>\n			{ 
   					  		f().line_nr++; 
 					  		if (!GetStrList_buf.empty()) //TODO:
@@ -198,8 +196,7 @@ static bool parse_include_file(RawConfig &rc, const std::string & file_name,
 				  					GetStrList_buf += qStringBuf ;
 					  				if (*yytext=='\n')
 					  				{
-					  					cerr << "Missing end quote (\") on line " << f().line_nr 
-					  						 << ", file " << f().file_name << endl;
+					  					cerr << f().file_name << "(" << f().line_nr << "): Warn: Missing end quote (\") " << endl;
 					   					f().line_nr++;
 					  				}
 					  				BEGIN(lastState);
@@ -250,7 +247,7 @@ bool parse_string(RawConfig &rc, const string &filename , string &&content)
   	BEGIN( PreStart );
 
 
-  	return lexscan (rc);;
+  	return lexscan (rc);
 }
 bool parse_include_file(RawConfig &rc, const std::string & file_name, const std::string & encoding,
 						int from_line, const std::string & from_file)
@@ -327,21 +324,3 @@ RawConfig parse(const boost::filesystem::path& file_name)
 
 
 }}
-
-int main()
-{
-	RawConfig rc;
-
-	parse_file(rc, "spec.doxyfile");
-	std::cerr << "Ran through" << std::endl;
-
-	for (auto &x : rc)
-	{
-		cout << x.first <<": {";
-		for (auto & s : x.second.data)
-			cout << s << ", ";
-		cout << "}" <<endl;
-	}
-
-	return 1;
-}
