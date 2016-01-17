@@ -36,12 +36,36 @@
 
 #include <cereal/cereal.hpp>
 #include <cereal/types/boost_variant.hpp>
+#include <cereal/types/boost_optional.hpp>
+#include <cereal/types/unordered_map.hpp>
+#include <cereal/types/vector.hpp>
+
+#include <limits>
 
 namespace DoxyFrame
 {
 
 namespace Config
 {
+
+//Option read by the parser.
+struct RawOption
+{
+	std::string file_name;
+	std::size_t line_nr;
+
+	std::string comment;
+	std::vector<std::string> data;
+};
+
+//Config read by the parser.
+struct RawConfig : std::unordered_map<std::string, RawOption>
+{
+	std::string startComment;
+	std::string endComment;
+
+	RawConfig parse(const boost::filesystem::path& file_name);
+};
 
 
 template<typename T>
@@ -50,39 +74,48 @@ struct OptionTpl
 	T value;
 	boost::optional<T> default_value;
 
-
+	template<typename Archive>
+	void serialize(Archive & ar)
+	{
+		ar & CEREAL_NVP(value);
+		ar & CEREAL_NVP(default_value);
+	}
 };
 
-struct StringList : OptionTpl<std::vector<std::string>>
-{};
-
-struct PathList	: OptionTpl<std::vector<boost::filesystem::path>>
-{};
-
-struct String 	: OptionTpl<std::string>
-{};
-
-struct Path 	: OptionTpl<boost::filesystem::path>
-{};
-
-
+struct StringList : OptionTpl<std::vector<std::string>> 			{};
+struct PathList	: OptionTpl<std::vector<boost::filesystem::path>> 	{};
+struct String 	: OptionTpl<std::string>							{};
+struct Path 	: OptionTpl<boost::filesystem::path>				{};
 struct Enum 	: OptionTpl<std::string>
 {
 	std::unordered_set<std::string> allowed_values;
+
+	template<typename Archive>
+	void serialize(Archive & ar)
+	{
+		ar & CEREAL_NVP(allowed_values);
+		ar & static_cast<OptionTpl<std::string>&>(*this);
+	}
 };
 
-struct Bool : OptionTpl<bool>
-{};
-
+struct Bool : OptionTpl<bool>	{};
 struct Int  : OptionTpl<int>
 {
 	int min;
 	int max;
+
+	template<typename Archive>
+	void serialize(Archive & ar)
+	{
+		ar & CEREAL_NVP(min) & CEREAL_NVP(max);
+		ar & static_cast<OptionTpl<std::string>&>(*this);
+	}
+
 };
 
 struct Info		{};
 
-struct Unknown	{std::string value;};
+struct Unknown  {};
 
 
 using OptionEntry =
@@ -93,23 +126,29 @@ using OptionEntry =
 
 struct Option : OptionEntry
 {
+
 	std::string name;
 	std::string doc;
 	std::string dependency;
-	std::string encoding;
 	std::string user_comment;
+	std::string value;
 
 	std::string description;
 	bool set = false;
 
+
+	template<typename Archive>
+	void serialize(Archive & ar)
+	{
+		ar & CEREAL_NVP(name) 	  & CEREAL_NVP(doc) 		 & CEREAL_NVP(dependency);
+		ar & CEREAL_NVP(user_comment) & CEREAL_NVP(value);
+		ar & CEREAL_NVP(description) & CEREAL_NVP(set);
+		ar & CEREAL_NVP_NAMED_VARIANT_("entry", *this, "blank", "StringList", "PathList", "String", "Path", "Enum", "Bool", "Int", "Info");
+	}
+
 	static constexpr std::size_t max_option_length = 23;
 
-	using Entry = boost::variant<boost::blank,
-			StringList, PathList,
-			String, Path, Enum,
-			Bool, Int, Info>;
-
-	Entry entry = boost::blank();
+	using OptionEntry::operator=;
 
 	Option & operator= (const std::string & value) {this->assign(value); return *this;};
 	Option & operator+=(const std::string & value) {this->append(value); return *this;};
@@ -123,15 +162,6 @@ struct Option : OptionEntry
 inline bool operator==(const Option& lhs, const Option &rhs) {return lhs.name == rhs.name;};
 inline bool operator!=(const Option& lhs, const Option &rhs) {return lhs.name != rhs.name;};
 
-// some convenience macros for access the config options
-#define DOXY_CONFIG_GET_STRING(val)  	 ::DoxyFrame::Config::getString		(val, __FILE__, __LINE__);
-#define DOXY_CONFIG_GET_PATH(val)  		 ::DoxyFrame::Config::getPath		(val, __FILE__, __LINE__);
-#define DOXY_CONFIG_GET_INT(val)     	 ::DoxyFrame::Config::getInt		(val, __FILE__, __LINE__);
-#define DOXY_CONFIG_GET_STRING_LIST(val) ::DoxyFrame::Config::getStringList	(val, __FILE__, __LINE__);
-#define DOXY_CONFIG_GET_PATH_LIST(val)   ::DoxyFrame::Config::getPathList	(val, __FILE__, __LINE__);
-#define DOXY_CONFIG_GET_ENUM(val)    	 ::DoxyFrame::Config::getEnum		(val, __FILE__, __LINE__);
-#define DOXY_CONFIG_GET_BOOL(val)    	 ::DoxyFrame::Config::getBool		(val, __FILE__, __LINE__);
-#define DOXY_CONFIG_GET(val)			 ::DoxyFrame::Config::get			(val, __FILE__, __LINE__);
 
 /** Singleton for configuration variables.
  *
@@ -194,74 +224,33 @@ class Config
      */
     void check();
 
-    /*! Initialize config variables to their default value */
-    void init();
-
     /*! Parse a configuration data in string \a str.
      *  \returns TRUE if successful, or FALSE if the string could not be
      *  parsed.
      */ 
-    bool parseString(const std::string &fn,	const std::string &str,	bool upd = false);
+    bool parseString(const std::string &fn,	const std::string &str);
 
     /*! Parse a configuration file with name \a fn.
      *  \returns TRUE if successful, FALSE if the file could not be 
      *  opened or read.
      */ 
-    bool parse(const std::string &fn,	bool upd = false);
+    bool parse(const boost::filesystem::path &fn);
 
 
-    /*! Append user start comment
-     */
-    void appendStartComment(const std::string &u)
-    {
-      m_startComment += u;
-    }
-    /*! Append user comment
-     */
-    void appendUserComment(const std::string &u)
-    {
-      m_userComment += u;
-    }
-    /*! Take the user start comment and reset it internally
-     *  \returns user start comment
-     */
-    std::string takeStartComment()
-    {
-      std::string result = std::move(m_startComment);
-      m_startComment = "";
-      boost::replace_all(result, "\r", "");
-      return result;
-    }
-    /*! Take the user comment and reset it internally
-     *  \returns user comment
-     */
-    std::string takeUserComment()
-    {
-      std::string result = std::move(m_userComment);
-      m_userComment = "";
-      boost::replace_all(result, "\r", "");
 
-      return result;
-    }
+    std::string 				&getString		(const std::string &name, const std::string &fileName = "", int num = -1);
+    boost::filesystem::path 	&getPath  		(const std::string &name, const std::string &fileName = "", int num = -1);
+    std::vector<std::string>	&getStringList	(const std::string &name, const std::string &fileName = "", int num = -1);
+    std::vector<boost::filesystem::path>
+    							&getPathList	(const std::string &name, const std::string &fileName = "", int num = -1);
+    std::string  				&getEnum  		(const std::string &name, const std::string &fileName = "", int num = -1);
+    int      					&getInt   		(const std::string &name, const std::string &fileName = "", int num = -1);
+    bool     					&getBool  		(const std::string &name, const std::string &fileName = "", int num = -1);
+    Option 	 					&get	  		(const std::string &name, const std::string &fileName = "", int num = -1);
 
-    Info   		&addInfo	(const std::string &name, const std::string &doc);
-    String 		&addString	(const std::string &name, const std::string &doc);
-    Enum 		&addEnum	(const std::string &name, const std::string &doc, const std::string &defVal);
-    StringList  &addStringList(const std::string &name, const std::string &doc);
-    PathList	&addPathList(const std::string &name, const std::string &doc);
-    Int    		&addInt		(const std::string &name, const std::string &doc, int minVal,int maxVal,int defVal);
-    Bool   		&addBool	(const std::string &name, const std::string &doc,bool defVal);
-    Option 		&addObsolete(const std::string &name);
-    Option 		&addDisabled(const std::string &name);
-
-    std::string 				&getString(const std::string &name, const std::string &fileName = "", int num = -1);
-    boost::filesystem::path 	&getPath  (const std::string &name, const std::string &fileName = "", int num = -1);
-    std::vector<std::string>	&getStringList(const std::string &name, const std::string &fileName = "", int num = -1);
-    std::vector<boost::filesystem::path> &getPathList(const std::string &name, const std::string &fileName = "", int num = -1);
-    std::string  				&getEnum  (const std::string &name, const std::string &fileName = "", int num = -1);
-    int      					&getInt   (const std::string &name, const std::string &fileName = "", int num = -1);
-    bool     					&getBool  (const std::string &name, const std::string &fileName = "", int num = -1);
-    Option 	 					&get	  (const std::string &name, const std::string &fileName = "", int num = -1);
+    void add		(const Option & opt) {m_options.push_back(opt);}
+    void addObsolete(const Option & opt) {m_obsolete.push_back(opt); };
+    void addDisabled(const Option & opt) {m_disabled.push_back(opt); };
 
 
     Config() {}
@@ -273,24 +262,44 @@ class Config
     bool hasDisabled(const std::string& name);
     bool hasUnknown (const std::string& name);
 
-    bool isUpdating() const;
-
     Option & includePath();
+
+    void append(const RawConfig & rc);
+    void insert(const std::string name, const RawOption & ro);
+
   protected:
 
 
     static void addConfigOptions(Config &cfg);
   private:
+	std::string m_encoding = "UTF-8";
+
     void checkFileName(const std::string &);
     std::vector<Option> m_options ;
     std::vector<Option> m_obsolete;
     std::vector<Option> m_disabled;
-    std::vector<Option> m_unknown ;
+    std::unordered_map<std::string, RawOption> m_unknown ;
     static std::unique_ptr<Config> m_instance;
 
     std::string m_startComment;
     std::string m_userComment;
+    std::string m_endComment;
+
     std::string m_header;
+  public:
+	template<typename Archive>
+	void serialize(Archive & ar)
+	{
+		ar & CEREAL_NVP(m_encoding);
+		ar & CEREAL_NVP(m_options);
+		ar & CEREAL_NVP(m_obsolete);
+		ar & CEREAL_NVP(m_disabled);
+		ar & CEREAL_NVP(m_unknown);
+		ar & CEREAL_NVP(m_startComment);
+		ar & CEREAL_NVP(m_userComment);
+		ar & CEREAL_NVP(m_endComment);
+		ar & CEREAL_NVP(m_header);
+	}
 };
 
 inline std::string 				&getString(const std::string &name, const std::string &fileName = "", int num = -1) {return Config::instance().getString(name, fileName, num);}
@@ -301,17 +310,6 @@ inline std::string  			&getEnum  (const std::string &name, const std::string &fi
 inline int      				&getInt   (const std::string &name, const std::string &fileName = "", int num = -1) {return Config::instance().getInt (name, fileName, num);};
 inline bool     				&getBool  (const std::string &name, const std::string &fileName = "", int num = -1) {return Config::instance().getBool(name, fileName, num);};
 inline Option 	 				&get	  (const std::string &name, const std::string &fileName = "", int num = -1) {return Config::instance().get	  (name, fileName, num);};
-
-inline Info   		&addInfo  	(const std::string &name, const std::string &doc) 	{return Config::instance().addInfo(name, doc);}
-inline String 	 	&addString	(const std::string &name, const std::string &doc)	{return Config::instance().addString(name, doc);}
-inline Enum 		&addEnum	(const std::string &name, const std::string &doc, const std::string &defVal) {return Config::instance().addEnum(name, doc, defVal); }
-inline StringList  	&addStringList(const std::string &name, const std::string &doc)	{return Config::instance().addStringList(name, doc);}
-inline PathList  	&addPathList(const std::string &name, const std::string &doc)	{return Config::instance().addPathList(name, doc);}
-inline Int    		&addInt		(const std::string &name, const std::string &doc, int minVal,int maxVal,int defVal) {return Config::instance().addInt(name, doc, minVal, maxVal, defVal);}
-inline Bool   	 	&addBool	(const std::string &name, const std::string &doc,bool defVal) {return Config::instance().addBool(name, doc, defVal);}
-inline Option 	 	&addObsolete(const std::string &name) {return Config::instance().addObsolete(name);}
-inline Option 	 	&addDisabled(const std::string &name) {return Config::instance().addDisabled(name);}
-
 std::string Recode(
         const std::string &str,
         const std::string &fromEncoding,
@@ -322,6 +320,15 @@ std::string convertToComment(const std::string &s, const std::string &u);
 }
 }
 
+// some convenience macros for access the config options
+#define DOXY_CONFIG_GET_STRING(val)  	 ::DoxyFrame::Config::getString		(val, __FILE__, __LINE__);
+#define DOXY_CONFIG_GET_PATH(val)  		 ::DoxyFrame::Config::getPath		(val, __FILE__, __LINE__);
+#define DOXY_CONFIG_GET_INT(val)     	 ::DoxyFrame::Config::getInt		(val, __FILE__, __LINE__);
+#define DOXY_CONFIG_GET_STRING_LIST(val) ::DoxyFrame::Config::getStringList	(val, __FILE__, __LINE__);
+#define DOXY_CONFIG_GET_PATH_LIST(val)   ::DoxyFrame::Config::getPathList	(val, __FILE__, __LINE__);
+#define DOXY_CONFIG_GET_ENUM(val)    	 ::DoxyFrame::Config::getEnum		(val, __FILE__, __LINE__);
+#define DOXY_CONFIG_GET_BOOL(val)    	 ::DoxyFrame::Config::getBool		(val, __FILE__, __LINE__);
+#define DOXY_CONFIG_GET(val)			 ::DoxyFrame::Config::get			(val, __FILE__, __LINE__);
 
 
 

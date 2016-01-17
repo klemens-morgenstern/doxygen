@@ -48,9 +48,28 @@ inline std::ostream& Note(const std::string &file_name, std::size_t line_nr = 0)
 	return std::cerr <<  file_name << "(" << line_nr << ") Note: ";
 }
 
+
+inline std::ostream& InternalError(const std::string &file_name, std::size_t line_nr = 0)
+{
+	return std::cerr <<  file_name << "(" << line_nr << ") Internal Error: ";
 }
+
+inline std::ostream& InternalWarn(const std::string &file_name, std::size_t line_nr = 0)
+{
+	return std::cerr <<  file_name << "(" << line_nr << ") Internal Warn: ";
+}
+
+inline std::ostream& InternalNote(const std::string &file_name, std::size_t line_nr = 0)
+{
+	return std::cerr <<  file_name << "(" << line_nr << ") Internal Note: ";
 }
 
 
+}
+}
+
+#define INTERNAL_ERROR() ::DoxyFrame::Log::InternalError(__FILE__, __LINE)
+#define INTERNAL_WARN()  ::DoxyFrame::Log::InternalWarn (__FILE__, __LINE)
+#define INTERNAL_NOTE()  ::DoxyFrame::Log::InternalNote (__FILE__, __LINE)
 
 #endif /* ERROR_LOG_HPP_ */

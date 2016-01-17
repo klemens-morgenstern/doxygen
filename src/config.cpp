@@ -7,12 +7,18 @@
  */
 
 
-#include <config.hpp>
+#include <doxyframe/config.hpp>
+#include <doxyframe/error_log.hpp>
 #include <version.hpp>
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/type_index.hpp>
 #include <boost/locale.hpp>
+
+using namespace DoxyFrame::Log;
+
+using boost::locale::conv::from_utf;
+using boost::locale::conv::to_utf;
 
 namespace DoxyFrame
 {
@@ -34,22 +40,22 @@ std::unique_ptr<Config> Config::m_instance;
 std::string &Config::getString(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
-	if (val.entry.type() != boost::typeindex::type_id<String>())
+	if (val.type() != boost::typeindex::type_id<String>())
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not a string!" << std::endl;
+		Log::Error(fileName, num) << "Requested option " << name << " not a string!" << std::endl;
 		std::exit(1);
 	}
 
-	auto &s = boost::get<String>(val.entry);
+	auto &s = boost::get<String>(val);
 	if (val.set)
 		return s.value;
 	else if (s.default_value)
 		return *s.default_value;
 	else
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not set!" << std::endl;
+		Log::Error(fileName, num) << "Requested option " << name << " not set!" << std::endl;
 		if (!val.description.empty())
-			std::cerr << val.description << std::endl;
+			std::cerr << "\t" <<val.description << std::endl;
 		std::exit(1);
 	}
 	return s.value;
@@ -62,20 +68,20 @@ std::string &Config::getString(const std::string &name, const std::string &fileN
 boost::filesystem::path &Config::getPath(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
-	if (val.entry.type() != boost::typeindex::type_id<Path>())
+	if (val.type() != boost::typeindex::type_id<Path>())
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not a path!" << std::endl;
+		Log::Error(fileName, num) << "nternal error: Requested option " << name << " not a path!" << std::endl;
 		std::exit(1);
 	}
 
-	auto &s = boost::get<Path>(val.entry);
+	auto &s = boost::get<Path>(val);
 	if (val.set)
 		return s.value;
 	else if (s.default_value)
 		return *s.default_value;
 	else
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not set!" << std::endl;
+		Log::Error(fileName, num) << "Internal error: Requested option " << name << " not set!" << std::endl;
 		if (!val.description.empty())
 			std::cerr << val.description << std::endl;
 		std::exit(1);
@@ -90,20 +96,20 @@ boost::filesystem::path &Config::getPath(const std::string &name, const std::str
 std::vector<std::string> &Config::getStringList(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
-	if (val.entry.type() != boost::typeindex::type_id<StringList>())
+	if (val.type() != boost::typeindex::type_id<StringList>())
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not a string list!" << std::endl;
+		Log::Error(fileName, num) << "Requested option " << name << " not a string list!" << std::endl;
 		std::exit(1);
 	}
 
-	auto &s = boost::get<StringList>(val.entry);
+	auto &s = boost::get<StringList>(val);
 	if (val.set)
 		return s.value;
 	else if (s.default_value)
 		return *s.default_value;
 	else
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not set!" << std::endl;
+		Log::Error(fileName, num) << "Requested option " << name << " not set!" << std::endl;
 		if (!val.description.empty())
 			std::cerr << val.description << std::endl;
 		std::exit(1);
@@ -118,20 +124,20 @@ std::vector<std::string> &Config::getStringList(const std::string &name, const s
 std::vector<boost::filesystem::path> &Config::getPathList(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
-	if (val.entry.type() != boost::typeindex::type_id<PathList>())
+	if (val.type() != boost::typeindex::type_id<PathList>())
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not a path list!" << std::endl;
+		Log::Error(fileName, num) << "Requested option " << name << " not a path list!" << std::endl;
 		std::exit(1);
 	}
 
-	auto &s = boost::get<PathList>(val.entry);
+	auto &s = boost::get<PathList>(val);
 	if (val.set)
 		return s.value;
 	else if (s.default_value)
 		return *s.default_value;
 	else
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not set!" << std::endl;
+		Log::Error(fileName, num) << "Requested option " << name << " not set!" << std::endl;
 		if (!val.description.empty())
 			std::cerr << val.description << std::endl;
 		std::exit(1);
@@ -146,20 +152,20 @@ std::vector<boost::filesystem::path> &Config::getPathList(const std::string &nam
 std::string  &Config::getEnum(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
-	if (val.entry.type() != boost::typeindex::type_id<Enum>())
+	if (val.type() != boost::typeindex::type_id<Enum>())
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not an enumerator!" << std::endl;
+		Log::Error(fileName, num) << "Requested option " << name << " not an enumerator!" << std::endl;
 		std::exit(1);
 	}
 
-	auto &s = boost::get<Enum>(val.entry);
+	auto &s = boost::get<Enum>(val);
 	if (val.set)
 		return s.value;
 	else if (s.default_value)
 		return *s.default_value;
 	else
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not set!" << std::endl;
+		Log::Error(fileName, num) << "Requested option " << name << " not set!" << std::endl;
 		if (!val.description.empty())
 			std::cerr << val.description << std::endl;
 		std::exit(1);
@@ -174,22 +180,22 @@ std::string  &Config::getEnum(const std::string &name, const std::string &fileNa
 int &Config::getInt(const std::string &name, const std::string &fileName ,int num)
 {
 	auto & val = get(name, fileName, num);
-	if (val.entry.type() != boost::typeindex::type_id<Int>())
+	if (val.type() != boost::typeindex::type_id<Int>())
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not an integer value!" << std::endl;
+		Log::Error(fileName, num) << "Requested option " << name << " not an integer value!" << std::endl;
 		std::exit(1);
 	}
 
-	auto &s = boost::get<Int>(val.entry);
+	auto &s = boost::get<Int>(val);
 	if (val.set)
 		return s.value;
 	else if (s.default_value)
 		return *s.default_value;
 	else
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not set!" << std::endl;
+		Log::Error(fileName, num) << "Requested option " << name << " not set!" << std::endl;
 		if (!val.description.empty())
-			std::cerr << val.description << std::endl;
+			std::cerr << "\t" <<val.description << std::endl;
 		std::exit(1);
 	}
 	return s.value;
@@ -203,22 +209,22 @@ int &Config::getInt(const std::string &name, const std::string &fileName ,int nu
 bool     &Config::getBool(const std::string &name, const std::string &fileName, int num)
 {
 	auto & val = get(name, fileName, num);
-	if (val.entry.type() != boost::typeindex::type_id<Bool>())
+	if (val.type() != boost::typeindex::type_id<Bool>())
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not a boolean value!" << std::endl;
+		Log::Error(fileName, num) << "Internal error: Requested option " << name << " not a boolean value!" << std::endl;
 		std::exit(1);
 	}
 
-	auto &s = boost::get<Bool>(val.entry);
+	auto &s = boost::get<Bool>(val);
 	if (val.set)
 		return s.value;
 	else if (s.default_value)
 		return *s.default_value;
 	else
 	{
-		std::cerr << fileName << "<" << num << ">: Internal error: Requested option " << name << " not set!" << std::endl;
+		Log::Error(fileName, num) << "Requested option " << name << " not set!" << std::endl;
 		if (!val.description.empty())
-			std::cerr << val.description << std::endl;
+			std::cerr << "\t" << val.description << std::endl;
 		std::exit(1);
 	}
 	return s.value;
@@ -235,166 +241,13 @@ Option 	 &Config::get	 (const std::string &name, const std::string &fileName, in
 		if (opt.name == name)
 			return opt;
 	}
-    std::cerr << fileName << "<" << num << ">: Internal error: Requested unknown option " << name << "!" << std::endl;
+	Log::Error(fileName, num) << "Requested unknown option " << name << "!" << std::endl;
     std::exit(1);
 
     return Config::instance().options().front();
 }
 /* @} */
 
-/*!
- *  @name Adding configuration options.
- *  @{
- */
-
-/*! Starts a new configuration section with \a name and description \a doc.
- *  \returns An object representing the option.
- */
-Info   &Config::addInfo(const std::string &name, const std::string &doc)
-{
-	Option op;
-	op.entry = Info();
-	op.name = name;
-	op.doc  = doc;
-
-	m_options.push_back(std::move(op));
-
-	return boost::get<Info>(m_options.back().entry);
-}
-
-/*! Adds a new string option with \a name and documentation \a doc.
- *  \returns An object representing the option.
- */
-String &Config::addString(const std::string &name, const std::string &doc)
-{
-	Option op;
-	op.entry = String();
-	op.name = name;
-	op.doc  = doc;
-
-	m_options.push_back(std::move(op));
-
-	return boost::get<String>(m_options.back().entry);
-}
-
-/*! Adds a new enumeration option with \a name and documentation \a doc
- *  and initial value \a defVal.
- *  \returns An object representing the option.
- */
-Enum &Config::addEnum(const std::string &name, const std::string &doc, const std::string &defVal)
-{
-	Option op;
-	String s;
-	s.default_value = defVal;
-	op.entry = std::move(s);
-	op.name = name;
-	op.doc  = doc;
-
-	m_options.push_back(std::move(op));
-
-	return boost::get<Enum>(m_options.back().entry);
-}
-
-/*! Adds a new string option with \a name and documentation \a doc.
- *  \returns An object representing the option.
- */
-StringList   &Config::addStringList(const std::string &name, const std::string &doc)
-{
-	Option op;
-	StringList s;
-	op.entry = std::move(s);
-	op.name = name;
-	op.doc  = doc;
-
-	m_options.push_back(std::move(op));
-
-	return boost::get<StringList>(m_options.back().entry);;
-}
-
-/*! Adds a new string option with \a name and documentation \a doc.
- *  \returns An object representing the option.
- */
-PathList   &Config::addPathList(const std::string &name, const std::string &doc)
-{
-	Option op;
-	PathList s;
-	op.entry = std::move(s);
-	op.name = name;
-	op.doc  = doc;
-
-	m_options.push_back(std::move(op));
-
-	return boost::get<PathList>(m_options.back().entry);;
-}
-
-/*! Adds a new integer option with \a name and documentation \a doc.
- *  The integer has a range between \a minVal and \a maxVal and a
- *  default value of \a defVal.
- *  \returns An object representing the option.
- */
-Int    &Config::addInt(const std::string &name, const std::string &doc,
-			   int minVal,int maxVal,int defVal)
-{
-	Option op;
-	Int s;
-	s.max = maxVal;
-	s.min = minVal;
-	s.default_value = defVal;
-	op.entry = std::move(s);
-	op.name = name;
-	op.doc  = doc;
-
-	m_options.push_back(std::move(op));
-
-	return boost::get<Int>(m_options.back().entry);;
-}
-
-
-
-/*! Adds a new boolean option with \a name and documentation \a doc.
- *  The boolean has a default value of \a defVal.
- *  \returns An object representing the option.
- */
-Bool   &Config::addBool(const std::string &name,
-				const std::string &doc,
-				bool defVal)
-{
-	Option op;
-	Bool s;
-	s.default_value = defVal;
-	op.entry = std::move(s);
-	op.name = name;
-	op.doc  = doc;
-
-	m_options.push_back(std::move(op));
-
-	return boost::get<Bool>(m_options.back().entry);;
-}
-
-/*! Adds an option that has become obsolete. */
-Option &Config::addObsolete(const std::string &name)
-{
-	Option op;
-	op.entry = boost::blank();
-	op.name = name;
-
-	m_options.push_back(std::move(op));
-
-	return m_options.back();
-}
-
-/*! Adds an option that has been disabled at compile time. */
-Option &Config::addDisabled(const std::string &name)
-{
-	Option op;
-	op.entry = boost::blank();
-	op.name = name;
-
-	m_options.push_back(std::move(op));
-
-	return m_options.back();
-}
-/*! @} */
 
 std::string convertToComment(const std::string &doc, const std::string &user_comment)
 {
@@ -430,7 +283,7 @@ std::string convertToComment(const std::string &doc, const std::string &user_com
 	return result;
 }
 
-void Config::init()
+void Config::check()
 {
 	// sanity check if all depends relations are valid
 	for (auto & option : options())
@@ -439,7 +292,8 @@ void Config::init()
 		{
 			if (!hasOption(option.dependency))
 			{
-				std::cerr << "Config option '"
+				Log::InternalError(__FILE__, __LINE__)
+								<< "Config option '"
     		    			  	<< option.name
     							<< option.dependency
     							<< "' has invalid depends relation on unknown option '%s'\n";
@@ -454,7 +308,7 @@ void Config::writeTemplate(std::ostream &t,bool sl,bool upd)
 	/* print first lines of user comment that were at the beginning of the file, might have special meaning for editors */
 	if (!m_startComment.empty())
 	{
-		t << takeStartComment() << std::endl;
+		t << m_startComment << std::endl;
 	}
 	t << "# Doxyfile " << DoxyFrame::Version::String() << std::endl << std::endl;
 	if (!sl)
@@ -469,7 +323,7 @@ void Config::writeTemplate(std::ostream &t,bool sl,bool upd)
   	if (!m_userComment.empty())
   	{
   		t << "\n";
-  		t << takeUserComment();
+  		t << m_endComment << std::endl;
   	}
 }
 
@@ -477,7 +331,8 @@ struct writeVisitor : boost::static_visitor<>
 {
 	std::ostream &t;
 	Option & op;
-	writeVisitor(std::ostream &os, Option &op) : t(os), op(op) {};
+	std::string &encoding;
+	writeVisitor(std::ostream &os, Option &op, std::string& encoding) : t(os), op(op), encoding(encoding) {};
 
 	void operator()(const Enum		 &e ) const;
 	void operator()(const Bool 		 &b ) const;
@@ -506,99 +361,43 @@ void writeVisitor::operator()(const Int& i) const
 
 void writeVisitor::operator()(const Path &s ) const
 {
-	bool needsEscaping = false;
 	// convert the string back to it original encoding
-	std::string se = s.value.string();
-	if (!se.empty())
-	{
-		auto itr = se.begin();
-		t << " ";
-		char c;
+	t << s.value ;
+}
 
-		while ((se.end()!=++itr)!=0 && !needsEscaping)
-			needsEscaping = (c==' ' || c=='\n' || c=='\t' || c=='"' || c=='#');
-		if (needsEscaping)
+inline std::string insertEscape(const std::string& value)
+{
+	std::string s2;
+	s2.reserve(value.size());
+
+	for (auto & c : value)
+	{
+		if ((c == ' ') || (c == '"') || (c == '"') || (c == '#'))
 		{
-			t << "\"";
-			auto p=se.data();
-			while (*p)
-			{
-				if (*p==' ' && *(p+1)=='\0') break; // skip inserted space at the end
-				if (*p=='"') t << "\\"; // escape quotes
-				t << *p++;
-			}
-			t << "\"";
+			s2 += "\\";
+			s2 += c;
 		}
+		else if (c == '\n')
+			s2 += "\\n";
+		else if (c == '\t')
+			s2 += "\\t";
 		else
-		{
-			t << se;
-		}
-	}}
+			s2 += c;
+	}
+	return s2;
+}
 
 void writeVisitor::operator()(const String &s ) const
 {
-	bool needsEscaping = false;
 	// convert the string back to it original encoding
-	std::string se = Recode(s.value, "UTF-8", op.encoding);
-	if (!se.empty())
-	{
-		auto itr = se.begin();
-		t << " ";
-		char c;
-
-		while ((se.end()!=++itr)!=0 && !needsEscaping)
-		{
-			needsEscaping = (c==' ' || c=='\n' || c=='\t' || c=='"' || c=='#');
-		}
-		if (needsEscaping)
-		{
-			t << "\"";
-			auto p=se.data();
-			while (*p)
-			{
-				if (*p==' ' && *(p+1)=='\0') break; // skip inserted space at the end
-				if (*p=='"') t << "\\"; // escape quotes
-				t << *p++;
-			}
-			t << "\"";
-		}
-		else
-		{
-			t << se;
-		}
-	}
+	std::string se = boost::locale::conv::from_utf(s.value, encoding);
+	t << insertEscape(se);
 }
 
 void writeVisitor::operator()(const Enum &s ) const
 {
-	bool needsEscaping = false;
-	// convert the string back to it original encoding
-	std::string se = Recode(s.value, "UTF-8", op.encoding);
-	if (!se.empty())
-	{
-		auto itr = se.begin();
-		t << " ";
-		char c;
-
-		while ((se.end()!=++itr)!=0 && !needsEscaping)
-			needsEscaping = (c==' ' || c=='\n' || c=='\t' || c=='"' || c=='#');
-		if (needsEscaping)
-		{
-			t << "\"";
-			auto p=se.data();
-			while (*p)
-			{
-				if (*p==' ' && *(p+1)=='\0') break; // skip inserted space at the end
-				if (*p=='"') t << "\\"; // escape quotes
-				t << *p++;
-			}
-			t << "\"";
-		}
-		else
-		{
-			t << se;
-		}
-	}
+	std::string se = boost::locale::conv::from_utf(s.value, encoding);
+	t << insertEscape(se);
 }
 
 void writeVisitor::operator()(const PathList &l ) const
@@ -886,9 +685,11 @@ bool Config::has(const std::string& name)
 	auto it = std::find_if(m_options .begin(), m_options .end(), [&](const Option &op){return op .name == name;}); if (it != m_options .end()) return true;
 		 it = std::find_if(m_obsolete.begin(), m_obsolete.end(), [&](const Option &op){return op .name == name;}); if (it != m_obsolete.end()) return true;
 		 it = std::find_if(m_disabled.begin(), m_disabled.end(), [&](const Option &op){return op .name == name;}); if (it != m_disabled.end()) return true;
-		 it = std::find_if(m_unknown .begin(), m_unknown .end(), [&](const Option &op){return op .name == name;}); if (it != m_unknown .end()) return true;
 
-	return false;
+
+//	auto it2 = std::find_if(m_unknown .begin(), m_unknown .end(), [&](const RawOption &op){return op .name == name;}); if (it != m_unknown .end()) return true;
+
+	return m_unknown.count(name) > 0;
 }
 
 bool Config::hasOption	(const std::string& name)
@@ -912,15 +713,55 @@ bool Config::hasDisabled(const std::string& name)
 
 bool Config::hasUnknown(const std::string& name)
 {
-	auto it = std::find_if(m_unknown .begin(), m_unknown .end(), [&](const Option &op){return op .name == name;});
-	return it != m_unknown.end();
+	return m_unknown.count(name) > 0;
 }
 
-
-}
-}
-
-void DoxyFrame::Config::Option::writeTemplate(std::ostream& t, bool sl, bool spd)
+void Option::writeTemplate(std::ostream& t, bool sl, bool spd)
 {
 	writeTemplateVisitor vis(t, *this, sl, spd);
 }
+
+
+void Config::append(const RawConfig & rc)
+{
+	auto &enc = rc.at("DOXYFILE_ENCODING");
+
+
+	if (enc.data.size() == 0)
+		Warn(enc.file_name, enc.line_nr) << "DOXYFILE_ENCODING must be a single string, e.g. 'UTF-8', but is empty. 'UTF-8' will be used." << std::endl;
+	else if (enc.data.size() > 1)
+	{
+		Warn(enc.file_name, enc.line_nr) << "DOXYFILE_ENCODING must be a single string, e.g. 'UTF-8', but has multiple values defined. First element will be used, which is: '" << enc.data[0] << "'" << std::endl;
+		m_encoding = enc.data[0];
+	}
+	else
+		m_encoding = enc.data[0];
+
+
+	this->m_startComment += to_utf<char>(rc.startComment, m_encoding);
+	this->m_endComment 	 += to_utf<char>(rc.endComment, 	m_encoding);
+
+	for (auto & p : rc)
+		insert(p.first, p.second);
+
+
+}
+void Config::insert(const std::string name, const RawOption & ro)
+{
+	if (has(name))
+	{
+
+	}
+	else
+	{
+		auto & val = this->m_unknown[name];
+
+
+	}
+
+}
+
+}
+}
+
+

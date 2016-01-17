@@ -16,14 +16,13 @@
  *	includes
  */
 
-#include <config_parser.hpp>
+#include <doxyframe/config.hpp>
 #include <cstdio>
 #include <cstdlib>
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <config.hpp>
 #include <stack>
 #include <doxyframe/error_log.hpp>
 #include <boost/algorithm/string/trim.hpp>
@@ -31,11 +30,14 @@
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/filesystem/fstream.hpp>
+#include <boost/filesystem/operations.hpp>
 
 
 using namespace std;
 using namespace DoxyFrame::Config;
 using namespace DoxyFrame::Log;
+using namespace boost::filesystem;
+using namespace boost;
 
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
@@ -258,7 +260,7 @@ static bool parse_include_file(RawConfig &rc, const std::string & file_name, con
 
 
 	//look if the file exist in the current directory
-	if (is_regular_file(boost::filesystem::path(file_name)))
+	if (boost::filesystem::is_regular_file(boost::filesystem::path(file_name)))
 	{
 		found = file_name;
 	}
