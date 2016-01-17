@@ -556,98 +556,6 @@ void writeTemplateVisitor::operator()(const Bool &s) const
 	t << "\n";
 }
 
-struct assignVisitor : boost::static_visitor<>
-{
-	std::string value;
-	Option & op;
-	assignVisitor(const std::string &value, Option &op) : value(value), op(op) {}
-
-	void operator()(Info		 &i );
-	void operator()(Enum		 &i );
-	void operator()(Bool 		 &b );
-	void operator()(Int  		 &i );
-	void operator()(String 	 &s );
-	void operator()(Path 		 &p );
-	void operator()(StringList &sl);
-	void operator()(PathList 	 &pl);
-};
-
-void assignVisitor::operator()( Int& i)
-{
-	op.set = true;
-
-	bool ok = true;
-	int val;
-	try {
-		val = std::stoi(value);
-		op.set = true;
-	}
-	catch (std::logic_error& ) {ok = false;};
-
-	if (!ok || (val < i.min) || (val > i.max))
-	{
-		std::cerr << "argument `"  << i.value
-				<< "' for option " << op.name
-				<<" is not a valid number in the range [" << i.min
-				<<".."<< i.max
-				<< "]!\n";
-
-		if (i.default_value)
-		{
-			std::cerr << "Using the default: " << i.value << "!\n";
-			i.value = *i.default_value;
-			op.set = true;
-		}
-		else
-		{
-			std::cerr  << "No default value given, aborting..." << std::endl;
-			std::exit(1);
-		}
-	}
-	else
-	{
-		i.value = val;
-		op.set = true;
-	}
-
-}
-
-void assignVisitor::operator()(Bool& i)
-{
-	std::string val = boost::trim_copy(value);
-	boost::algorithm::to_lower(val);
-
-	if (val=="yes" || val=="true" || val=="1" || val=="all")
-	{
-		i.value = true;
-		op.set = true;
-	}
-	else if (val=="no" || val=="false" || val=="0" || val=="none")
-	{
-		i.value = false;
-		op.set = true;
-	}
-	else
-	{
-		std::cerr << "argument `" << val
-				  << "' for option " << op.name
-				  << " is not a valid boolean value\n";
-
-		if (i.default_value)
-		{
-			std::cerr  << "Using the default: " << (*i.default_value ? "YES" : "NO") << "!"  << std::endl;
-			i.value = *i.default_value;
-			op.set = true;
-
-		}
-		else
-		{
-			std::cerr  << "No default value given, aborting..." << std::endl;
-			std::exit(1);
-		}
-	}
-
-}
 
 
 std::string Recode(
@@ -743,22 +651,227 @@ void Config::append(const RawConfig & rc)
 
 	for (auto & p : rc)
 		insert(p.first, p.second);
-
-
 }
+
 void Config::insert(const std::string name, const RawOption & ro)
 {
 	if (has(name))
 	{
+		get(name) += ro;
 
 	}
 	else
 	{
-		auto & val = this->m_unknown[name];
-
+		this->m_unknown[name] += ro;
 
 	}
 
+}
+
+struct assignVisitor : boost::static_visitor<>
+{
+	const RawOption & op;
+	const std::string & name;
+	assignVisitor(const RawOption &op, const std::string & name) : /*value(value),*/ op(op), name(name) {}
+
+	void operator()(boost::blank) {};
+	void operator()(Info	 &i ) {};
+	void operator()(Enum	 &i );
+	void operator()(Bool 	 &b );
+	void operator()(Int  	 &i );
+	void operator()(String 	 &s );
+	void operator()(Path 	 &p );
+	void operator()(StringList &sl);
+	void operator()(PathList &pl);
+};
+
+void assignVisitor::operator()( Int& i)
+{
+
+	bool ok = true;
+	int val;
+	try {
+		val = std::stoi(boost::trim_copy(op.data.at(0)));
+	}
+	catch (std::exception& ) {ok = false;};
+
+
+
+	if (!ok || (val < i.min) || (val > i.max))
+	{
+		std::string val;
+
+		if (op.data.size() > 0)
+			val = op.data[0];
+
+		Log::Error(op.file_name, op.line_nr) << "argument `"  << val
+				<< "' for option " << name
+				<<" is not a valid number in the range [" << i.min
+				<<".."<< i.max
+				<< "]!\n";
+
+		if (i.default_value)
+		{
+			std::cerr << "Using the default: " << *i.default_value << "!\n";
+			i.value = *i.default_value;
+		}
+		else
+		{
+			std::cerr  << "No default value given, aborting..." << std::endl;
+			std::exit(1);
+		}
+	}
+	else
+	{
+		i.value = val;
+	}
+
+}
+
+void assignVisitor::operator()(Bool& i)
+{
+	std::string val;
+	if (op.data.size() > 0)
+		val = boost::trim_copy(op.data[0]);
+
+	boost::algorithm::to_lower(val);
+
+	if (val=="yes" || val=="true" || val=="1" || val=="all")
+	{
+		i.value = true;
+	}
+	else if (val=="no" || val=="false" || val=="0" || val=="none")
+	{
+		i.value = false;
+	}
+	else
+	{
+		Log::Error(op.file_name, op.line_nr)
+					  << "argument `" << val
+				  	  << "' for option " << name
+					  << " is not a valid boolean value\n";
+
+		if (i.default_value)
+		{
+			std::cerr  << "Using the default: " << (*i.default_value ? "YES" : "NO") << "!"  << std::endl;
+			i.value = *i.default_value;
+
+		}
+		else
+		{
+			std::cerr  << "No default value given, aborting..." << std::endl;
+			std::exit(1);
+		}
+	}
+
+}
+
+void assignVisitor::operator()(StringList& i)
+{
+	if (!op.data.empty())
+		i.value.insert(i.value.end(), op.data.begin(), op.data.end());
+	else if (i.default_value)
+	{
+			Log::Error(op.file_name, op.line_nr)
+					  << "argument  for option " << name
+					  << " is empty, using default." << std::endl;
+
+		i.value = *i.default_value;
+	}
+}
+
+void assignVisitor::operator()(PathList& i)
+{
+	if (!op.data.empty())
+		for (auto & v : op.data)
+			i.value.emplace_back(v);
+	else if (i.default_value)
+	{
+		Log::Error(op.file_name, op.line_nr)
+							  << "argument  for option " << name
+							  << " is empty, using default." << std::endl;
+
+		i.value = *i.default_value;
+	}
+}
+
+
+void assignVisitor::operator()(String& i)
+{
+	if (!op.data.empty())
+		i.value = op.data[0];
+	else if (i.default_value)
+	{
+		Log::Error(op.file_name, op.line_nr)
+									  << "argument for option " << name
+									  << " is empty, using default." << std::endl;
+		i.value = *i.default_value;
+	}
+	for (auto &st : op.data)
+		i.value += boost::trim_copy(st) + " ";
+}
+
+void assignVisitor::operator()(Path& i)
+{
+	if (!op.data.empty())
+		i.value = op.data[0];
+	else if (i.default_value)
+	{
+		Log::Error(op.file_name, op.line_nr)
+									  << "argument for option " << name
+									  << " is empty, using default." << std::endl;
+		i.value = *i.default_value;
+	}
+}
+
+void assignVisitor::operator()(Enum& i)
+{
+	std::string value;
+	if (!op.data.empty())
+		value = boost::trim_copy(op.data[0]);
+	else if (i.default_value)
+	{
+		Log::Error(op.file_name, op.line_nr)
+									  << "argument for option " << name
+									  << " is empty, using default." << std::endl;
+		i.value = *i.default_value;
+	}
+
+	if (i.allowed_values.count(value) == 0)
+	{
+		auto & os = (Log::Error(op.file_name, op.line_nr)
+				<< "argument '" << value << "' for option " << name << " is invalid. The allowed values are : { ");
+
+		for (auto & v : i.allowed_values)
+			os << v << ", ";
+
+		os << "}" << std::endl;
+
+		if (i.default_value)
+		{
+			os << "\tNo default value is provided, exiting..." << std::endl;
+			std::exit(1);
+		}
+		else
+		{
+			os << "\tUsing default..." << std::endl;
+			i.value = *i.default_value;
+		}
+	}
+	else
+		i.value = value;
+
+}
+
+void Option::append(const RawOption & st)
+{
+
+	this->user_comment = st.comment;
+	this->set = true;
+
+	assignVisitor asv(st, this->name);
+
+	this->apply_visitor(asv);
 }
 
 }

@@ -56,6 +56,15 @@ struct RawOption
 
 	std::string comment;
 	std::vector<std::string> data;
+
+	RawOption & operator+=(const RawOption& ro)
+	{
+		file_name 	= ro.file_name;
+		line_nr		= ro.line_nr;
+		comment		+= ro.comment;
+		data.insert(data.end(), ro.data.begin(), ro.data.end());
+		return *this;
+	}
 };
 
 //Config read by the parser.
@@ -131,7 +140,7 @@ struct Option : OptionEntry
 	std::string doc;
 	std::string dependency;
 	std::string user_comment;
-	std::string value;
+	std::vector<std::string> value;
 
 	std::string description;
 	bool set = false;
@@ -150,10 +159,8 @@ struct Option : OptionEntry
 
 	using OptionEntry::operator=;
 
-	Option & operator= (const std::string & value) {this->assign(value); return *this;};
-	Option & operator+=(const std::string & value) {this->append(value); return *this;};
-	void assign(const std::string & st);
-	void append(const std::string & st);
+	Option & operator+=(const RawOption & value) {this->append(value); return *this;};
+	void append(const RawOption & st);
 	void clear();
 	void writeTemplate(std::ostream &t, bool sl,bool);
 	bool isList() const;
