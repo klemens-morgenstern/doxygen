@@ -25,6 +25,7 @@
 #include <vector>
 #include <config.hpp>
 #include <stack>
+#include <doxyframe/error_log.hpp>
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/type_index.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
@@ -34,6 +35,7 @@
 
 using namespace std;
 using namespace DoxyFrame::Config;
+using namespace DoxyFrame::Log;
 
 #define YY_NO_INPUT 1
 #define YY_NO_UNISTD_H 1
@@ -166,7 +168,7 @@ static bool parse_include_file(RawConfig &rc, const std::string & file_name,
 				    	yyterminate();
 					}
 
-<Start>[a-z_A-Z0-9]+ { cerr << f().file_name << "(" << f().line_nr << "): Warn: Ignoring unknown tag '" << yytext << "'" << endl;  }
+<Start>[a-z_A-Z0-9]+ { Warn(f().file_name,f().line_nr) << "Ignoring unknown tag '" << yytext << "'" << endl;  }
 <GetStrList>\n			{ 
   					  		f().line_nr++; 
 					  		if (!GetStrList_buf.empty()) //TODO:
@@ -196,7 +198,7 @@ static bool parse_include_file(RawConfig &rc, const std::string & file_name,
 				  					GetStrList_buf += qStringBuf ;
 					  				if (*yytext=='\n')
 					  				{
-					  					cerr << f().file_name << "(" << f().line_nr << "): Warn: Missing end quote (\") " << endl;
+					  					Warn(f().file_name,f().line_nr) << "Missing end quote (\") " << endl;
 					   					f().line_nr++;
 					  				}
 					  				BEGIN(lastState);
@@ -239,7 +241,7 @@ static void yy_user_init()
 }
 
 
-bool parse_string(RawConfig &rc, const string &filename , string &&content)
+static bool parse_string(RawConfig &rc, const string &filename , string &&content)
 {
 
 	include_stack.emplace(file_reader(filename, std::move(content)));
@@ -249,8 +251,8 @@ bool parse_string(RawConfig &rc, const string &filename , string &&content)
 
   	return lexscan (rc);
 }
-bool parse_include_file(RawConfig &rc, const std::string & file_name, const std::string & encoding,
-						int from_line, const std::string & from_file)
+static bool parse_include_file(RawConfig &rc, const std::string & file_name, const std::string & encoding,
+								int from_line, const std::string & from_file)
 {
 	boost::filesystem::path found;
 
@@ -274,7 +276,7 @@ bool parse_include_file(RawConfig &rc, const std::string & file_name, const std:
 
 		if (found.empty())
 		{
-			cerr << from_file << "(" << from_line << "): Error: Include file " << file_name << " not found.\n"
+			Error(from_file, from_line) << "Include file " << file_name << " not found.\n"
 					"Exiting..." << endl;
 			exit(1);
 		}
@@ -289,7 +291,7 @@ bool parse_include_file(RawConfig &rc, const std::string & file_name, const std:
 
 }
 
-bool parse_file(RawConfig &rc, const boost::filesystem::path& filename)
+static bool parse_file(RawConfig &rc, const boost::filesystem::path& filename)
 {
 	boost::filesystem::ifstream fs(filename);
 
@@ -309,7 +311,7 @@ bool parse_file(RawConfig &rc, const boost::filesystem::path& filename)
  	return retval;
 }
 
-RawConfig parse(const boost::filesystem::path& file_name)
+RawConfig RawConfig::parse(const boost::filesystem::path& file_name)
 {
 	RawConfig rc;
 	auto res = parse_file(rc, file_name);

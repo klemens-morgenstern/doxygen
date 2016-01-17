@@ -375,7 +375,7 @@ Bool   &Config::addBool(const std::string &name,
 Option &Config::addObsolete(const std::string &name)
 {
 	Option op;
-	op.entry = boost::none;
+	op.entry = boost::blank();
 	op.name = name;
 
 	m_options.push_back(std::move(op));
@@ -387,7 +387,7 @@ Option &Config::addObsolete(const std::string &name)
 Option &Config::addDisabled(const std::string &name)
 {
 	Option op;
-	op.entry = boost::none;
+	op.entry = boost::blank();
 	op.name = name;
 
 	m_options.push_back(std::move(op));

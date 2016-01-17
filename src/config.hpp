@@ -30,11 +30,12 @@
 #include <boost/variant.hpp>
 #include <boost/type_index.hpp>
 #include <boost/filesystem/path.hpp>
-#include <boost/none.hpp>
 #include <boost/optional.hpp>
 #include <boost/algorithm/string/replace.hpp>
-
 #include <boost/property_tree/ptree.hpp>
+
+#include <cereal/cereal.hpp>
+#include <cereal/types/boost_variant.hpp>
 
 namespace DoxyFrame
 {
@@ -48,6 +49,8 @@ struct OptionTpl
 {
 	T value;
 	boost::optional<T> default_value;
+
+
 };
 
 struct StringList : OptionTpl<std::vector<std::string>>
@@ -82,7 +85,13 @@ struct Info		{};
 struct Unknown	{std::string value;};
 
 
-struct Option
+using OptionEntry =
+		boost::variant<	boost::blank,
+						StringList, PathList,
+						String, Path, Enum,
+						Bool, Int, Info>;
+
+struct Option : OptionEntry
 {
 	std::string name;
 	std::string doc;
@@ -95,12 +104,12 @@ struct Option
 
 	static constexpr std::size_t max_option_length = 23;
 
-	using Entry = boost::variant<boost::none_t,
+	using Entry = boost::variant<boost::blank,
 			StringList, PathList,
 			String, Path, Enum,
 			Bool, Int, Info>;
 
-	Entry entry = boost::none;
+	Entry entry = boost::blank();
 
 	Option & operator= (const std::string & value) {this->assign(value); return *this;};
 	Option & operator+=(const std::string & value) {this->append(value); return *this;};

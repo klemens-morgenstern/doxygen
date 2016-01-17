@@ -32,8 +32,8 @@ build-project translations ;
 import lex ;
 
 
-#lib test : config.cpp : <include>./src ;
+lib test : config.cpp parser/config.ll : <include>./src ;
 
 install trc : translations//translations ;
 
-run parser/config2.ll config.cpp ;
+#run parser/config.ll config.cpp : <threading>multi ;
